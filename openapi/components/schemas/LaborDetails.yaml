@@ -1,0 +1,29 @@
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  target:
+    type: number
+    format: float
+  cogs:
+    type: number
+    format: float
+  sales:
+    type: number
+    format: float
+  cogsTarget:
+    type: number
+    format: float
+  purchases:
+    type: number
+    format: float
+  toSpend:
+    type: number
+    format: float
+  laborLessFees:
+    type: number
+    format: float
+  category:
+    $ref: ./Category.yaml

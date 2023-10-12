@@ -1,0 +1,12 @@
+type: object
+properties:
+  primeCost:
+    $ref: ./ExpenseDetail.yaml
+  grossMargin:
+    $ref: ./ExpenseDetail.yaml
+  ifo:
+    $ref: ./ExpenseDetail.yaml
+  netIncome:
+    $ref: ./ExpenseDetail.yaml
+  discounts:
+    $ref: ./ExpenseDetail.yaml

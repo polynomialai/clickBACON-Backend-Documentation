@@ -1,0 +1,20 @@
+type: object
+properties:
+  id:
+    type: integer
+  id_hash:
+    type: string
+  name:
+    type: string
+  label:
+    type: string
+  space:
+    type: string
+  has_children:
+    type: boolean
+  children:
+    type: array
+    items:
+      $ref: ./Category.yaml
+  parent_id:
+    type: string

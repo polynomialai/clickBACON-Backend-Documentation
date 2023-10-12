@@ -1,0 +1,3 @@
+allOf:
+  - $ref: ./Comp.yaml
+  - type: object

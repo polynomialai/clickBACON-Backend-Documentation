@@ -1,0 +1,36 @@
+type: object
+properties:
+  name:
+    type: string
+  id:
+    type: integer
+  cost_budget:
+    type: number
+  cost_actual:
+    type: number
+  labor_less_fees:
+    type: number
+  percent_budget:
+    type: number
+  percent_actual:
+    type: number
+  percent_labor_budget:
+    type: number
+  percent_labor_actual:
+    type: number
+  remaining_budget:
+    type: number
+  rolling:
+    type: number
+  remaining_budget_mtd:
+    type: number
+  variance:
+    type: number
+  has_children:
+    type: boolean
+  value:
+    type: string
+  category:
+    $ref: ./Category.yaml
+  id_hash:
+    type: string

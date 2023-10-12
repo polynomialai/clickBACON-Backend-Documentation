@@ -1,0 +1,22 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  target:
+    type: number
+  cogs:
+    type: number
+  sales:
+    type: number
+  cogsTarget:
+    type: number
+  purchases:
+    type: number
+  toSpend:
+    type: number
+  budgetDoe:
+    type: number
+  category:
+    $ref: ./Category.yaml

@@ -1,0 +1,64 @@
+type: object
+properties:
+  category_id:
+    type: integer
+  category:
+    type: object
+  name:
+    type: string
+  budget_id:
+    type: integer
+  tab_name:
+    type: string
+  percentage:
+    type: number
+  cost:
+    type: number
+  budget_sales:
+    type: number
+  budget_purchase:
+    type: number
+  mtd_purchase:
+    type: number
+  category_sales:
+    type: number
+  cogs_target:
+    type: number
+  transfers:
+    type: number
+  category_purchase_actual:
+    type: number
+  category_purchase:
+    type: number
+  percent_sales:
+    type: number
+  percent_purchase:
+    type: number
+  purchase_remaining:
+    type: number
+  purchase_remaining_mtd:
+    type: number
+  mtd_cost:
+    type: number
+  rolling_cogs:
+    type: number
+  type:
+    type: integer
+  percent_purchase_doe:
+    type: number
+  budget_doe:
+    type: number
+  doe_sales_percentage:
+    type: number
+  doe_sales_percentage_actual:
+    type: number
+  doe_purchase_remaining:
+    type: number
+  doe_rolling:
+    type: number
+  doe_purchase_remaining_mtd:
+    type: number
+  variance:
+    type: number
+  category_id_hash:
+    type: string

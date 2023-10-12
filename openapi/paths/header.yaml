@@ -1,0 +1,66 @@
+get:
+  summary: Retrieve header information
+  description: This endpoint retrieves header information for the authenticated user.
+  tags:
+    - Initial (Refresh Call)
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              restaurant:
+                type: string
+              restaurants:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    link:
+                      type: string
+              tags:
+                type: array
+                items:
+                  type: string
+              role:
+                type: integer
+              isParent:
+                type: boolean
+              owner_id:
+                type: boolean
+              avatar:
+                type: string
+              restaurant_logo:
+                type: string
+              connections:
+                type: array
+                items:
+                  type: string
+              last_restaurant:
+                type: integer
+              api_companies:
+                type: array
+                items:
+                  type: string
+              last_import:
+                type: string
+                format: datetime
+                description: The last time data was imported from Quickbooks.
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Unauthenticated.

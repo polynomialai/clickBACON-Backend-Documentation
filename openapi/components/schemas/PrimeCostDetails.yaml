@@ -1,0 +1,64 @@
+type: object
+properties:
+  sales:
+    type: number
+  purchases:
+    type: number
+  purchases_percent:
+    type: number
+  doe:
+    type: number
+  doe_percent:
+    type: number
+  labor:
+    type: number
+  labor_percentage:
+    type: number
+  prime_cost_dollars:
+    type: number
+  prime_cost:
+    type: number
+  operational_profit:
+    type: number
+  operational_profit_percent:
+    type: number
+  discount_amount:
+    type: number
+  discount_percentage:
+    type: number
+  discounted_sales:
+    type: number
+  discounted_sales_percentage:
+    type: number
+  discounted_purchases:
+    type: number
+  discounted_purchases_percent:
+    type: number
+  discounted_doe:
+    type: number
+  discounted_doe_percent:
+    type: number
+  discounted_labor:
+    type: number
+  discounted_labor_percentage:
+    type: number
+  discounted_prime_cost_dollars:
+    type: number
+  discounted_prime_cost:
+    type: number
+  discounted_operational_profit:
+    type: number
+  discounted_operational_profit_percent:
+    type: number
+  from:
+    type: string
+  to:
+    type: string
+  from_date_format:
+    type: string
+  to_date_format:
+    type: string
+  range_from:
+    $ref: ./DateDetails.yaml
+  range_to:
+    $ref: ./DateDetails.yaml

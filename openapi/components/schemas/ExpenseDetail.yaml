@@ -1,0 +1,8 @@
+type: object
+properties:
+  amount:
+    type: number
+  percent:
+    type: number
+  goal:
+    type: number

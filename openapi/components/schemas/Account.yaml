@@ -1,0 +1,14 @@
+type: object
+properties:
+  value:
+    type: string
+  disable:
+    type: boolean
+  original_name:
+    type: string
+  label:
+    type: string
+  type:
+    type: integer
+  prefix_type:
+    type: string

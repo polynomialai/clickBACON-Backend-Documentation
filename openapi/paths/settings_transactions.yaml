@@ -1,0 +1,75 @@
+get:
+  summary: Retrieve restaurant and labor settings
+  description: >
+    Fetches specific settings related to the restaurant and labor.  **Middleware
+    Restrictions**:  - User must be authenticated. - User status must not be one
+    of the following:
+      * `2 (Suspended)`
+      * `3 (Expired)`
+      * `4 (Canceled)`
+    - User must have access to the 'dashboard' module.
+  tags:
+    - Restaurant Settings
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successfully retrieved settings.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              guest_count:
+                type: integer
+              comps:
+                type: string
+              operating_expense:
+                type: integer
+              labor:
+                type: integer
+              labor_calculator:
+                type: integer
+              cash:
+                type: integer
+              department:
+                type: string
+              inventory:
+                type: integer
+              discount_type:
+                type: string
+              doe_detailed:
+                type: string
+              show_hours:
+                type: integer
+              auto_post:
+                type: boolean
+              indirect_labor:
+                type: integer
+              frequency:
+                type: integer
+              has_fixed_conditions:
+                type: boolean
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Unauthenticated.
+    '403':
+      description: >
+        Forbidden. This can be due to: - User status being one of: `Suspended
+        (2)`, `Expired (3)`, or `Canceled (4)`. - User not having access to the
+        'dashboard' module.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: suspended

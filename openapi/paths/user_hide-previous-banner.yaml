@@ -1,0 +1,68 @@
+get:
+  summary: Check if the previous banner should be hidden for the user.
+  description: >
+    **Middleware Restrictions**:  - User must be authenticated. - User status
+    must not be one of the following:
+      * `2 (Suspended)`
+      * `3 (Expired)`
+      * `4 (Canceled)`
+  tags:
+    - User
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Banner hide status.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              hide:
+                type: boolean
+    '403':
+      description: >
+        Forbidden. This can be due to: - User status being one of: `Suspended
+        (2)`, `Expired (3)`, or `Canceled (4)`.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: suspended
+post:
+  summary: Hide the previous banner for the user.
+  description: >
+    **Middleware Restrictions**:  - User must be authenticated. - User status
+    must not be one of the following:
+      * `2 (Suspended)`
+      * `3 (Expired)`
+      * `4 (Canceled)`
+  tags:
+    - User
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Banner hide status.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+    '403':
+      description: >
+        Forbidden. This can be due to: - User status being one of: `Suspended
+        (2)`, `Expired (3)`, or `Canceled (4)`.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: suspended

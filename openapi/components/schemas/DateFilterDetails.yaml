@@ -1,0 +1,24 @@
+type: object
+properties:
+  periods:
+    type: array
+    items:
+      $ref: ./Period.yaml
+  years:
+    type: array
+    items:
+      $ref: ./Year.yaml
+  weeks:
+    type: array
+    items:
+      $ref: ./Week.yaml
+  start_week:
+    type: integer
+  vendors:
+    type: array
+    items:
+      $ref: ./Vendor.yaml
+  accounts:
+    type: array
+    items:
+      $ref: ./Account.yaml
