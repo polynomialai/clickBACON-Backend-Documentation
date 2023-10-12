@@ -1,0 +1,49 @@
+get:
+  tags:
+    - Indirect-labor
+  parameters:
+    - in: query
+      name: page
+      required: false
+      schema:
+        type: string
+    - in: query
+      name: rows
+      required: false
+      schema:
+        type: string
+    - in: query
+      name: sortBy
+      required: false
+      schema:
+        type: string
+    - in: query
+      name: descending
+      required: false
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              setting:
+                type: array
+              total:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  summary: GET /indirect-labor

@@ -1,0 +1,27 @@
+get:
+  parameters: []
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              total:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  summary: GET /catering/total
+  tags:
+    - Catering

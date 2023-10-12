@@ -43,6 +43,84 @@ paths:
     $ref: paths/dashboard_doe.yaml
   /dashboard/labor:
     $ref: paths/dashboard_labor.yaml
+  /catering/ajax:
+    $ref: paths/catering_ajax.yaml
+  /catering/total:
+    $ref: paths/catering_total.yaml
+  /comps/create:
+    $ref: paths/comps_create.yaml
+  /deposit:
+    $ref: paths/deposit.yaml
+  /deposit/create:
+    $ref: paths/deposit_create.yaml
+  /deposit/{param}:
+    $ref: paths/deposit_{param}.yaml
+  /deposit/{param}/edit:
+    $ref: paths/deposit_{param}_edit.yaml
+  /indirect-labor:
+    $ref: paths/indirect-labor.yaml
+  /indirect-labor/create:
+    $ref: paths/indirect-labor_create.yaml
+  /indirect-labor/{param}:
+    $ref: paths/indirect-labor_{param}.yaml
+  /invoice/ajax:
+    $ref: paths/invoice_ajax.yaml
+  /invoice/total-invoice:
+    $ref: paths/invoice_total-invoice.yaml
+  /labor:
+    $ref: paths/labor.yaml
+  /labor/ajax:
+    $ref: paths/labor_ajax.yaml
+  /labor/create:
+    $ref: paths/labor_create.yaml
+  /labor/total:
+    $ref: paths/labor_total.yaml
+  /labor/{param}:
+    $ref: paths/labor_{param}.yaml
+  /labor/{param}/edit:
+    $ref: paths/labor_{param}_edit.yaml
+  /purchase:
+    $ref: paths/purchase.yaml
+  /purchase/attachments:
+    $ref: paths/purchase_attachments.yaml
+  /purchase/create:
+    $ref: paths/purchase_create.yaml
+  /purchase/get-category-options:
+    $ref: paths/purchase_get-category-options.yaml
+  /purchase/total:
+    $ref: paths/purchase_total.yaml
+  /purchase/transactions/ajax:
+    $ref: paths/purchase_transactions_ajax.yaml
+  /purchase/transactions/change-account:
+    $ref: paths/purchase_transactions_change-account.yaml
+  /purchase/{param}:
+    $ref: paths/purchase_{param}.yaml
+  /purchase/{param}/edit:
+    $ref: paths/purchase_{param}_edit.yaml
+  /sale:
+    $ref: paths/sale.yaml
+  /sale/ajax:
+    $ref: paths/sale_ajax.yaml
+  /sale/catering:
+    $ref: paths/sale_catering.yaml
+  /sale/create:
+    $ref: paths/sale_create.yaml
+  /sale/total-sale:
+    $ref: paths/sale_total-sale.yaml
+  /sale/{param}:
+    $ref: paths/sale_{param}.yaml
+  /sale/{param}/edit:
+    $ref: paths/sale_{param}_edit.yaml
+  /schedule:
+    $ref: paths/schedule.yaml
+  /schedule/create:
+    $ref: paths/schedule_create.yaml
+  /schedule/total:
+    $ref: paths/schedule_total.yaml
+  /schedule/{param}:
+    $ref: paths/schedule_{param}.yaml
+  /schedule/{param}/edit:
+    $ref: paths/schedule_{param}_edit.yaml
 components:
   securitySchemes:
     bearerAuth:

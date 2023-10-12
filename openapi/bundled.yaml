@@ -20,7 +20,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
@@ -119,7 +119,7 @@ paths:
                         type: boolean
                       document_write_to_parent:
                         type: boolean
-        "401":
+        '401':
           description: Unauthorized
           content:
             application/json:
@@ -138,7 +138,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
@@ -186,7 +186,7 @@ paths:
                     type: string
                     format: datetime
                     description: The last time data was imported from Quickbooks.
-        "401":
+        '401':
           description: Unauthorized
           content:
             application/json:
@@ -204,7 +204,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
@@ -249,7 +249,7 @@ paths:
                       type: boolean
                       description: A flag indicating whether the link is external, if applicable.
                       nullable: true
-        "401":
+        '401':
           description: Unauthorized
           content:
             application/json:
@@ -267,7 +267,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
@@ -286,7 +286,7 @@ paths:
                   video_link:
                     type: string
                     description: The link to a video demonstrating the new feature.
-        "401":
+        '401':
           description: Unauthorized
           content:
             application/json:
@@ -296,7 +296,7 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
-        "403":
+        '403':
           description: Suspended
           content:
             application/json:
@@ -317,13 +317,13 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successfully retrieved date filter details.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DateFilterDetails"
-        "401":
+                $ref: '#/components/schemas/DateFilterDetails'
+        '401':
           description: Unauthorized - user needs to be authenticated.
           content:
             application/json:
@@ -342,7 +342,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
@@ -352,7 +352,7 @@ paths:
                   count:
                     type: integer
                     description: The count of unread push notifications.
-        "401":
+        '401':
           description: Unauthorized
           content:
             application/json:
@@ -375,14 +375,14 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
                 type: object
                 description: Dashboard settings
-        "401":
+        '401':
           description: Unauthorized
           content:
             application/json:
@@ -392,7 +392,7 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
-        "403":
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
           content:
@@ -422,7 +422,7 @@ paths:
               type: object
               description: Dashboard settings to be saved
       responses:
-        "200":
+        '200':
           description: Settings saved successfully
           content:
             application/json:
@@ -432,7 +432,7 @@ paths:
                   status:
                     type: boolean
                     description: Indicates whether the settings were saved successfully.
-        "401":
+        '401':
           description: Unauthorized
           content:
             application/json:
@@ -442,7 +442,7 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
-        "403":
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
           content:
@@ -466,7 +466,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Banner hide status.
           content:
             application/json:
@@ -475,7 +475,7 @@ paths:
                 properties:
                   hide:
                     type: boolean
-        "403":
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
           content:
@@ -498,7 +498,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Banner hide status.
           content:
             application/json:
@@ -507,7 +507,7 @@ paths:
                 properties:
                   status:
                     type: boolean
-        "403":
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
           content:
@@ -546,7 +546,7 @@ paths:
           required: false
           description: End date for the date range (YYYY-MM-DD).
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
@@ -559,7 +559,7 @@ paths:
                   gauge:
                     type: object
                     description: Gauge data.
-        "401":
+        '401':
           description: Unauthorized
           content:
             application/json:
@@ -569,7 +569,7 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
-        "403":
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
           content:
@@ -580,7 +580,7 @@ paths:
                   message:
                     type: string
                     example: suspended
-        "422":
+        '422':
           description: Bad Request
           content:
             application/json:
@@ -606,7 +606,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successfully retrieved settings.
           content:
             application/json:
@@ -643,7 +643,7 @@ paths:
                     type: integer
                   has_fixed_conditions:
                     type: boolean
-        "401":
+        '401':
           description: Unauthorized
           content:
             application/json:
@@ -653,7 +653,7 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
-        "403":
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`. - User not having access to the 'dashboard' module.
           content:
@@ -692,7 +692,7 @@ paths:
             format: date
           description: End date of the date range.
       responses:
-        "200":
+        '200':
           description: Successfully retrieved COGS data.
           content:
             application/json:
@@ -720,8 +720,8 @@ paths:
                     tabName:
                       type: string
                     category:
-                      $ref: "#/components/schemas/Category"
-        "400":
+                      $ref: '#/components/schemas/Category'
+        '400':
           description: Invalid input. 'from' and 'to' date parameters are required.
           content:
             application/json:
@@ -730,7 +730,7 @@ paths:
                 properties:
                   message:
                     type: string
-        "403":
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
           content:
@@ -769,7 +769,7 @@ paths:
             format: date
           description: End date of the date range.
       responses:
-        "200":
+        '200':
           description: Successfully retrieved accounts data.
           content:
             application/json:
@@ -779,26 +779,26 @@ paths:
                   comps:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Comp"
+                      $ref: '#/components/schemas/Comp'
                   doe:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Doe"
+                      $ref: '#/components/schemas/Doe'
                   keyExpenses:
-                    $ref: "#/components/schemas/KeyExpenses"
+                    $ref: '#/components/schemas/KeyExpenses'
                   labor:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Labor"
+                      $ref: '#/components/schemas/Labor'
                   nce:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Nce"
+                      $ref: '#/components/schemas/Nce'
                   sales:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Sale"
-        "403":
+                      $ref: '#/components/schemas/Sale'
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`. - User not having access to the 'dashboard' module.
           content:
@@ -823,13 +823,13 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successfully retrieved prime cost details.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PrimeCostDetails"
-        "403":
+                $ref: '#/components/schemas/PrimeCostDetails'
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
           content:
@@ -867,15 +867,15 @@ paths:
             format: date
           required: true
       responses:
-        "200":
+        '200':
           description: Successfully retrieved comps details.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/CompDetails"
-        "401":
+                  $ref: '#/components/schemas/CompDetails'
+        '401':
           description: Unauthorized
           content:
             application/json:
@@ -885,7 +885,7 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
-        "403":
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
           content:
@@ -923,15 +923,15 @@ paths:
             type: string
             format: date
       responses:
-        "200":
+        '200':
           description: Successfully retrieved DOE details.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/DOEDetails"
-        "401":
+                  $ref: '#/components/schemas/DOEDetails'
+        '401':
           description: Unauthorized - user needs to be authenticated.
           content:
             application/json:
@@ -941,7 +941,7 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
-        "403":
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`. - User not having access to the 'dashboard' module.
           content:
@@ -979,15 +979,15 @@ paths:
             type: string
             format: date
       responses:
-        "200":
+        '200':
           description: Successfully retrieved labor details.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/LaborDetails"
-        "401":
+                  $ref: '#/components/schemas/LaborDetails'
+        '401':
           description: Unauthorized - user needs to be authenticated.
           content:
             application/json:
@@ -997,7 +997,7 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
-        "403":
+        '403':
           description: |
             Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
           content:
@@ -1008,6 +1008,1600 @@ paths:
                   message:
                     type: string
                     example: suspended
+  /catering/ajax:
+    get:
+      parameters:
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: rows
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sortBy
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: descending
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                  draw:
+                    type: integer
+                  recordsFiltered:
+                    type: integer
+                  recordsTotal:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /catering/ajax
+      tags:
+        - Catering
+  /catering/total:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  total:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /catering/total
+      tags:
+        - Catering
+  /comps/create:
+    get:
+      tags:
+        - Comps
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                  parent_toggle:
+                    type: string
+                  types:
+                    type: array
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /comps/create
+  /deposit:
+    post:
+      tags:
+        - Deposit
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /deposit
+  /deposit/create:
+    get:
+      tags:
+        - Deposit
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categories:
+                    type: array
+                  date:
+                    type: object
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /deposit/create
+  /deposit/{param}:
+    post:
+      tags:
+        - Deposit
+      parameters:
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /deposit/{param}
+  /deposit/{param}/edit:
+    get:
+      tags:
+        - Deposit
+      parameters:
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categories:
+                    type: array
+                  catering:
+                    type: object
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /deposit/{param}/edit
+  /indirect-labor:
+    get:
+      tags:
+        - Indirect-labor
+      parameters:
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: rows
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sortBy
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: descending
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  setting:
+                    type: array
+                  total:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /indirect-labor
+  /indirect-labor/create:
+    get:
+      tags:
+        - Indirect-labor
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  actual_expense:
+                    type: integer
+                  estimated_expense:
+                    type: number
+                  from:
+                    type: string
+                  to:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /indirect-labor/create
+  /indirect-labor/{param}:
+    get:
+      tags:
+        - Indirect-labor
+      parameters:
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  indirect_labor:
+                    type: object
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /indirect-labor/{param}
+  /invoice/ajax:
+    get:
+      tags:
+        - Invoice
+      parameters:
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: rows
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sortBy
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: descending
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: from
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: to
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                  draw:
+                    type: integer
+                  recordsFiltered:
+                    type: integer
+                  recordsTotal:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /invoice/ajax
+  /invoice/total-invoice:
+    get:
+      tags:
+        - Invoice
+      parameters:
+        - in: query
+          name: from
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: to
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  total:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /invoice/total-invoice
+  /labor:
+    post:
+      tags:
+        - Labor
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /labor
+  /labor/ajax:
+    get:
+      tags:
+        - Labor
+      parameters:
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: rows
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sortBy
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: descending
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: from
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: to
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                  draw:
+                    type: integer
+                  recordsFiltered:
+                    type: integer
+                  recordsTotal:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /labor/ajax
+  /labor/create:
+    get:
+      tags:
+        - Labor
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  date:
+                    type: string
+                  edit:
+                    type: integer
+                  importData:
+                    type: string
+                  importEmployee:
+                    type: string
+                  importStaff:
+                    type: string
+                  indirect_labor:
+                    type: integer
+                  jobs:
+                    type: array
+                  labor_calculator:
+                    type: integer
+                  labor_date:
+                    type: string
+                  restaurant_settings:
+                    type: object
+                  salaried:
+                    type: array
+                  salary:
+                    type: number
+                  settings:
+                    type: object
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /labor/create
+  /labor/total:
+    get:
+      tags:
+        - Labor
+      parameters:
+        - in: query
+          name: from
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: to
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  total:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /labor/total
+  /labor/{param}:
+    post:
+      tags:
+        - Labor
+      parameters:
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /labor/{param}
+  /labor/{param}/edit:
+    get:
+      tags:
+        - Labor
+      parameters:
+        - in: query
+          name: date
+          required: false
+          schema:
+            type: string
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  actual_total:
+                    type: string
+                  date:
+                    type: string
+                  edit:
+                    type: integer
+                  empParams:
+                    type: object
+                  estimated_total:
+                    type: string
+                  importData:
+                    type: string
+                  indirect_labor:
+                    type: integer
+                  jobs:
+                    type: array
+                  labor:
+                    type: object
+                  labor_calculator:
+                    type: integer
+                  labor_date:
+                    type: string
+                  restaurant_settings:
+                    type: object
+                  salaried:
+                    type: array
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /labor/{param}/edit
+  /purchase:
+    post:
+      tags:
+        - Purchase
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /purchase
+  /purchase/attachments:
+    post:
+      tags:
+        - Purchase
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  url:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /purchase/attachments
+  /purchase/create:
+    get:
+      tags:
+        - Purchase
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  accounts:
+                    type: array
+                  accounts_flat:
+                    type: array
+                  getData:
+                    type: object
+                  restaurant:
+                    type: object
+                  uploadifive:
+                    type: integer
+                  vendorCategories:
+                    type: array
+                  vendors_flat:
+                    type: array
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /purchase/create
+  /purchase/get-category-options:
+    get:
+      tags:
+        - Purchase
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  accounts:
+                    type: array
+                  accounts_flat:
+                    type: array
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /purchase/get-category-options
+  /purchase/total:
+    get:
+      tags:
+        - Purchase
+      parameters:
+        - in: query
+          name: from
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: to
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  total:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /purchase/total
+  /purchase/transactions/ajax:
+    get:
+      tags:
+        - Purchase
+      parameters:
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: rows
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sortBy
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: descending
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: from
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: to
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                  draw:
+                    type: integer
+                  recordsFiltered:
+                    type: integer
+                  recordsTotal:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /purchase/transactions/ajax
+  /purchase/transactions/change-account:
+    post:
+      tags:
+        - Purchase
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /purchase/transactions/change-account
+  /purchase/{param}:
+    post:
+      tags:
+        - Purchase
+      parameters:
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /purchase/{param}
+  /purchase/{param}/edit:
+    get:
+      tags:
+        - Purchase
+      parameters:
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  accounts:
+                    type: array
+                  accounts_flat:
+                    type: array
+                  dateFormat:
+                    type: string
+                  getData:
+                    type: object
+                  purchase:
+                    type: object
+                  purchase_file:
+                    type: array
+                  purchase_items:
+                    type: array
+                  restaurant:
+                    type: object
+                  uploadifive:
+                    type: integer
+                  vendorCategories:
+                    type: array
+                  vendors_flat:
+                    type: array
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /purchase/{param}/edit
+  /sale:
+    post:
+      tags:
+        - Sale
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /sale
+  /sale/ajax:
+    get:
+      tags:
+        - Sale
+      parameters:
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: rows
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sortBy
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: descending
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: from
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: to
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                  draw:
+                    type: integer
+                  recordsFiltered:
+                    type: integer
+                  recordsTotal:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /sale/ajax
+  /sale/catering:
+    post:
+      tags:
+        - Sale
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                date:
+                  type: string
+              type: object
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /sale/catering
+  /sale/create:
+    get:
+      tags:
+        - Sale
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categories:
+                    type: array
+                  comps:
+                    type: object
+                  comps_defaults:
+                    type: array
+                  date:
+                    type: string
+                  departments:
+                    type: array
+                  isCatering:
+                    type: integer
+                  parent_toggle:
+                    type: string
+                  reason:
+                    type: array
+                  restaurant:
+                    type: object
+                  traffic:
+                    type: array
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /sale/create
+  /sale/total-sale:
+    get:
+      tags:
+        - Sale
+      parameters:
+        - in: query
+          name: from
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: to
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  total:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /sale/total-sale
+  /sale/{param}:
+    post:
+      tags:
+        - Sale
+      parameters:
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /sale/{param}
+  /sale/{param}/edit:
+    get:
+      tags:
+        - Sale
+      parameters:
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categories:
+                    type: array
+                  comp:
+                    type: array
+                  comps:
+                    type: object
+                  date:
+                    type: string
+                  dbDate:
+                    type: object
+                  department_sales:
+                    type: array
+                  departments:
+                    type: array
+                  guests:
+                    type: object
+                  hasDeposit:
+                    type: integer
+                  notes:
+                    type: object
+                  reason:
+                    type: array
+                  restaurant:
+                    type: object
+                  sale:
+                    type: object
+                  traffic:
+                    type: array
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /sale/{param}/edit
+  /schedule:
+    get:
+      tags:
+        - Schedule
+      parameters:
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: rows
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: sortBy
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: descending
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  date:
+                    type: object
+                  schedules:
+                    type: array
+                  table:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /schedule
+  /schedule/create:
+    get:
+      tags:
+        - Schedule
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                  items:
+                    type: array
+                  items_flat:
+                    type: array
+                  month_date:
+                    type: array
+                  monthly:
+                    type: array
+                  now:
+                    type: object
+                  restaurant:
+                    type: object
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /schedule/create
+  /schedule/total:
+    get:
+      tags:
+        - Schedule
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  total:
+                    type: integer
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /schedule/total
+  /schedule/{param}:
+    post:
+      tags:
+        - Schedule
+      parameters:
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              additionalProperties: true
+              type: object
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: POST /schedule/{param}
+  /schedule/{param}/edit:
+    get:
+      tags:
+        - Schedule
+      parameters:
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                  emails:
+                    type: object
+                  items:
+                    type: array
+                  items_flat:
+                    type: array
+                  month_date:
+                    type: array
+                  monthly:
+                    type: array
+                  schedule:
+                    type: object
+                  scheduledItems:
+                    type: array
+                  vendor:
+                    type: array
+                type: object
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Unauthenticated.
+                    type: string
+                type: object
+          description: Unauthorized
+      security:
+        - bearerAuth: []
+      summary: GET /schedule/{param}/edit
 components:
   securitySchemes:
     bearerAuth:
@@ -1015,13 +2609,102 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
+    Period:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+    Year:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+    Week:
+      type: object
+      properties:
+        value:
+          type: integer
+        label:
+          type: integer
+    Vendor:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+    Account:
+      type: object
+      properties:
+        value:
+          type: string
+        disable:
+          type: boolean
+        original_name:
+          type: string
+        label:
+          type: string
+        type:
+          type: integer
+        prefix_type:
+          type: string
+    DateFilterDetails:
+      type: object
+      properties:
+        periods:
+          type: array
+          items:
+            $ref: '#/components/schemas/Period'
+        years:
+          type: array
+          items:
+            $ref: '#/components/schemas/Year'
+        weeks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Week'
+        start_week:
+          type: integer
+        vendors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Vendor'
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        id_hash:
+          type: string
+        name:
+          type: string
+        label:
+          type: string
+        space:
+          type: string
+        has_children:
+          type: boolean
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        parent_id:
+          type: string
     Comp:
       type: object
       properties:
         category_id:
           type: integer
         category:
-          $ref: "#/components/schemas/Category"
+          $ref: '#/components/schemas/Category'
         name:
           type: string
         budget_id:
@@ -1076,44 +2759,10 @@ components:
           type: number
         category_id_hash:
           type: string
-    Category:
-      type: object
-      properties:
-        id:
-          type: integer
-        id_hash:
-          type: string
-        name:
-          type: string
-        label:
-          type: string
-        space:
-          type: string
-        has_children:
-          type: boolean
-        children:
-          type: array
-          items:
-            $ref: "#/components/schemas/Category"
-        parent_id:
-          type: string
     Doe:
       allOf:
-        - $ref: "#/components/schemas/Comp"
+        - $ref: '#/components/schemas/Comp'
         - type: object
-    KeyExpenses:
-      type: object
-      properties:
-        primeCost:
-          $ref: "#/components/schemas/ExpenseDetail"
-        grossMargin:
-          $ref: "#/components/schemas/ExpenseDetail"
-        ifo:
-          $ref: "#/components/schemas/ExpenseDetail"
-        netIncome:
-          $ref: "#/components/schemas/ExpenseDetail"
-        discounts:
-          $ref: "#/components/schemas/ExpenseDetail"
     ExpenseDetail:
       type: object
       properties:
@@ -1123,6 +2772,19 @@ components:
           type: number
         goal:
           type: number
+    KeyExpenses:
+      type: object
+      properties:
+        primeCost:
+          $ref: '#/components/schemas/ExpenseDetail'
+        grossMargin:
+          $ref: '#/components/schemas/ExpenseDetail'
+        ifo:
+          $ref: '#/components/schemas/ExpenseDetail'
+        netIncome:
+          $ref: '#/components/schemas/ExpenseDetail'
+        discounts:
+          $ref: '#/components/schemas/ExpenseDetail'
     Labor:
       type: object
       properties:
@@ -1157,7 +2819,7 @@ components:
         value:
           type: string
         category:
-          $ref: "#/components/schemas/Category"
+          $ref: '#/components/schemas/Category'
         id_hash:
           type: string
     Nce:
@@ -1236,12 +2898,15 @@ components:
           type: number
         category_id_hash:
           type: string
-    ChildCategory:
+    DateDetails:
       type: object
       properties:
-        id:
+        date:
           type: string
-        name:
+          format: date-time
+        timezone_type:
+          type: integer
+        timezone:
           type: string
     PrimeCostDetails:
       type: object
@@ -1305,19 +2970,9 @@ components:
         to_date_format:
           type: string
         range_from:
-          $ref: "#/components/schemas/DateDetails"
+          $ref: '#/components/schemas/DateDetails'
         range_to:
-          $ref: "#/components/schemas/DateDetails"
-    DateDetails:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date-time
-        timezone_type:
-          type: integer
-        timezone:
-          type: string
+          $ref: '#/components/schemas/DateDetails'
     CompDetails:
       type: object
       properties:
@@ -1340,7 +2995,7 @@ components:
         budgetDoe:
           type: number
         category:
-          $ref: "#/components/schemas/Category"
+          $ref: '#/components/schemas/Category'
     DOEDetails:
       type: object
       properties:
@@ -1370,7 +3025,7 @@ components:
           type: number
           format: float
         category:
-          $ref: "#/components/schemas/Category"
+          $ref: '#/components/schemas/Category'
     LaborDetails:
       type: object
       properties:
@@ -1400,72 +3055,4 @@ components:
           type: number
           format: float
         category:
-          $ref: "#/components/schemas/Category"
-    DateFilterDetails:
-      type: object
-      properties:
-        periods:
-          type: array
-          items:
-            $ref: "#/components/schemas/Period"
-        years:
-          type: array
-          items:
-            $ref: "#/components/schemas/Year"
-        weeks:
-          type: array
-          items:
-            $ref: "#/components/schemas/Week"
-        start_week:
-          type: integer
-        vendors:
-          type: array
-          items:
-            $ref: "#/components/schemas/Vendor"
-        accounts:
-          type: array
-          items:
-            $ref: "#/components/schemas/Account"
-    Period:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-    Year:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-    Week:
-      type: object
-      properties:
-        value:
-          type: integer
-        label:
-          type: integer
-    Vendor:
-      type: object
-      properties:
-        value:
-          type: string
-        label:
-          type: string
-    Account:
-      type: object
-      properties:
-        value:
-          type: string
-        disable:
-          type: boolean
-        original_name:
-          type: string
-        label:
-          type: string
-        type:
-          type: integer
-        prefix_type:
-          type: string
+          $ref: '#/components/schemas/Category'

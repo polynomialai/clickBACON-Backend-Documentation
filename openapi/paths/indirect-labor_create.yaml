@@ -1,0 +1,33 @@
+get:
+  tags:
+    - Indirect-labor
+  parameters: []
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              actual_expense:
+                type: integer
+              estimated_expense:
+                type: number
+              from:
+                type: string
+              to:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  summary: GET /indirect-labor/create

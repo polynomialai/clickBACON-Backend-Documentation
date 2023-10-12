@@ -1,0 +1,52 @@
+get:
+  tags:
+    - Purchase
+  parameters:
+    - name: param
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              accounts:
+                type: array
+              accounts_flat:
+                type: array
+              dateFormat:
+                type: string
+              getData:
+                type: object
+              purchase:
+                type: object
+              purchase_file:
+                type: array
+              purchase_items:
+                type: array
+              restaurant:
+                type: object
+              uploadifive:
+                type: integer
+              vendorCategories:
+                type: array
+              vendors_flat:
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  summary: GET /purchase/{param}/edit

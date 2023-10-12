@@ -1,0 +1,48 @@
+get:
+  tags:
+    - Schedule
+  parameters:
+    - name: param
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                type: object
+              emails:
+                type: object
+              items:
+                type: array
+              items_flat:
+                type: array
+              month_date:
+                type: array
+              monthly:
+                type: array
+              schedule:
+                type: object
+              scheduledItems:
+                type: array
+              vendor:
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  summary: GET /schedule/{param}/edit

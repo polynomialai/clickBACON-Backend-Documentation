@@ -1,0 +1,39 @@
+get:
+  tags:
+    - Schedule
+  parameters: []
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                type: object
+              items:
+                type: array
+              items_flat:
+                type: array
+              month_date:
+                type: array
+              monthly:
+                type: array
+              now:
+                type: object
+              restaurant:
+                type: object
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  summary: GET /schedule/create

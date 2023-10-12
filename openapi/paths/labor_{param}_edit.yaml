@@ -1,0 +1,61 @@
+get:
+  tags:
+    - Labor
+  parameters:
+    - in: query
+      name: date
+      required: false
+      schema:
+        type: string
+    - name: param
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              actual_total:
+                type: string
+              date:
+                type: string
+              edit:
+                type: integer
+              empParams:
+                type: object
+              estimated_total:
+                type: string
+              importData:
+                type: string
+              indirect_labor:
+                type: integer
+              jobs:
+                type: array
+              labor:
+                type: object
+              labor_calculator:
+                type: integer
+              labor_date:
+                type: string
+              restaurant_settings:
+                type: object
+              salaried:
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  summary: GET /labor/{param}/edit

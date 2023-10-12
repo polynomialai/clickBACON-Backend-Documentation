@@ -1,0 +1,45 @@
+get:
+  tags:
+    - Sale
+  parameters: []
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              categories:
+                type: array
+              comps:
+                type: object
+              comps_defaults:
+                type: array
+              date:
+                type: string
+              departments:
+                type: array
+              isCatering:
+                type: integer
+              parent_toggle:
+                type: string
+              reason:
+                type: array
+              restaurant:
+                type: object
+              traffic:
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  summary: GET /sale/create

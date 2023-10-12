@@ -1,0 +1,58 @@
+get:
+  tags:
+    - Sale
+  parameters:
+    - name: param
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              categories:
+                type: array
+              comp:
+                type: array
+              comps:
+                type: object
+              date:
+                type: string
+              dbDate:
+                type: object
+              department_sales:
+                type: array
+              departments:
+                type: array
+              guests:
+                type: object
+              hasDeposit:
+                type: integer
+              notes:
+                type: object
+              reason:
+                type: array
+              restaurant:
+                type: object
+              sale:
+                type: object
+              traffic:
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  summary: GET /sale/{param}/edit

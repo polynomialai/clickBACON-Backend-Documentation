@@ -1,0 +1,39 @@
+get:
+  tags:
+    - Purchase
+  parameters: []
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              accounts:
+                type: array
+              accounts_flat:
+                type: array
+              getData:
+                type: object
+              restaurant:
+                type: object
+              uploadifive:
+                type: integer
+              vendorCategories:
+                type: array
+              vendors_flat:
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  summary: GET /purchase/create

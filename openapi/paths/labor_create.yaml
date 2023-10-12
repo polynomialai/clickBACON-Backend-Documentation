@@ -1,0 +1,51 @@
+get:
+  tags:
+    - Labor
+  parameters: []
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              date:
+                type: string
+              edit:
+                type: integer
+              importData:
+                type: string
+              importEmployee:
+                type: string
+              importStaff:
+                type: string
+              indirect_labor:
+                type: integer
+              jobs:
+                type: array
+              labor_calculator:
+                type: integer
+              labor_date:
+                type: string
+              restaurant_settings:
+                type: object
+              salaried:
+                type: array
+              salary:
+                type: number
+              settings:
+                type: object
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  summary: GET /labor/create
