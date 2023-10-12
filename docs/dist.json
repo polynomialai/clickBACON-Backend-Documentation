@@ -1,389 +1,1504 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.0",
   "info": {
+    "title": "clickBACON API",
     "version": "1.0.0",
-    "title": "clickBACON",
-    "termsOfService": "https://clickbacon.com/terms/",
-    "contact": {
-      "email": "prakhar.k@polynomial.ai",
-      "url": "http://clickbacon.com/contact"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    },
+    "description": "API documentation for clickBACON.",
     "x-logo": {
       "url": "https://app.clickbacon.com/images/bacon-logo.png"
-    },
-    "description": "This is an **example** API to demonstrate features of the OpenAPI specification.\n# Introduction\nThis API definition is intended to to be a good starting point for describing your API in [OpenAPI/Swagger format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md).\nIt also demonstrates features of the [create-openapi-repo](https://github.com/Redocly/create-openapi-repo) tool and the [Redoc](https://github.com/Redocly/Redoc) documentation engine. Beyond the standard OpenAPI syntax, we use a few  [vendor extensions](https://github.com/Redocly/Redoc/blob/master/docs/redoc-vendor-extensions.md).\n# OpenAPI Specification\nThe goal of The OpenAPI Specification is to define a standard, language-agnostic interface to REST APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined via OpenAPI, a consumer can  understand and interact with the remote service with a minimal amount of implementation logic. Similar to what interfaces have done for lower-level programming, OpenAPI removes the guesswork in calling the service.\n"
+    }
   },
   "servers": [
     {
-      "url": "https://{tenant}/api/v1",
-      "variables": {
-        "tenant": {
-          "default": "www",
-          "description": "Your tenant id"
-        }
-      }
+      "url": "https://alpha.clickbacon.com/api",
+      "description": "Alpha server"
     },
     {
-      "url": "https://example.com/api/v1"
-    }
-  ],
-  "tags": [
-    {
-      "name": "Echo",
-      "description": "Example echo operations."
-    },
-    {
-      "name": "User",
-      "description": "Operations about users."
-    },
-    {
-      "name": "Tag",
-      "description": "This is a tag description."
+      "url": "http://localhost:8000/api",
+      "description": "Development server"
     }
   ],
   "paths": {
-    "/users/{username}": {
-      "parameters": [
-        {
-          "name": "pretty_print",
-          "in": "query",
-          "description": "Pretty print response",
-          "schema": {
-            "type": "boolean"
-          }
-        }
-      ],
+    "/setup": {
       "get": {
+        "summary": "Retrieve setup information",
+        "description": "This endpoint retrieves setup information for the authenticated user.",
         "tags": [
-          "User"
-        ],
-        "summary": "Get user by user name",
-        "description": "Some description of the operation.\nYou can use `Markdown` here.\n",
-        "operationId": "getUserByName",
-        "parameters": [
-          {
-            "name": "username",
-            "in": "path",
-            "description": "The name that needs to be fetched",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "with_email",
-            "in": "query",
-            "description": "Filter users without email",
-            "schema": {
-              "type": "boolean"
-            }
-          }
+          "Initial (Refresh Call)"
         ],
         "security": [
           {
-            "main_auth": [
-              "read:users"
-            ]
-          },
-          {
-            "api_key": []
+            "bearerAuth": []
           }
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successful operation",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
-                },
-                "example": {
-                  "username": "user1",
-                  "email": "user@example.com"
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "first_name": {
+                          "type": "string"
+                        },
+                        "last_name": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "company": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "integer"
+                        },
+                        "profile_pic": {
+                          "type": "string"
+                        },
+                        "is_multi": {
+                          "type": "boolean"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "owner_id": {
+                          "type": "integer"
+                        },
+                        "is_block_labor_values": {
+                          "type": "boolean"
+                        },
+                        "pagination_records_per_page": {
+                          "type": "integer"
+                        },
+                        "document_access": {
+                          "type": "boolean"
+                        },
+                        "last_restaurant": {
+                          "type": "string"
+                        },
+                        "spatie_role": {
+                          "type": "string"
+                        },
+                        "switch_users": {
+                          "type": "string"
+                        },
+                        "restaurant_summary_report": {
+                          "type": "string"
+                        },
+                        "partner_admin": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "restaurant": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "company": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "date_format": {
+                          "type": "string"
+                        },
+                        "start_week": {
+                          "type": "string"
+                        },
+                        "currency_symbol": {
+                          "type": "string"
+                        },
+                        "guest_count": {
+                          "type": "boolean"
+                        },
+                        "operating_expense": {
+                          "type": "number"
+                        },
+                        "labor": {
+                          "type": "number"
+                        },
+                        "inventory": {
+                          "type": "boolean"
+                        },
+                        "department": {
+                          "type": "boolean"
+                        },
+                        "comps": {
+                          "type": "boolean"
+                        },
+                        "discount_type": {
+                          "type": "string"
+                        },
+                        "is_same_inventories": {
+                          "type": "boolean"
+                        },
+                        "labor_calculator": {
+                          "type": "boolean"
+                        },
+                        "budget_spreadsheet_view": {
+                          "type": "boolean"
+                        },
+                        "documents": {
+                          "type": "boolean"
+                        },
+                        "quickbooks_priority": {
+                          "type": "string"
+                        },
+                        "indirect_labor": {
+                          "type": "number"
+                        },
+                        "has_sheet_permission": {
+                          "type": "boolean"
+                        },
+                        "cash": {
+                          "type": "boolean"
+                        },
+                        "document_write_to_parent": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/header": {
+      "get": {
+        "summary": "Retrieve header information",
+        "description": "This endpoint retrieves header information for the authenticated user.",
+        "tags": [
+          "Initial (Refresh Call)"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "restaurant": {
+                      "type": "string"
+                    },
+                    "restaurants": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "link": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "role": {
+                      "type": "integer"
+                    },
+                    "isParent": {
+                      "type": "boolean"
+                    },
+                    "owner_id": {
+                      "type": "boolean"
+                    },
+                    "avatar": {
+                      "type": "string"
+                    },
+                    "restaurant_logo": {
+                      "type": "string"
+                    },
+                    "connections": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "last_restaurant": {
+                      "type": "integer"
+                    },
+                    "api_companies": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "last_import": {
+                      "type": "string",
+                      "format": "datetime",
+                      "description": "The last time data was imported from Quickbooks."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sidebar": {
+      "get": {
+        "summary": "Get sidebar data",
+        "tags": [
+          "Initial (Refresh Call)"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "The display name of the sidebar item."
+                      },
+                      "icon": {
+                        "type": "string",
+                        "description": "The icon class for the sidebar item."
+                      },
+                      "link": {
+                        "type": "string",
+                        "description": "The link URL for the sidebar item."
+                      },
+                      "children": {
+                        "type": "array",
+                        "description": "Nested items in the sidebar item.",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "The display name of the nested sidebar item."
+                            },
+                            "icon": {
+                              "type": "string",
+                              "description": "The icon class for the nested sidebar item."
+                            },
+                            "link": {
+                              "type": "string",
+                              "description": "The link URL for the nested sidebar item."
+                            }
+                          }
+                        }
+                      },
+                      "show": {
+                        "type": "boolean",
+                        "description": "A flag indicating whether to show the item, if applicable.",
+                        "nullable": true
+                      },
+                      "mouse_interaction": {
+                        "type": "boolean",
+                        "description": "A flag indicating whether mouse interaction is enabled, if applicable.",
+                        "nullable": true
+                      },
+                      "external": {
+                        "type": "boolean",
+                        "description": "A flag indicating whether the link is external, if applicable.",
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/new-feature/status": {
+      "get": {
+        "tags": [
+          "Initial (Refresh Call)"
+        ],
+        "summary": "Get new feature status",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "new_feature": {
+                      "type": "boolean",
+                      "description": "Indicates whether the new feature is available."
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "The title of the new feature."
+                    },
+                    "subtitle": {
+                      "type": "string",
+                      "description": "The subtitle of the new feature."
+                    },
+                    "video_link": {
+                      "type": "string",
+                      "description": "The link to a video demonstrating the new feature."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
                 }
               }
             }
           },
           "403": {
-            "description": "Forbidden",
-            "$ref": "#/components/responses/Problem"
+            "description": "Suspended",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "suspended."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/date-filter": {
+      "get": {
+        "summary": "Retrieve date filter details",
+        "description": "Fetches date filter-related details such as periods, years, weeks, start week, vendors, and accounts.\n**Middleware Restrictions**:  - User must be authenticated.\n",
+        "tags": [
+          "Initial (Refresh Call)"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved date filter details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DateFilterDetails"
+                }
+              }
+            }
           },
-          "404": {
-            "description": "User not found",
-            "$ref": "#/components/responses/Problem"
+          "401": {
+            "description": "Unauthorized - user needs to be authenticated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/push/count": {
+      "get": {
+        "summary": "Get unread push notification count",
+        "description": "This endpoint retrieves the count of unread push notifications for the authenticated user.",
+        "tags": [
+          "Initial (Refresh Call)"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "description": "The count of unread push notifications."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/settings": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "Get dashboard settings",
+        "description": "**Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Dashboard settings"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "suspended."
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
-      "put": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "Save dashboard settings",
+        "description": "**Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Dashboard settings to be saved"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Settings saved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "description": "Indicates whether the settings were saved successfully."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "suspended."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/hide-previous-banner": {
+      "get": {
+        "summary": "Check if the previous banner should be hidden for the user.",
+        "description": "**Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n",
         "tags": [
           "User"
         ],
-        "summary": "Updated user",
-        "description": "This can only be done by the logged in user.",
-        "operationId": "updateUser",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Banner hide status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hide": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "suspended"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Hide the previous banner for the user.",
+        "description": "**Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Banner hide status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "suspended"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/health": {
+      "get": {
+        "summary": "Get health dashboard data",
+        "description": "\"Retrieve health dashboard data for the authenticated user's restaurant. **Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n",
+        "tags": [
+          "Dashboard"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
-            "name": "username",
-            "in": "path",
-            "description": "The name that needs to be updated",
+            "in": "query",
+            "name": "from",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "required": false,
+            "description": "Start date for the date range (YYYY-MM-DD)."
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "required": false,
+            "description": "End date for the date range (YYYY-MM-DD)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "health": {
+                      "type": "object",
+                      "description": "Health dashboard data."
+                    },
+                    "gauge": {
+                      "type": "object",
+                      "description": "Gauge data."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "suspended"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "The given data was invalid."
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/settings/transactions": {
+      "get": {
+        "summary": "Retrieve restaurant and labor settings",
+        "description": "Fetches specific settings related to the restaurant and labor.  **Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n- User must have access to the 'dashboard' module.\n",
+        "tags": [
+          "Restaurant Settings"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved settings.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "guest_count": {
+                      "type": "integer"
+                    },
+                    "comps": {
+                      "type": "string"
+                    },
+                    "operating_expense": {
+                      "type": "integer"
+                    },
+                    "labor": {
+                      "type": "integer"
+                    },
+                    "labor_calculator": {
+                      "type": "integer"
+                    },
+                    "cash": {
+                      "type": "integer"
+                    },
+                    "department": {
+                      "type": "string"
+                    },
+                    "inventory": {
+                      "type": "integer"
+                    },
+                    "discount_type": {
+                      "type": "string"
+                    },
+                    "doe_detailed": {
+                      "type": "string"
+                    },
+                    "show_hours": {
+                      "type": "integer"
+                    },
+                    "auto_post": {
+                      "type": "boolean"
+                    },
+                    "indirect_labor": {
+                      "type": "integer"
+                    },
+                    "frequency": {
+                      "type": "integer"
+                    },
+                    "has_fixed_conditions": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`. - User not having access to the 'dashboard' module.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "suspended"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/cogs": {
+      "get": {
+        "summary": "Retrieve COGS (Cost Of Goods Sold) data for the dashboard",
+        "description": "Fetches COGS data based on the given date range.  **Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
             "required": true,
             "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "main_auth": [
-              "write:users"
-            ]
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
-              }
+              "type": "string",
+              "format": "date"
             },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
-              }
-            }
+            "description": "Start date of the date range."
           },
-          "description": "Updated user object",
-          "required": true
-        },
+          {
+            "in": "query",
+            "name": "to",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "End date of the date range."
+          }
+        ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successfully retrieved COGS data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "target": {
+                        "type": "number"
+                      },
+                      "cogs": {
+                        "type": "number"
+                      },
+                      "sales": {
+                        "type": "number"
+                      },
+                      "cogsTarget": {
+                        "type": "number"
+                      },
+                      "purchases": {
+                        "type": "number"
+                      },
+                      "toSpend": {
+                        "type": "number"
+                      },
+                      "tabName": {
+                        "type": "string"
+                      },
+                      "category": {
+                        "$ref": "#/components/schemas/Category"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "400": {
-            "description": "Invalid user supplied",
-            "$ref": "#/components/responses/Problem"
+            "description": "Invalid input. 'from' and 'to' date parameters are required.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
-          "404": {
-            "description": "User not found",
-            "$ref": "#/components/responses/Problem"
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "suspended"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
     },
-    "/echo": {
-      "post": {
+    "/dashboard/accounts": {
+      "get": {
+        "summary": "Retrieve financial accounts data for the dashboard",
+        "description": "Fetches financial metrics including sales, labor, expenses, and more for the specified date range.  **Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n",
         "tags": [
-          "Echo"
+          "Dashboard"
         ],
-        "summary": "Echo test",
-        "description": "Receive the exact message you've sent",
-        "operationId": "echo",
         "security": [
           {
-            "api_key": []
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "Start date of the date range."
           },
           {
-            "basic_auth": []
+            "in": "query",
+            "name": "to",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "End date of the date range."
           }
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              },
-              "X-Expires-After": {
-                "$ref": "#/components/headers/ExpiresAfter"
-              }
-            },
+            "description": "Successfully retrieved accounts data.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
-                },
-                "examples": {
-                  "response": {
-                    "value": "Hello world!"
+                  "type": "object",
+                  "properties": {
+                    "comps": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Comp"
+                      }
+                    },
+                    "doe": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Doe"
+                      }
+                    },
+                    "keyExpenses": {
+                      "$ref": "#/components/schemas/KeyExpenses"
+                    },
+                    "labor": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Labor"
+                      }
+                    },
+                    "nce": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Nce"
+                      }
+                    },
+                    "sales": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Sale"
+                      }
+                    }
                   }
                 }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/csv": {
-                "schema": {
-                  "type": "string"
-                }
               }
             }
           },
-          "400": {
-            "description": "Unauthorized"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "string",
-                "example": "Hello world!"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "type": "string",
-                "example": "Hello world!"
-              }
-            }
-          },
-          "description": "Echo payload",
-          "required": true
-        },
-        "x-codeSamples": [
-          {
-            "lang": "C#",
-            "source": "API.v1.Echo echo = new API.v1.Echo();\necho.message = \"Hello World!\");\nEchoResponse response = echo.post();\nif (response.statusCode == HttpStatusCode.Created)\n{\n  // Success\n}\nelse\n{\n  // Something wrong -- check response for errors\n  Console.WriteLine(response.getRawResponse());\n}\n"
-          },
-          {
-            "lang": "PHP",
-            "source": "$form = new \\API\\Entities\\Echo();\n$form->setMessage(\"Hello World!\");\ntry {\n    $pet = $client->echo()->post($form);\n} catch (UnprocessableEntityException $e) {\n    var_dump($e->getErrors());\n}\n"
-          }
-        ]
-      }
-    },
-    "/pathItem": {
-      "post": {
-        "tags": [
-          "Tag"
-        ],
-        "summary": "Operation summary",
-        "description": "Operation description **Markdown**.\n",
-        "operationId": "operationId",
-        "security": [
-          {
-            "api_key": []
-          },
-          {
-            "basic_auth": []
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Schema"
-              }
-            }
-          },
-          "description": "requestBody description",
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "Calls per hour allowed by the user.",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              },
-              "X-Expires-After": {
-                "$ref": "#/components/headers/ExpiresAfter"
-              }
-            },
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`. - User not having access to the 'dashboard' module.\n",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Schema"
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "suspendeds"
+                    }
+                  }
                 }
               }
             }
-          },
-          "400": {
-            "$ref": "#/components/responses/Problem"
           }
         }
       }
     },
-    "/pathItemWithExamples": {
-      "post": {
+    "/dashboard/primecost": {
+      "get": {
+        "summary": "Retrieve prime cost details for the dashboard",
+        "description": "Fetches prime cost details for the dashboard based on the provided date.\n**Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n",
         "tags": [
-          "Tag"
+          "Dashboard"
         ],
-        "summary": "Operation summary with examples",
-        "description": "Operation description **markdown**.\n",
-        "operationId": "postPathItemWithExamples",
         "security": [
           {
-            "api_key": []
-          },
-          {
-            "basic_auth": []
+            "bearerAuth": []
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Schema"
-              },
-              "examples": {
-                "mapName": {
-                  "summary": "My first example",
-                  "description": "My first example's description.",
-                  "value": {
-                    "stringProperty": "tada"
-                  }
-                },
-                "mapNameDoesNotShowInDocsUnlessSummaryIsNotProvided": {
-                  "value": {
-                    "stringProperty": "checkmark"
-                  }
-                }
-              }
-            }
-          },
-          "description": "requestBody description",
-          "required": true
-        },
         "responses": {
           "200": {
-            "description": "OK",
-            "headers": {
-              "X-Rate-Limit": {
-                "description": "calls per hour allowed by the user",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              },
-              "X-Expires-After": {
-                "$ref": "#/components/headers/ExpiresAfter"
-              }
-            },
+            "description": "Successfully retrieved prime cost details.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Schema"
+                  "$ref": "#/components/schemas/PrimeCostDetails"
                 }
               }
             }
           },
-          "400": {
-            "$ref": "#/components/responses/Problem"
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "suspended"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/comps": {
+      "get": {
+        "summary": "Retrieve comps details for the dashboard",
+        "description": "Fetches comps details for the dashboard based on the provided date range.\n**Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n",
+        "tags": [
+          "Dashboard"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved comps details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CompDetails"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "suspended"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/doe": {
+      "get": {
+        "summary": "Retrieve DOE (Department of Expenditure) details for the dashboard",
+        "description": "Fetches DOE details for the dashboard based on the provided date range.\n**Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n",
+        "tags": [
+          "Dashboard"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved DOE details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DOEDetails"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - user needs to be authenticated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`. - User not having access to the 'dashboard' module.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "suspended"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/labor": {
+      "get": {
+        "summary": "Retrieve labor details for the dashboard",
+        "description": "Fetches labor-related details for the dashboard based on the provided date range.\n**Middleware Restrictions**:  - User must be authenticated. - User status must not be one of the following:\n  * `2 (Suspended)`\n  * `3 (Expired)`\n  * `4 (Canceled)`\n",
+        "tags": [
+          "Dashboard"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved labor details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LaborDetails"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - user needs to be authenticated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthenticated."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. This can be due to: - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "suspended"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -391,309 +1506,687 @@
   },
   "components": {
     "securitySchemes": {
-      "main_auth": {
-        "type": "oauth2",
-        "flows": {
-          "implicit": {
-            "authorizationUrl": "http://example.com/api/oauth/dialog",
-            "scopes": {
-              "read:users": "read users info",
-              "write:users": "modify or remove users"
-            }
-          }
-        }
-      },
-      "api_key": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "api_key"
-      },
-      "basic_auth": {
+      "bearerAuth": {
         "type": "http",
-        "scheme": "basic"
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     },
     "schemas": {
-      "Email": {
-        "description": "User email address",
-        "type": "string",
-        "format": "test",
-        "example": "john.smith@example.com"
-      },
-      "User": {
+      "Period": {
         "type": "object",
         "properties": {
-          "username": {
-            "description": "User supplied username",
-            "type": "string",
-            "minLength": 4,
-            "example": "John78"
+          "value": {
+            "type": "string"
           },
-          "firstName": {
-            "description": "User first name",
-            "type": "string",
-            "minLength": 1,
-            "example": "John"
-          },
-          "lastName": {
-            "description": "User last name",
-            "type": "string",
-            "minLength": 1,
-            "example": "Smith"
-          },
-          "email": {
-            "$ref": "#/components/schemas/Email"
+          "label": {
+            "type": "string"
           }
         }
       },
-      "Problem": {
+      "Year": {
         "type": "object",
-        "additionalProperties": true,
-        "minProperties": 1,
-        "description": "The Problem Details JSON Object [[RFC7807](https://tools.ietf.org/html/rfc7807)].",
         "properties": {
-          "type": {
-            "type": "string",
-            "description": "A URI reference [[RFC3986](https://tools.ietf.org/html/rfc3986)] that identifies the problem type. It should provide human-readable documentation for the problem type. When this member is not present, its value is assumed to be \"about:blank\".",
-            "format": "uri"
+          "value": {
+            "type": "string"
           },
-          "title": {
-            "type": "string",
-            "description": "A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."
-          },
-          "status": {
-            "type": "integer",
-            "description": "The HTTP status code.",
-            "minimum": 400,
-            "maximum": 599
-          },
-          "detail": {
-            "type": "string",
-            "description": "A human-readable explanation specific to this occurrence of the problem."
-          },
-          "instance": {
-            "type": "string",
-            "description": "A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced."
+          "label": {
+            "type": "string"
           }
         }
       },
-      "Schema": {
+      "Week": {
         "type": "object",
-        "title": "Scalars",
         "properties": {
-          "stringProperty": {
-            "description": "Property name's description (type is string)",
-            "type": "string",
-            "examples": [
-              "example",
-              "sample"
-            ]
-          },
-          "readOnlyStringProperty": {
-            "description": "Notice this only appears in the response.",
-            "type": "string",
-            "readOnly": true,
-            "examples": [
-              "example"
-            ]
-          },
-          "writeOnlyStringProperty": {
-            "description": "Notice this only appears in the request.",
-            "type": "string",
-            "writeOnly": true,
-            "examples": [
-              "example"
-            ]
-          },
-          "minLengthString": {
-            "description": "Property name's description (type is string)",
-            "type": "string",
-            "minLength": 4,
-            "examples": [
-              "example"
-            ]
-          },
-          "maxLengthString": {
-            "description": "Property name's description (type is string)",
-            "type": "string",
-            "maxLength": 140,
-            "examples": [
-              "example"
-            ]
-          },
-          "minAndMaxLengthString": {
-            "description": "Property name's description (type is string)",
-            "type": "string",
-            "minLength": 4,
-            "maxLength": 140,
-            "examples": [
-              "example"
-            ]
-          },
-          "nullableOrStringProperty": {
-            "description": "Property name's description (type is string or null)",
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "example"
-            ]
-          },
-          "stringEnumValues": {
-            "description": "Property name's description (type is string)",
-            "type": "string",
-            "enum": [
-              "sample",
-              "example",
-              "specimen",
-              "case",
-              "instance",
-              "illustration"
-            ]
-          },
-          "stringDateTime": {
-            "description": "Property name's description (type is string, format is date-time)",
-            "type": "string",
-            "format": "date-time"
-          },
-          "stringDate": {
-            "description": "Property name's description (type is string, format is date-time)",
-            "type": "string",
-            "format": "date"
-          },
-          "stringEmail": {
-            "description": "Property name's description (type is string, format is email)",
-            "type": "string",
-            "format": "email"
-          },
-          "stringIpAddressV4": {
-            "description": "Property name's description (type is string, format is ipv4 address)",
-            "type": "string",
-            "format": "ipv4"
-          },
-          "stringIpAddressV6": {
-            "description": "Property name's description (type is string, format is ipv6 address)",
-            "type": "string",
-            "format": "ipv6"
-          },
-          "stringPassword": {
-            "description": "Property name's description (type is string, format is password)",
-            "type": "string",
-            "format": "password"
-          },
-          "stringHostname": {
-            "description": "Property name's description (type is string, format is hostname)",
-            "type": "string",
-            "format": "hostname"
-          },
-          "stringUri": {
-            "description": "Property name's description (type is string, format is uri)",
-            "type": "string",
-            "format": "uri"
-          },
-          "stringUuid": {
-            "description": "Property name's description (type is string, format is uuid)",
-            "type": "string",
-            "format": "uuid"
-          },
-          "numberProperty": {
-            "description": "Property name's description (type is number)",
-            "type": "number",
-            "example": 8
-          },
-          "numberFloat": {
-            "description": "Property name's description (type is number, format is float)",
-            "type": "number",
-            "format": "float"
-          },
-          "numberDouble": {
-            "description": "Property name's description (type is number, format is double)",
-            "type": "number",
-            "format": "double"
-          },
-          "numberGreaterThanOrEquals": {
-            "description": "Property name's description (type is number)",
-            "type": "number",
-            "minimum": 5
-          },
-          "numberGreaterThan": {
-            "description": "Property name's description (type is number)",
-            "type": "number",
-            "exclusiveMinimum": 5
-          },
-          "numberLessThan": {
-            "description": "Property name's description (type is number)",
-            "type": "number",
-            "exclusiveMaximum": 8
-          },
-          "numberLessThanOrEquals": {
-            "description": "Property name's description (type is number)",
-            "type": "number",
-            "maximum": 8
-          },
-          "numberRange": {
-            "description": "Property name's description (type is number)",
-            "type": "number",
-            "minimum": 5,
-            "maximum": 8
-          },
-          "numberRangeExclusiveMaximum": {
-            "description": "Property name's description (type is number)",
-            "type": "number",
-            "minimum": 5,
-            "exclusiveMaximum": 8
-          },
-          "numberRangeExclusiveMinimumAndMaximum": {
-            "description": "Property name's description (type is number)",
-            "type": "number",
-            "exclusiveMinimum": 5,
-            "exclusiveMaximum": 8
-          },
-          "numberMultipleOf": {
-            "description": "Property name's description (type is number)",
-            "type": "number",
-            "multipleOf": 2
-          },
-          "integerType": {
-            "description": "Property name's description (type is integer)",
+          "value": {
             "type": "integer"
           },
-          "integer32bit": {
-            "description": "Property name's description (type is integer, format is int32)",
-            "type": "integer",
-            "format": "int32"
-          },
-          "integer64bit": {
-            "description": "Property name's description (type is integer, format is int64)",
-            "type": "integer",
-            "format": "int64"
-          },
-          "booleanProperty": {
-            "description": "Property name's description (type is boolean)",
-            "type": "boolean"
+          "label": {
+            "type": "integer"
           }
         }
-      }
-    },
-    "responses": {
-      "Problem": {
-        "description": "Problem",
-        "content": {
-          "application/problem+json": {
-            "schema": {
-              "$ref": "#/components/schemas/Problem"
+      },
+      "Vendor": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      },
+      "Account": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "disable": {
+            "type": "boolean"
+          },
+          "original_name": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "type": {
+            "type": "integer"
+          },
+          "prefix_type": {
+            "type": "string"
+          }
+        }
+      },
+      "DateFilterDetails": {
+        "type": "object",
+        "properties": {
+          "periods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Period"
+            }
+          },
+          "years": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Year"
+            }
+          },
+          "weeks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Week"
+            }
+          },
+          "start_week": {
+            "type": "integer"
+          },
+          "vendors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Vendor"
+            }
+          },
+          "accounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Account"
             }
           }
         }
-      }
-    },
-    "headers": {
-      "ExpiresAfter": {
-        "description": "date in UTC when token expires",
-        "schema": {
-          "type": "string",
-          "format": "date-time"
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "id_hash": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "space": {
+            "type": "string"
+          },
+          "has_children": {
+            "type": "boolean"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          },
+          "parent_id": {
+            "type": "string"
+          }
+        }
+      },
+      "Comp": {
+        "type": "object",
+        "properties": {
+          "category_id": {
+            "type": "integer"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "name": {
+            "type": "string"
+          },
+          "budget_id": {
+            "type": "integer"
+          },
+          "tab_name": {
+            "type": "string"
+          },
+          "percentage": {
+            "type": "number"
+          },
+          "cost": {
+            "type": "number"
+          },
+          "budget_sales": {
+            "type": "number"
+          },
+          "budget_purchase": {
+            "type": "number"
+          },
+          "mtd_purchase": {
+            "type": "number"
+          },
+          "category_sales": {
+            "type": "number"
+          },
+          "cogs_target": {
+            "type": "number"
+          },
+          "category_purchase_actual": {
+            "type": "number"
+          },
+          "category_purchase": {
+            "type": "number"
+          },
+          "percent_sales": {
+            "type": "number"
+          },
+          "percent_purchase": {
+            "type": "number"
+          },
+          "purchase_remaining": {
+            "type": "number"
+          },
+          "purchase_remaining_mtd": {
+            "type": "number"
+          },
+          "mtd_cost": {
+            "type": "number"
+          },
+          "rolling_cogs": {
+            "type": "number"
+          },
+          "percent_purchase_doe": {
+            "type": "number"
+          },
+          "budget_doe": {
+            "type": "number"
+          },
+          "doe_sales_percentage": {
+            "type": "number"
+          },
+          "doe_sales_percentage_actual": {
+            "type": "number"
+          },
+          "doe_purchase_remaining": {
+            "type": "number"
+          },
+          "doe_rolling": {
+            "type": "number"
+          },
+          "doe_purchase_remaining_mtd": {
+            "type": "number"
+          },
+          "variance": {
+            "type": "number"
+          },
+          "category_id_hash": {
+            "type": "string"
+          }
+        }
+      },
+      "Doe": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Comp"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "ExpenseDetail": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number"
+          },
+          "percent": {
+            "type": "number"
+          },
+          "goal": {
+            "type": "number"
+          }
+        }
+      },
+      "KeyExpenses": {
+        "type": "object",
+        "properties": {
+          "primeCost": {
+            "$ref": "#/components/schemas/ExpenseDetail"
+          },
+          "grossMargin": {
+            "$ref": "#/components/schemas/ExpenseDetail"
+          },
+          "ifo": {
+            "$ref": "#/components/schemas/ExpenseDetail"
+          },
+          "netIncome": {
+            "$ref": "#/components/schemas/ExpenseDetail"
+          },
+          "discounts": {
+            "$ref": "#/components/schemas/ExpenseDetail"
+          }
+        }
+      },
+      "Labor": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "cost_budget": {
+            "type": "number"
+          },
+          "cost_actual": {
+            "type": "number"
+          },
+          "labor_less_fees": {
+            "type": "number"
+          },
+          "percent_budget": {
+            "type": "number"
+          },
+          "percent_actual": {
+            "type": "number"
+          },
+          "percent_labor_budget": {
+            "type": "number"
+          },
+          "percent_labor_actual": {
+            "type": "number"
+          },
+          "remaining_budget": {
+            "type": "number"
+          },
+          "rolling": {
+            "type": "number"
+          },
+          "remaining_budget_mtd": {
+            "type": "number"
+          },
+          "variance": {
+            "type": "number"
+          },
+          "has_children": {
+            "type": "boolean"
+          },
+          "value": {
+            "type": "string"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "id_hash": {
+            "type": "string"
+          }
+        }
+      },
+      "Nce": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "percent": {
+            "type": "number"
+          },
+          "variable": {
+            "type": "number"
+          }
+        }
+      },
+      "Sale": {
+        "type": "object",
+        "properties": {
+          "category_id": {
+            "type": "integer"
+          },
+          "category": {
+            "type": "object"
+          },
+          "name": {
+            "type": "string"
+          },
+          "budget_id": {
+            "type": "integer"
+          },
+          "tab_name": {
+            "type": "string"
+          },
+          "percentage": {
+            "type": "number"
+          },
+          "cost": {
+            "type": "number"
+          },
+          "budget_sales": {
+            "type": "number"
+          },
+          "budget_purchase": {
+            "type": "number"
+          },
+          "mtd_purchase": {
+            "type": "number"
+          },
+          "category_sales": {
+            "type": "number"
+          },
+          "cogs_target": {
+            "type": "number"
+          },
+          "transfers": {
+            "type": "number"
+          },
+          "category_purchase_actual": {
+            "type": "number"
+          },
+          "category_purchase": {
+            "type": "number"
+          },
+          "percent_sales": {
+            "type": "number"
+          },
+          "percent_purchase": {
+            "type": "number"
+          },
+          "purchase_remaining": {
+            "type": "number"
+          },
+          "purchase_remaining_mtd": {
+            "type": "number"
+          },
+          "mtd_cost": {
+            "type": "number"
+          },
+          "rolling_cogs": {
+            "type": "number"
+          },
+          "type": {
+            "type": "integer"
+          },
+          "percent_purchase_doe": {
+            "type": "number"
+          },
+          "budget_doe": {
+            "type": "number"
+          },
+          "doe_sales_percentage": {
+            "type": "number"
+          },
+          "doe_sales_percentage_actual": {
+            "type": "number"
+          },
+          "doe_purchase_remaining": {
+            "type": "number"
+          },
+          "doe_rolling": {
+            "type": "number"
+          },
+          "doe_purchase_remaining_mtd": {
+            "type": "number"
+          },
+          "variance": {
+            "type": "number"
+          },
+          "category_id_hash": {
+            "type": "string"
+          }
+        }
+      },
+      "DateDetails": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "timezone_type": {
+            "type": "integer"
+          },
+          "timezone": {
+            "type": "string"
+          }
+        }
+      },
+      "PrimeCostDetails": {
+        "type": "object",
+        "properties": {
+          "sales": {
+            "type": "number"
+          },
+          "purchases": {
+            "type": "number"
+          },
+          "purchases_percent": {
+            "type": "number"
+          },
+          "doe": {
+            "type": "number"
+          },
+          "doe_percent": {
+            "type": "number"
+          },
+          "labor": {
+            "type": "number"
+          },
+          "labor_percentage": {
+            "type": "number"
+          },
+          "prime_cost_dollars": {
+            "type": "number"
+          },
+          "prime_cost": {
+            "type": "number"
+          },
+          "operational_profit": {
+            "type": "number"
+          },
+          "operational_profit_percent": {
+            "type": "number"
+          },
+          "discount_amount": {
+            "type": "number"
+          },
+          "discount_percentage": {
+            "type": "number"
+          },
+          "discounted_sales": {
+            "type": "number"
+          },
+          "discounted_sales_percentage": {
+            "type": "number"
+          },
+          "discounted_purchases": {
+            "type": "number"
+          },
+          "discounted_purchases_percent": {
+            "type": "number"
+          },
+          "discounted_doe": {
+            "type": "number"
+          },
+          "discounted_doe_percent": {
+            "type": "number"
+          },
+          "discounted_labor": {
+            "type": "number"
+          },
+          "discounted_labor_percentage": {
+            "type": "number"
+          },
+          "discounted_prime_cost_dollars": {
+            "type": "number"
+          },
+          "discounted_prime_cost": {
+            "type": "number"
+          },
+          "discounted_operational_profit": {
+            "type": "number"
+          },
+          "discounted_operational_profit_percent": {
+            "type": "number"
+          },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "from_date_format": {
+            "type": "string"
+          },
+          "to_date_format": {
+            "type": "string"
+          },
+          "range_from": {
+            "$ref": "#/components/schemas/DateDetails"
+          },
+          "range_to": {
+            "$ref": "#/components/schemas/DateDetails"
+          }
+        }
+      },
+      "CompDetails": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "target": {
+            "type": "number"
+          },
+          "cogs": {
+            "type": "number"
+          },
+          "sales": {
+            "type": "number"
+          },
+          "cogsTarget": {
+            "type": "number"
+          },
+          "purchases": {
+            "type": "number"
+          },
+          "toSpend": {
+            "type": "number"
+          },
+          "budgetDoe": {
+            "type": "number"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          }
+        }
+      },
+      "DOEDetails": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "target": {
+            "type": "number",
+            "format": "float"
+          },
+          "cogs": {
+            "type": "number",
+            "format": "float"
+          },
+          "sales": {
+            "type": "number",
+            "format": "float"
+          },
+          "cogsTarget": {
+            "type": "number",
+            "format": "float"
+          },
+          "purchases": {
+            "type": "number",
+            "format": "float"
+          },
+          "toSpend": {
+            "type": "number",
+            "format": "float"
+          },
+          "budgetDoe": {
+            "type": "number",
+            "format": "float"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          }
+        }
+      },
+      "LaborDetails": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "target": {
+            "type": "number",
+            "format": "float"
+          },
+          "cogs": {
+            "type": "number",
+            "format": "float"
+          },
+          "sales": {
+            "type": "number",
+            "format": "float"
+          },
+          "cogsTarget": {
+            "type": "number",
+            "format": "float"
+          },
+          "purchases": {
+            "type": "number",
+            "format": "float"
+          },
+          "toSpend": {
+            "type": "number",
+            "format": "float"
+          },
+          "laborLessFees": {
+            "type": "number",
+            "format": "float"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          }
         }
       }
     }
