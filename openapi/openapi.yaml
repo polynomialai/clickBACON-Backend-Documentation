@@ -1,80 +1,1554 @@
-openapi: 3.1.0
+openapi: "3.0.0"
 info:
-  version: 1.0.0
-  title: Example.com
-  termsOfService: https://example.com/terms/
-  contact:
-    email: contact@example.com
-    url: http://example.com/contact
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  x-logo:
-    url: https://redocly.github.io/openapi-template/logo.png
-  description: >
-    This is an **example** API to demonstrate features of the OpenAPI
-    specification.
-
-    # Introduction
-
-    This API definition is intended to to be a good starting point for
-    describing your API in [OpenAPI/Swagger
-    format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md).
-
-    It also demonstrates features of the
-    [create-openapi-repo](https://github.com/Redocly/create-openapi-repo) tool
-    and the [Redoc](https://github.com/Redocly/Redoc) documentation engine. Beyond
-    the standard OpenAPI syntax, we use a few 
-    [vendor extensions](https://github.com/Redocly/Redoc/blob/master/docs/redoc-vendor-extensions.md).
-
-    # OpenAPI Specification
-
-    The goal of The OpenAPI Specification is to define a standard, language-agnostic interface to REST APIs which
-    allows both humans and computers to discover and understand the capabilities
-    of the service without access to source
-    code, documentation, or through network traffic inspection. When properly
-    defined via OpenAPI, a consumer can 
-    understand and interact with the remote service with a minimal amount of
-    implementation logic. Similar to what
-    interfaces have done for lower-level programming, OpenAPI removes the
-    guesswork in calling the service.
-tags:
-  - name: Echo
-    description: Example echo operations.
-  - name: User
-    description: Operations about users.
-  - name: Tag
-    description: This is a tag description.
+  title: "clickBACON API"
+  version: "1.0.0"
+  description: "API documentation for clickBACON."
 servers:
-  - url: https://{tenant}/api/v1
-    variables:
-      tenant:
-        default: www
-        description: Your tenant id
-  - url: https://example.com/api/v1
-paths:
-  /users/{username}:
-    $ref: paths/users_{username}.yaml
-  /echo:
-    $ref: paths/echo.yaml
-  /pathItem:
-    $ref: paths/pathItem.yaml
-  /pathItemWithExamples:
-    $ref: paths/pathItemWithExamples.yaml
+  - url: "https://alpha.clickbacon.com/api"
+    description: "Alpha server"
+  - url: "http://localhost:8000/api"
+    description: "Development server"
 components:
   securitySchemes:
-    main_auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: http://example.com/api/oauth/dialog
-          scopes:
-            read:users: read users info
-            write:users: modify or remove users
-    api_key:
-      type: apiKey
-      in: header
-      name: api_key
-    basic_auth:
+    bearerAuth:
       type: http
-      scheme: basic
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Comp:
+      type: object
+      properties:
+        category_id:
+          type: integer
+        category:
+          $ref: "#/components/schemas/Category"
+        name:
+          type: string
+        budget_id:
+          type: integer
+        tab_name:
+          type: string
+        percentage:
+          type: number
+        cost:
+          type: number
+        budget_sales:
+          type: number
+        budget_purchase:
+          type: number
+        mtd_purchase:
+          type: number
+        category_sales:
+          type: number
+        cogs_target:
+          type: number
+        category_purchase_actual:
+          type: number
+        category_purchase:
+          type: number
+        percent_sales:
+          type: number
+        percent_purchase:
+          type: number
+        purchase_remaining:
+          type: number
+        purchase_remaining_mtd:
+          type: number
+        mtd_cost:
+          type: number
+        rolling_cogs:
+          type: number
+        percent_purchase_doe:
+          type: number
+        budget_doe:
+          type: number
+        doe_sales_percentage:
+          type: number
+        doe_sales_percentage_actual:
+          type: number
+        doe_purchase_remaining:
+          type: number
+        doe_rolling:
+          type: number
+        doe_purchase_remaining_mtd:
+          type: number
+        variance:
+          type: number
+        category_id_hash:
+          type: string
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        id_hash:
+          type: string
+        name:
+          type: string
+        label:
+          type: string
+        space:
+          type: string
+        has_children:
+          type: boolean
+        children:
+          type: array
+          items:
+            $ref: "#/components/schemas/Category"
+        parent_id:
+          type: string
+    Doe:
+      allOf:
+        - $ref: "#/components/schemas/Comp"
+        - type: object
+          # properties:
+    KeyExpenses:
+      type: object
+      properties:
+        primeCost:
+          $ref: "#/components/schemas/ExpenseDetail"
+        grossMargin:
+          $ref: "#/components/schemas/ExpenseDetail"
+        ifo:
+          $ref: "#/components/schemas/ExpenseDetail"
+        netIncome:
+          $ref: "#/components/schemas/ExpenseDetail"
+        discounts:
+          $ref: "#/components/schemas/ExpenseDetail"
+    ExpenseDetail:
+      type: object
+      properties:
+        amount:
+          type: number
+        percent:
+          type: number
+        goal:
+          type: number
+    Labor:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: integer
+        cost_budget:
+          type: number
+        cost_actual:
+          type: number
+        labor_less_fees:
+          type: number
+        percent_budget:
+          type: number
+        percent_actual:
+          type: number
+        percent_labor_budget:
+          type: number
+        percent_labor_actual:
+          type: number
+        remaining_budget:
+          type: number
+        rolling:
+          type: number
+        remaining_budget_mtd:
+          type: number
+        variance:
+          type: number
+        has_children:
+          type: boolean
+        value:
+          type: string
+        category:
+          $ref: "#/components/schemas/Category"
+        id_hash:
+          type: string
+    Nce:
+      type: object
+      properties:
+        name:
+          type: string
+        amount:
+          type: number
+        percent:
+          type: number
+        variable:
+          type: number
+    Sale:
+      type: object
+      properties:
+        category_id:
+          type: integer
+        category:
+          type: null
+        name:
+          type: string
+        budget_id:
+          type: integer
+        tab_name:
+          type: string
+        percentage:
+          type: number
+        cost:
+          type: number
+        budget_sales:
+          type: number
+        budget_purchase:
+          type: number
+        mtd_purchase:
+          type: number
+        category_sales:
+          type: number
+        cogs_target:
+          type: number
+        transfers:
+          type: number
+        category_purchase_actual:
+          type: number
+        category_purchase:
+          type: number
+        percent_sales:
+          type: number
+        percent_purchase:
+          type: number
+        purchase_remaining:
+          type: number
+        purchase_remaining_mtd:
+          type: number
+        mtd_cost:
+          type: number
+        rolling_cogs:
+          type: number
+        type:
+          type: integer
+        percent_purchase_doe:
+          type: number
+        budget_doe:
+          type: number
+        doe_sales_percentage:
+          type: number
+        doe_sales_percentage_actual:
+          type: number
+        doe_purchase_remaining:
+          type: number
+        doe_rolling:
+          type: number
+        doe_purchase_remaining_mtd:
+          type: number
+        variance:
+          type: number
+        category_id_hash:
+          type: string
+    ChildCategory:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    PrimeCostDetails:
+      type: object
+      properties:
+        sales:
+          type: number
+        purchases:
+          type: number
+        purchases_percent:
+          type: number
+        doe:
+          type: number
+        doe_percent:
+          type: number
+        labor:
+          type: number
+        labor_percentage:
+          type: number
+        prime_cost_dollars:
+          type: number
+        prime_cost:
+          type: number
+        operational_profit:
+          type: number
+        operational_profit_percent:
+          type: number
+        discount_amount:
+          type: number
+        discount_percentage:
+          type: number
+        discounted_sales:
+          type: number
+        discounted_sales_percentage:
+          type: number
+        discounted_purchases:
+          type: number
+        discounted_purchases_percent:
+          type: number
+        discounted_doe:
+          type: number
+        discounted_doe_percent:
+          type: number
+        discounted_labor:
+          type: number
+        discounted_labor_percentage:
+          type: number
+        discounted_prime_cost_dollars:
+          type: number
+        discounted_prime_cost:
+          type: number
+        discounted_operational_profit:
+          type: number
+        discounted_operational_profit_percent:
+          type: number
+        from:
+          type: string
+        to:
+          type: string
+        from_date_format:
+          type: string
+        to_date_format:
+          type: string
+        range_from:
+          $ref: "#/components/schemas/DateDetails"
+        range_to:
+          $ref: "#/components/schemas/DateDetails"
+    DateDetails:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        timezone_type:
+          type: integer
+        timezone:
+          type: string
+    CompDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        target:
+          type: number
+        cogs:
+          type: number
+        sales:
+          type: number
+        cogsTarget:
+          type: number
+        purchases:
+          type: number
+        toSpend:
+          type: number
+        budgetDoe:
+          type: number
+        category:
+          $ref: "#/components/schemas/Category"
+    DOEDetails:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        target:
+          type: number
+          format: float
+        cogs:
+          type: number
+          format: float
+        sales:
+          type: number
+          format: float
+        cogsTarget:
+          type: number
+          format: float
+        purchases:
+          type: number
+          format: float
+        toSpend:
+          type: number
+          format: float
+        budgetDoe:
+          type: number
+          format: float
+        category:
+          $ref: "#/components/schemas/Category"
+    LaborDetails:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        target:
+          type: number
+          format: float
+        cogs:
+          type: number
+          format: float
+        sales:
+          type: number
+          format: float
+        cogsTarget:
+          type: number
+          format: float
+        purchases:
+          type: number
+          format: float
+        toSpend:
+          type: number
+          format: float
+        laborLessFees:
+          type: number
+          format: float
+        category:
+          $ref: "#/components/schemas/Category"
+    DateFilterDetails:
+      type: object
+      properties:
+        periods:
+          type: array
+          items:
+            $ref: "#/components/schemas/Period"
+        years:
+          type: array
+          items:
+            $ref: "#/components/schemas/Year"
+        weeks:
+          type: array
+          items:
+            $ref: "#/components/schemas/Week"
+        start_week:
+          type: integer
+        vendors:
+          type: array
+          items:
+            $ref: "#/components/schemas/Vendor"
+        accounts:
+          type: array
+          items:
+            $ref: "#/components/schemas/Account"
+    Period:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+    Year:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+    Week:
+      type: object
+      properties:
+        value:
+          type: integer
+        label:
+          type: integer
+    Vendor:
+      type: object
+      properties:
+        value:
+          type: string
+        label:
+          type: string
+    Account:
+      type: object
+      properties:
+        value:
+          type: string
+        disable:
+          type: boolean
+        original_name:
+          type: string
+        label:
+          type: string
+        type:
+          type: integer
+        prefix_type:
+          type: string
+
+paths:
+  # Initial API call
+  /setup:
+    get:
+      summary: "Retrieve setup information"
+      description: "This endpoint retrieves setup information for the authenticated user."
+      tags:
+        - Initial (Refresh Call)
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      email:
+                        type: string
+                      company:
+                        type: string
+                      role:
+                        type: integer
+                      profile_pic:
+                        type: string
+                      is_multi:
+                        type: boolean
+                      id:
+                        type: string
+                      owner_id:
+                        type: integer
+                      is_block_labor_values:
+                        type: boolean
+                      pagination_records_per_page:
+                        type: integer
+                      document_access:
+                        type: boolean
+                      last_restaurant:
+                        type: string
+                      spatie_role:
+                        type: string
+                      switch_users:
+                        type: string
+                      restaurant_summary_report:
+                        type: string
+                      partner_admin:
+                        type: boolean
+                  restaurant:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                  company:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                  settings:
+                    type: object
+                    properties:
+                      date_format:
+                        type: string
+                      start_week:
+                        type: string
+                      currency_symbol:
+                        type: string
+                      guest_count:
+                        type: boolean
+                      operating_expense:
+                        type: number
+                      labor:
+                        type: number
+                      inventory:
+                        type: boolean
+                      department:
+                        type: boolean
+                      comps:
+                        type: boolean
+                      discount_type:
+                        type: string
+                      is_same_inventories:
+                        type: boolean
+                      labor_calculator:
+                        type: boolean
+                      budget_spreadsheet_view:
+                        type: boolean
+                      documents:
+                        type: boolean
+                      quickbooks_priority:
+                        type: string
+                      indirect_labor:
+                        type: number
+                      has_sheet_permission:
+                        type: boolean
+                      cash:
+                        type: boolean
+                      document_write_to_parent:
+                        type: boolean
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+  /header:
+    get:
+      summary: "Retrieve header information"
+      description: "This endpoint retrieves header information for the authenticated user."
+      tags:
+        - Initial (Refresh Call)
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  restaurant:
+                    type: string
+                  restaurants:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        link:
+                          type: string
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                  role:
+                    type: integer
+                  isParent:
+                    type: boolean
+                  owner_id:
+                    type: boolean
+                  avatar:
+                    type: string
+                  restaurant_logo:
+                    type: string
+                  connections:
+                    type: array
+                    items:
+                      type: string
+                  last_restaurant:
+                    type: integer
+                  api_companies:
+                    type: array
+                    items:
+                      type: string
+                  last_import:
+                    type: string
+                    format: datetime
+                    description: "The last time data was imported from Quickbooks."
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+  /sidebar:
+    get:
+      summary: "Get sidebar data"
+      tags:
+        - Initial (Refresh Call)
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: "The display name of the sidebar item."
+                    icon:
+                      type: string
+                      description: "The icon class for the sidebar item."
+                    link:
+                      type: string
+                      description: "The link URL for the sidebar item."
+                    children:
+                      type: array
+                      description: "Nested items in the sidebar item."
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            description: "The display name of the nested sidebar item."
+                          icon:
+                            type: string
+                            description: "The icon class for the nested sidebar item."
+                          link:
+                            type: string
+                            description: "The link URL for the nested sidebar item."
+                    show:
+                      type: boolean
+                      description: "A flag indicating whether to show the item, if applicable."
+                      nullable: true
+                    mouse_interaction:
+                      type: boolean
+                      description: "A flag indicating whether mouse interaction is enabled, if applicable."
+                      nullable: true
+                    external:
+                      type: boolean
+                      description: "A flag indicating whether the link is external, if applicable."
+                      nullable: true
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+  /new-feature/status:
+    get:
+      tags:
+        - Initial (Refresh Call)
+      summary: Get new feature status
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  new_feature:
+                    type: boolean
+                    description: Indicates whether the new feature is available.
+                  title:
+                    type: string
+                    description: The title of the new feature.
+                  subtitle:
+                    type: string
+                    description: The subtitle of the new feature.
+                  video_link:
+                    type: string
+                    description: The link to a video demonstrating the new feature.
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+        "403":
+          description: "Suspended"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "suspended."
+  /date-filter:
+    get:
+      summary: "Retrieve date filter details"
+      description: >
+        Fetches date filter-related details such as periods, years, weeks, start week, vendors, and accounts.
+
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+      tags:
+        - Initial (Refresh Call)
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: "Successfully retrieved date filter details."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DateFilterDetails"
+        "401":
+          description: "Unauthorized - user needs to be authenticated."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+  /push/count:
+    get:
+      summary: "Get unread push notification count"
+      description: "This endpoint retrieves the count of unread push notifications for the authenticated user."
+      tags:
+        - Initial (Refresh Call)
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    description: "The count of unread push notifications."
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+
+  # Dashboard
+  # Need more update
+  /dashboard/settings:
+    get:
+      tags:
+        - Dashboard
+      summary: Get dashboard settings
+      description: >
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Dashboard settings
+                # properties:
+                #   notifyBudget:
+                #     type: object
+                #     description: Notification settings for the budget.
+                #     properties:
+                #       dismiss:
+                #         type: string
+                #         format: date
+                #         description: Date when the budget notification was last dismissed.
+                #   last_restaurant:
+                #     type: integer
+                #     description: The ID of the last selected restaurant.
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+        "403":
+          description: >
+            Forbidden. This can be due to:
+            - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "suspended."
+
+    post:
+      tags:
+        - Dashboard
+      summary: Save dashboard settings
+      description: >
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Dashboard settings to be saved
+        example:
+          notifyBudget:
+            dismiss: "2023-10-01"
+          last_restaurant: 123
+      responses:
+        "200":
+          description: Settings saved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    description: Indicates whether the settings were saved successfully.
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+        "403":
+          description: >
+            Forbidden. This can be due to:
+            - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "suspended."
+
+  /user/hide-previous-banner:
+    get:
+      summary: Check if the previous banner should be hidden for the user.
+      description: >
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+      tags:
+        - User
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Banner hide status.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hide:
+                    type: boolean
+        "403":
+          description: >
+            Forbidden. This can be due to:
+            - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: suspended
+    post:
+      summary: Hide the previous banner for the user.
+      description: >
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+      tags:
+        - User
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Banner hide status.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+          "403":
+            description: >
+              Forbidden. This can be due to:
+              - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    error:
+                      type: string
+                      example: suspended
+
+  /dashboard/health:
+    get:
+      summary: "Get health dashboard data"
+      description: >
+        "Retrieve health dashboard data for the authenticated user's restaurant.
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+      tags:
+        - "Dashboard"
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: from
+          schema:
+            type: string
+            format: date
+          required: false
+          description: "Start date for the date range (YYYY-MM-DD)."
+        - in: query
+          name: to
+          schema:
+            type: string
+            format: date
+          required: false
+          description: "End date for the date range (YYYY-MM-DD)."
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  health:
+                    type: object
+                    description: "Health dashboard data."
+                  gauge:
+                    type: object
+                    description: "Gauge data."
+        "422":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "The given data was invalid."
+                  errors:
+                    type: object
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+        "403":
+          description: >
+            Forbidden. This can be due to:
+            - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "suspended"
+
+  /settings/transactions:
+    get:
+      summary: "Retrieve restaurant and labor settings"
+      description: >
+        Fetches specific settings related to the restaurant and labor. 
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+        - User must have access to the 'dashboard' module.
+      tags:
+        - "Restaurant Settings"
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: "Successfully retrieved settings."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  guest_count:
+                    type: integer
+                  comps:
+                    type: string
+                  operating_expense:
+                    type: integer
+                  labor:
+                    type: integer
+                  labor_calculator:
+                    type: integer
+                  cash:
+                    type: integer
+                  department:
+                    type: string
+                  inventory:
+                    type: integer
+                  discount_type:
+                    type: string
+                  doe_detailed:
+                    type: string
+                  show_hours:
+                    type: integer
+                  auto_post:
+                    type: boolean
+                  indirect_labor:
+                    type: integer
+                  frequency:
+                    type: integer
+                  has_fixed_conditions:
+                    type: boolean
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+        "403":
+          description: >
+            Forbidden. This can be due to:
+            - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+            - User not having access to the 'dashboard' module.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "suspended"
+
+  /dashboard/cogs:
+    get:
+      summary: "Retrieve COGS (Cost Of Goods Sold) data for the dashboard"
+      description: >
+        Fetches COGS data based on the given date range. 
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+      security:
+        - bearerAuth: []
+      tags:
+        - "Dashboard"
+      parameters:
+        - in: query
+          name: from
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Start date of the date range.
+        - in: query
+          name: to
+          required: true
+          schema:
+            type: string
+            format: date
+          description: End date of the date range.
+      responses:
+        "200":
+          description: "Successfully retrieved COGS data."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    target:
+                      type: number
+                    cogs:
+                      type: number
+                    sales:
+                      type: number
+                    cogsTarget:
+                      type: number
+                    purchases:
+                      type: number
+                    toSpend:
+                      type: number
+                    tabName:
+                      type: string
+                    category:
+                      $ref: "#/components/schemas/Category"
+        "400":
+          description: "Invalid input. 'from' and 'to' date parameters are required."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "403":
+          description: >
+            Forbidden. This can be due to:
+            - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "suspended"
+
+  /dashboard/accounts:
+    get:
+      summary: "Retrieve financial accounts data for the dashboard"
+      description: >
+        Fetches financial metrics including sales, labor, expenses, and more for the specified date range. 
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+      tags:
+        - "Dashboard"
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: from
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Start date of the date range.
+        - in: query
+          name: to
+          required: true
+          schema:
+            type: string
+            format: date
+          description: End date of the date range.
+      responses:
+        "200":
+          description: "Successfully retrieved accounts data."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comps:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Comp"
+                  doe:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Doe"
+                  keyExpenses:
+                    $ref: "#/components/schemas/KeyExpenses"
+                  labor:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Labor"
+                  nce:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Nce"
+                  sales:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Sale"
+          "403":
+            description: >
+              Forbidden. This can be due to:
+              - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+              - User not having access to the 'dashboard' module.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: "suspended"
+
+  /dashboard/primecost:
+    get:
+      summary: "Retrieve prime cost details for the dashboard"
+      description: >
+        Fetches prime cost details for the dashboard based on the provided date.
+
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: "Successfully retrieved prime cost details."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PrimeCostDetails"
+        "403":
+          description: >
+            Forbidden. This can be due to:
+            - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "suspended"
+
+  /dashboard/comps:
+    get:
+      summary: "Retrieve comps details for the dashboard"
+      description: >
+        Fetches comps details for the dashboard based on the provided date range.
+
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: from
+          schema:
+            type: string
+            format: date
+          required: true
+        - in: query
+          name: to
+          schema:
+            type: string
+            format: date
+          required: true
+      responses:
+        "200":
+          description: "Successfully retrieved comps details."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CompDetails"
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+        "403":
+          description: >
+            Forbidden. This can be due to:
+            - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "suspended"
+
+  /dashboard/doe:
+    get:
+      summary: "Retrieve DOE (Department of Expenditure) details for the dashboard"
+      description: >
+        Fetches DOE details for the dashboard based on the provided date range.
+
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: from
+          required: true
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: to
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        "200":
+          description: "Successfully retrieved DOE details."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DOEDetails"
+        "401":
+          description: "Unauthorized - user needs to be authenticated."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+
+        "403":
+          description: >
+            Forbidden. This can be due to:
+            - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+            - User not having access to the 'dashboard' module.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "suspended"
+
+  /dashboard/labor:
+    get:
+      summary: "Retrieve labor details for the dashboard"
+      description: >
+        Fetches labor-related details for the dashboard based on the provided date range.
+
+        **Middleware Restrictions**: 
+        - User must be authenticated.
+        - User status must not be one of the following:
+          * `2 (Suspended)`
+          * `3 (Expired)`
+          * `4 (Canceled)`
+      tags:
+        - Dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: from
+          required: true
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: to
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        "200":
+          description: "Successfully retrieved labor details."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LaborDetails"
+        "401":
+          description: "Unauthorized - user needs to be authenticated."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthenticated."
+        "403":
+          description: >
+            Forbidden. This can be due to:
+            - User status being one of: `Suspended (2)`, `Expired (3)`, or `Canceled (4)`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "suspended"
+# transaction
+# balance/events - There is no route in api.php
+
