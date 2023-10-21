@@ -20,6 +20,7 @@
   ],
   "paths": {
     "/account": {
+      "description": "This is a summary of what the endpoint does. Below is a flow of the process:\n\n\n  <div class=\"mermaid\">\n    graph TD;\n      A[Start] --> B[Process];\n      B --> C[End];\n  </div>\n",
       "get": {
         "responses": {
           "200": {
