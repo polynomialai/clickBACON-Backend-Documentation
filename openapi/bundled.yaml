@@ -12,6 +12,15 @@ servers:
     description: Development server
 paths:
   /account:
+    description: |
+      This is a summary of what the endpoint does. Below is a flow of the process:
+
+
+        <div class="mermaid">
+          graph TD;
+            A[Start] --> B[Process];
+            B --> C[End];
+        </div>
     get:
       responses:
         '200':
