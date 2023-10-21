@@ -1,0 +1,429 @@
+get:
+  parameters:
+    - in: query
+      name: range
+      schema:
+        type: string
+    - in: query
+      name: from
+      schema:
+        type: string
+    - in: query
+      name: to
+      schema:
+        type: string
+    - in: query
+      name: detailed
+      schema:
+        type: string
+    - in: query
+      name: categories[0]
+      schema:
+        type: string
+    - in: query
+      name: comps_accounts[0]
+      schema:
+        type: string
+    - in: query
+      name: group
+      schema:
+        type: string
+    - in: query
+      name: report_version
+      schema:
+        type: string
+    - in: query
+      name: comps
+      schema:
+        type: string
+    - in: query
+      name: comps_accounts[1]
+      schema:
+        type: string
+    - in: query
+      name: categories[1]
+      schema:
+        type: string
+    - in: query
+      name: categories[2]
+      schema:
+        type: string
+    - in: query
+      name: traffic[0]
+      schema:
+        type: string
+    - in: query
+      name: reason[0]
+      schema:
+        type: string
+    - in: query
+      name: traffic_report
+      schema:
+        type: string
+    - in: query
+      name: traffic[1]
+      schema:
+        type: string
+    - in: query
+      name: rolling_date
+      schema:
+        type: string
+    - in: query
+      name: traffic[2]
+      schema:
+        type: string
+    - in: query
+      name: traffic[3]
+      schema:
+        type: string
+    - in: query
+      name: traffic[4]
+      schema:
+        type: string
+    - in: query
+      name: traffic[5]
+      schema:
+        type: string
+    - in: query
+      name: reason[1]
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              back:
+                type: string
+              chart:
+                type: string
+              chart_type:
+                type: string
+              comps:
+                type: integer
+              comps_total:
+                type: integer
+              date:
+                properties:
+                  date:
+                    type: string
+                  timezone:
+                    type: string
+                  timezone_type:
+                    type: integer
+                type: object
+              dates:
+                properties:
+                  from:
+                    type: string
+                  to:
+                    type: string
+                type: object
+              department:
+                type: integer
+              departments:
+                items: {}
+                type: array
+              detailed:
+                type: string
+              discCompsColumn:
+                items:
+                  properties:
+                    align:
+                      type: string
+                    field:
+                      type: string
+                    headerStyle:
+                      type: string
+                    label:
+                      type: string
+                    name:
+                      type: string
+                    style:
+                      type: string
+                  type: object
+                type: array
+              discCompsData:
+                items:
+                  properties:
+                    Amount:
+                      type: string
+                    Discount:
+                      type: string
+                    isBold:
+                      type: integer
+                  type: object
+                type: array
+              exports:
+                properties:
+                  links:
+                    properties:
+                      excel:
+                        properties:
+                          link:
+                            type: string
+                          params:
+                            properties:
+                              categories:
+                                items:
+                                  type: string
+                                type: array
+                              comps:
+                                type: string
+                              comps_accounts:
+                                items:
+                                  type: string
+                                type: array
+                              detailed:
+                                type: string
+                              from:
+                                type: string
+                              group:
+                                type: string
+                              range:
+                                type: string
+                              reason:
+                                items:
+                                  type: string
+                                type: array
+                              report_version:
+                                type: string
+                              rolling_date:
+                                type: string
+                              to:
+                                type: string
+                              traffic:
+                                items:
+                                  type: string
+                                type: array
+                              traffic_report:
+                                type: string
+                              type:
+                                type: string
+                            type: object
+                        type: object
+                      pdf:
+                        properties:
+                          link:
+                            type: string
+                          params:
+                            properties:
+                              categories:
+                                items:
+                                  type: string
+                                type: array
+                              comps:
+                                type: string
+                              comps_accounts:
+                                items:
+                                  type: string
+                                type: array
+                              detailed:
+                                type: string
+                              from:
+                                type: string
+                              group:
+                                type: string
+                              range:
+                                type: string
+                              reason:
+                                items:
+                                  type: string
+                                type: array
+                              report_version:
+                                type: string
+                              rolling_date:
+                                type: string
+                              to:
+                                type: string
+                              traffic:
+                                items:
+                                  type: string
+                                type: array
+                              traffic_report:
+                                type: string
+                              type:
+                                type: string
+                            type: object
+                        type: object
+                    type: object
+                  title:
+                    type: string
+                type: object
+              head:
+                items:
+                  type: string
+                type: array
+              more_options:
+                type: string
+              overall_total:
+                type: number
+              ranOn:
+                type: string
+              request:
+                properties:
+                  categories:
+                    items:
+                      type: string
+                    type: array
+                  comps:
+                    type: string
+                  comps_accounts:
+                    items:
+                      type: string
+                    type: array
+                  detailed:
+                    type: string
+                  from:
+                    type: string
+                  group:
+                    type: string
+                  range:
+                    type: string
+                  reason:
+                    items:
+                      type: string
+                    type: array
+                  report_version:
+                    type: string
+                  rolling_date:
+                    type: string
+                  to:
+                    type: string
+                  traffic:
+                    items:
+                      type: string
+                    type: array
+                  traffic_report:
+                    type: string
+                type: object
+              restaurant_name:
+                type: string
+              sales:
+                items:
+                  properties:
+                    amount:
+                      type: number
+                    api:
+                      type: integer
+                    category_id:
+                      type: integer
+                    category_name:
+                      type: string
+                    created_at:
+                      type: string
+                    date:
+                      type: string
+                    deleted_at:
+                      type: string
+                    deposit:
+                      type: string
+                    from:
+                      type: string
+                    has_children:
+                      type: integer
+                    id:
+                      type: integer
+                    isBold:
+                      type: integer
+                    level:
+                      type: integer
+                    number_tabs:
+                      type: string
+                    parent_id:
+                      type: integer
+                    percentage:
+                      type: number
+                    qbo_name:
+                      type: string
+                    qbo_num:
+                      type: string
+                    qbo_type:
+                      type: string
+                    restaurant_id:
+                      type: integer
+                    sales:
+                      type: number
+                    tabs:
+                      type: string
+                    td:
+                      items:
+                        type: string
+                      type: array
+                    to:
+                      type: string
+                    updated_at:
+                      type: string
+                  type: object
+                type: array
+              schedName:
+                type: string
+              tableColumn:
+                items:
+                  properties:
+                    align:
+                      type: string
+                    field:
+                      type: string
+                    label:
+                      type: string
+                    name:
+                      type: string
+                  type: object
+                type: array
+              tableData:
+                items:
+                  properties:
+                    Category:
+                      type: string
+                    Date:
+                      type: string
+                    Day:
+                      type: string
+                    Percentage:
+                      type: string
+                    Reason:
+                      type: string
+                    Sales:
+                      type: string
+                    Traffic:
+                      type: string
+                    Week:
+                      type: string
+                    from:
+                      type: string
+                    isBold:
+                      type: integer
+                    level:
+                      type: integer
+                    name:
+                      type: string
+                    to:
+                      type: string
+                  type: object
+                type: array
+              tfoot:
+                items:
+                  type: string
+                type: array
+              total:
+                type: integer
+              traffic_report:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - report

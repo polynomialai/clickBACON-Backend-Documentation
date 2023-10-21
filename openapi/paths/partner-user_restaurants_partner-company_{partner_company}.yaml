@@ -1,0 +1,61 @@
+get:
+  parameters:
+    - description: The partner_company parameter
+      in: path
+      name: partner_company
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              companies:
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    restaurants:
+                      items:
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          show:
+                            type: integer
+                        type: object
+                      type: array
+                    show:
+                      type: integer
+                  type: object
+                type: array
+              isAdmin:
+                type: string
+              partner_company:
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                type: object
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - partner-user

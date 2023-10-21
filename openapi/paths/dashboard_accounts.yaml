@@ -1,71 +1,471 @@
 get:
-  summary: Retrieve financial accounts data for the dashboard
-  description: >
-    Fetches financial metrics including sales, labor, expenses, and more for the
-    specified date range.  **Middleware Restrictions**:  - User must be
-    authenticated. - User status must not be one of the following:
-      * `2 (Suspended)`
-      * `3 (Expired)`
-      * `4 (Canceled)`
-  tags:
-    - Dashboard
-  security:
-    - bearerAuth: []
   parameters:
     - in: query
       name: from
-      required: true
       schema:
         type: string
-        format: date
-      description: Start date of the date range.
     - in: query
       name: to
-      required: true
       schema:
         type: string
-        format: date
-      description: End date of the date range.
   responses:
     '200':
-      description: Successfully retrieved accounts data.
       content:
         application/json:
           schema:
-            type: object
             properties:
               comps:
-                type: array
                 items:
-                  $ref: ../components/schemas/Comp.yaml
+                  properties:
+                    budget_doe:
+                      type: integer
+                    budget_id:
+                      type: integer
+                    budget_purchase:
+                      type: integer
+                    budget_sales:
+                      type: integer
+                    category:
+                      properties:
+                        children:
+                          type: string
+                        has_children:
+                          type: integer
+                        id_hash:
+                          type: string
+                        label:
+                          type: string
+                        name:
+                          type: string
+                        parent_id:
+                          type: string
+                        space:
+                          type: string
+                      type: object
+                    category_id:
+                      type: integer
+                    category_id_hash:
+                      type: string
+                    category_purchase:
+                      type: string
+                    category_purchase_actual:
+                      type: string
+                    category_sales:
+                      type: integer
+                    cogs_target:
+                      type: integer
+                    cost:
+                      type: integer
+                    doe_purchase_remaining:
+                      type: integer
+                    doe_purchase_remaining_mtd:
+                      type: integer
+                    doe_rolling:
+                      type: integer
+                    doe_sales_percentage:
+                      type: integer
+                    doe_sales_percentage_actual:
+                      type: integer
+                    mtd_cost:
+                      type: integer
+                    mtd_purchase:
+                      type: integer
+                    name:
+                      type: string
+                    percent_purchase:
+                      type: integer
+                    percent_purchase_doe:
+                      type: integer
+                    percent_sales:
+                      type: integer
+                    percentage:
+                      type: string
+                    purchase_remaining:
+                      type: integer
+                    purchase_remaining_mtd:
+                      type: integer
+                    rolling_cogs:
+                      type: integer
+                    tab_name:
+                      type: string
+                    variance:
+                      type: integer
+                  type: object
+                type: array
               doe:
-                type: array
                 items:
-                  $ref: ../components/schemas/Doe.yaml
+                  properties:
+                    budget_doe:
+                      type: integer
+                    budget_id:
+                      type: string
+                    budget_purchase:
+                      type: integer
+                    budget_sales:
+                      type: integer
+                    category:
+                      properties:
+                        children:
+                          type: string
+                        has_children:
+                          type: integer
+                        id:
+                          type: integer
+                        id_hash:
+                          type: string
+                        label:
+                          type: string
+                        name:
+                          type: string
+                        parent_id:
+                          type: string
+                        space:
+                          type: string
+                      type: object
+                    category_id:
+                      type: integer
+                    category_id_hash:
+                      type: string
+                    category_purchase:
+                      type: number
+                    category_purchase_actual:
+                      type: number
+                    category_sales:
+                      type: integer
+                    children:
+                      items:
+                        properties:
+                          budget_doe:
+                            type: integer
+                          budget_id:
+                            type: string
+                          budget_purchase:
+                            type: integer
+                          budget_sales:
+                            type: integer
+                          category:
+                            properties:
+                              children:
+                                type: string
+                              has_children:
+                                type: integer
+                              id:
+                                type: integer
+                              id_hash:
+                                type: string
+                              label:
+                                type: string
+                              name:
+                                type: string
+                              parent_id:
+                                type: string
+                              space:
+                                type: string
+                            type: object
+                          category_id:
+                            type: integer
+                          category_purchase:
+                            type: number
+                          category_purchase_actual:
+                            type: number
+                          category_sales:
+                            type: integer
+                          cogs_target:
+                            type: integer
+                          cost:
+                            type: integer
+                          doe_purchase_remaining:
+                            type: number
+                          doe_purchase_remaining_mtd:
+                            type: number
+                          doe_rolling:
+                            type: integer
+                          doe_sales_percentage:
+                            type: integer
+                          doe_sales_percentage_actual:
+                            type: number
+                          mtd_cost:
+                            type: integer
+                          mtd_purchase:
+                            type: integer
+                          name:
+                            type: string
+                          percent_purchase:
+                            type: integer
+                          percent_purchase_doe:
+                            type: integer
+                          percent_sales:
+                            type: integer
+                          percentage:
+                            type: integer
+                          purchase_remaining:
+                            type: number
+                          purchase_remaining_mtd:
+                            type: number
+                          rolling_cogs:
+                            type: integer
+                          tab_name:
+                            type: string
+                          transfers:
+                            type: integer
+                          type:
+                            type: integer
+                          variance:
+                            type: number
+                        type: object
+                      type: array
+                    children_ids:
+                      items:
+                        type: string
+                      type: array
+                    cogs_target:
+                      type: integer
+                    cost:
+                      type: integer
+                    doe_purchase_remaining:
+                      type: number
+                    doe_purchase_remaining_mtd:
+                      type: number
+                    doe_rolling:
+                      type: integer
+                    doe_sales_percentage:
+                      type: integer
+                    doe_sales_percentage_actual:
+                      type: number
+                    mtd_cost:
+                      type: integer
+                    mtd_purchase:
+                      type: integer
+                    name:
+                      type: string
+                    percent_purchase:
+                      type: integer
+                    percent_purchase_doe:
+                      type: integer
+                    percent_sales:
+                      type: integer
+                    percentage:
+                      type: integer
+                    purchase_remaining:
+                      type: number
+                    purchase_remaining_mtd:
+                      type: number
+                    rolling_cogs:
+                      type: integer
+                    tab_name:
+                      type: string
+                    transfers:
+                      type: integer
+                    type:
+                      type: integer
+                    variance:
+                      type: number
+                  type: object
+                type: array
               keyExpenses:
-                $ref: ../components/schemas/KeyExpenses.yaml
+                properties:
+                  discounts:
+                    properties:
+                      amount:
+                        type: integer
+                      goal:
+                        type: integer
+                      percent:
+                        type: integer
+                    type: object
+                  grossMargin:
+                    properties:
+                      amount:
+                        type: integer
+                      goal:
+                        type: integer
+                      percent:
+                        type: integer
+                    type: object
+                  ifo:
+                    properties:
+                      amount:
+                        type: number
+                      goal:
+                        type: integer
+                      percent:
+                        type: number
+                    type: object
+                  netIncome:
+                    properties:
+                      amount:
+                        type: number
+                      goal:
+                        type: integer
+                      percent:
+                        type: number
+                    type: object
+                  primeCost:
+                    properties:
+                      amount:
+                        type: number
+                      goal:
+                        type: integer
+                      percent:
+                        type: number
+                    type: object
+                type: object
               labor:
-                type: array
                 items:
-                  $ref: ../components/schemas/Labor.yaml
+                  properties:
+                    category:
+                      properties:
+                        child_categories:
+                          items:
+                            properties:
+                              id:
+                                type: string
+                              name:
+                                type: string
+                            type: object
+                          type: array
+                        children:
+                          items:
+                            type: string
+                          type: array
+                        has_children:
+                          type: integer
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        parent:
+                          type: string
+                        spaces:
+                          type: string
+                      type: object
+                    cost_actual:
+                      type: number
+                    cost_budget:
+                      type: number
+                    has_children:
+                      type: integer
+                    id:
+                      type: integer
+                    id_hash:
+                      type: string
+                    labor_less_fees:
+                      type: integer
+                    name:
+                      type: string
+                    percent_actual:
+                      type: number
+                    percent_budget:
+                      type: number
+                    percent_labor_actual:
+                      type: number
+                    percent_labor_budget:
+                      type: number
+                    remaining_budget:
+                      type: number
+                    remaining_budget_mtd:
+                      type: number
+                    rolling:
+                      type: number
+                    value:
+                      type: string
+                    variance:
+                      type: number
+                  type: object
+                type: array
               nce:
-                type: array
                 items:
-                  $ref: ../components/schemas/Nce.yaml
+                  properties:
+                    amount:
+                      type: integer
+                    name:
+                      type: string
+                    percent:
+                      type: integer
+                    variable:
+                      type: integer
+                  type: object
+                type: array
               sales:
-                type: array
                 items:
-                  $ref: ../components/schemas/Sale.yaml
-    '403':
-      description: >
-        Forbidden. This can be due to: - User status being one of: `Suspended
-        (2)`, `Expired (3)`, or `Canceled (4)`. - User not having access to the
-        'dashboard' module.
+                  properties:
+                    budget_doe:
+                      type: integer
+                    budget_id:
+                      type: string
+                    budget_purchase:
+                      type: integer
+                    budget_sales:
+                      type: integer
+                    category:
+                      type: string
+                    category_id:
+                      type: integer
+                    category_id_hash:
+                      type: string
+                    category_purchase:
+                      type: integer
+                    category_purchase_actual:
+                      type: integer
+                    category_sales:
+                      type: integer
+                    cogs_target:
+                      type: integer
+                    cost:
+                      type: integer
+                    doe_purchase_remaining:
+                      type: integer
+                    doe_purchase_remaining_mtd:
+                      type: integer
+                    doe_rolling:
+                      type: integer
+                    doe_sales_percentage:
+                      type: integer
+                    doe_sales_percentage_actual:
+                      type: integer
+                    mtd_cost:
+                      type: integer
+                    mtd_purchase:
+                      type: integer
+                    name:
+                      type: string
+                    percent_purchase:
+                      type: integer
+                    percent_purchase_doe:
+                      type: integer
+                    percent_sales:
+                      type: integer
+                    percentage:
+                      type: integer
+                    purchase_remaining:
+                      type: integer
+                    purchase_remaining_mtd:
+                      type: integer
+                    rolling_cogs:
+                      type: integer
+                    tab_name:
+                      type: string
+                    transfers:
+                      type: integer
+                    type:
+                      type: string
+                    variance:
+                      type: integer
+                  type: object
+                type: array
+            type: object
+      description: OK
+    '401':
       content:
         application/json:
           schema:
-            type: object
             properties:
               message:
+                example: Unauthenticated.
                 type: string
-                example: suspendeds
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - dashboard

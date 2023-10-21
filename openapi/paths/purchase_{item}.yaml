@@ -1,0 +1,87 @@
+delete:
+  parameters:
+    - description: The item parameter
+      in: path
+      name: item
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            _method: {}
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties: {}
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - purchase
+put:
+  parameters:
+    - description: The item parameter
+      in: path
+      name: item
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            _method: {}
+            amount: {}
+            attachment_ids: {}
+            attachment_ids_delete: {}
+            credit: {}
+            date: {}
+            description: {}
+            invoice_no: {}
+            item: {}
+            notes: {}
+            ref: {}
+            vendor_id: {}
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - purchase

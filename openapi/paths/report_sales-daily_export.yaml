@@ -1,0 +1,69 @@
+post:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            categories:
+              items:
+                type: string
+              type: array
+            chart_image:
+              type: string
+            comps:
+              type: string
+            comps_accounts:
+              items:
+                type: string
+              type: array
+            detailed:
+              type: string
+            from:
+              type: string
+            group:
+              type: string
+            range:
+              type: string
+            reason:
+              items:
+                type: string
+              type: array
+            report_version:
+              type: string
+            to:
+              type: string
+            traffic:
+              items:
+                type: string
+              type: array
+            traffic_report:
+              type: string
+            type:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/pdf:
+          schema:
+            properties: {}
+            type: object
+        application/vnd.ms-excel:
+          schema:
+            properties: {}
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - report

@@ -1,79 +1,32 @@
 get:
-  summary: Retrieve COGS (Cost Of Goods Sold) data for the dashboard
-  description: >
-    Fetches COGS data based on the given date range.  **Middleware
-    Restrictions**:  - User must be authenticated. - User status must not be one
-    of the following:
-      * `2 (Suspended)`
-      * `3 (Expired)`
-      * `4 (Canceled)`
-  security:
-    - bearerAuth: []
-  tags:
-    - Dashboard
   parameters:
     - in: query
       name: from
-      required: true
       schema:
         type: string
-        format: date
-      description: Start date of the date range.
     - in: query
       name: to
-      required: true
       schema:
         type: string
-        format: date
-      description: End date of the date range.
   responses:
     '200':
-      description: Successfully retrieved COGS data.
       content:
         application/json:
           schema:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                name:
-                  type: string
-                target:
-                  type: number
-                cogs:
-                  type: number
-                sales:
-                  type: number
-                cogsTarget:
-                  type: number
-                purchases:
-                  type: number
-                toSpend:
-                  type: number
-                tabName:
-                  type: string
-                category:
-                  $ref: ../components/schemas/Category.yaml
-    '400':
-      description: Invalid input. 'from' and 'to' date parameters are required.
-      content:
-        application/json:
-          schema:
+            properties: {}
             type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
             properties:
               message:
+                example: Unauthenticated.
                 type: string
-    '403':
-      description: >
-        Forbidden. This can be due to: - User status being one of: `Suspended
-        (2)`, `Expired (3)`, or `Canceled (4)`.
-      content:
-        application/json:
-          schema:
             type: object
-            properties:
-              message:
-                type: string
-                example: suspended
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - dashboard

@@ -1,0 +1,101 @@
+post:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            params:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              chart:
+                type: string
+              exports:
+                properties:
+                  links:
+                    properties:
+                      pdf:
+                        properties:
+                          link:
+                            type: string
+                          params:
+                            properties:
+                              params:
+                                type: string
+                              type:
+                                type: string
+                            type: object
+                        type: object
+                    type: object
+                  title:
+                    type: string
+                type: object
+              ranOn:
+                type: string
+              restaurant_name:
+                type: string
+              tableColumn:
+                items:
+                  properties:
+                    align:
+                      type: string
+                    field:
+                      type: string
+                    label:
+                      type: string
+                    name:
+                      type: string
+                  type: object
+                type: array
+              tableData:
+                items:
+                  properties:
+                    Range:
+                      type: string
+                    Sales:
+                      type: string
+                    from:
+                      type: string
+                    to:
+                      type: string
+                  type: object
+                type: array
+              total_sales:
+                type: number
+              totals:
+                items:
+                  properties:
+                    dates:
+                      properties:
+                        from:
+                          type: string
+                        to:
+                          type: string
+                      type: object
+                    link:
+                      type: string
+                    totals:
+                      type: number
+                  type: object
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - report

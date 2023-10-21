@@ -1,0 +1,79 @@
+post:
+  parameters:
+    - description: The recipe parameter
+      in: path
+      name: recipe
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            category:
+              properties:
+                label:
+                  type: string
+                value:
+                  type: integer
+              type: string
+            directions:
+              items: {}
+              type: array
+            ingredients:
+              items:
+                properties:
+                  name:
+                    type: string
+                  quantity:
+                    type: string
+                  unit:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                type: object
+              type: array
+            name:
+              type: string
+            portion:
+              type: string
+            unit:
+              properties:
+                label:
+                  type: string
+                value:
+                  type: integer
+              type: object
+            yield:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: string
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - recipe

@@ -1,0 +1,122 @@
+get:
+  parameters:
+    - in: query
+      name: page
+      schema:
+        type: string
+    - in: query
+      name: rows
+      schema:
+        type: string
+    - in: query
+      name: sortBy
+      schema:
+        type: string
+    - in: query
+      name: descending
+      schema:
+        type: string
+    - in: query
+      name: filter
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                items:
+                  properties:
+                    actions:
+                      type: string
+                    checkbox:
+                      type: string
+                    description:
+                      type: string
+                    edit_link:
+                      type: string
+                    id_hash:
+                      type: string
+                    meal_period:
+                      type: string
+                    name:
+                      type: string
+                    photo_url:
+                      type: string
+                    plate:
+                      type: string
+                    status:
+                      type: string
+                  type: object
+                type: array
+              draw:
+                type: integer
+              recordsFiltered:
+                type: integer
+              recordsTotal:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - build-sheet
+post:
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            allergies: {}
+            crop_values: {}
+            description: {}
+            directions: {}
+            ingredients: {}
+            name: {}
+            photo: {}
+            photo_filename: {}
+            picture: {}
+            selected_diet_types: {}
+            selected_meal_periods: {}
+            selected_plates: {}
+            server_description: {}
+            standards: {}
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: string
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - build-sheet

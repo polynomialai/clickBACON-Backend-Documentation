@@ -1,0 +1,172 @@
+get:
+  parameters:
+    - description: The checklist parameter
+      in: path
+      name: checklist
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              checklist:
+                properties:
+                  date:
+                    type: integer
+                  group:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  items:
+                    items:
+                      properties:
+                        list:
+                          items:
+                            properties:
+                              days:
+                                items:
+                                  type: string
+                                type: array
+                              description:
+                                type: string
+                              high:
+                                type: string
+                              low:
+                                type: string
+                              months:
+                                items: {}
+                                type: array
+                              unit:
+                                properties:
+                                  label:
+                                    type: string
+                                  value:
+                                    type: integer
+                                type: string
+                            type: object
+                          type: array
+                        location:
+                          properties:
+                            label:
+                              type: string
+                            value:
+                              type: integer
+                          type: string
+                      type: object
+                    type: array
+                  low_high:
+                    type: integer
+                  name:
+                    type: string
+                  par:
+                    type: integer
+                  position:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  split:
+                    type: integer
+                  type:
+                    properties:
+                      label:
+                        type: string
+                      setting:
+                        properties:
+                          date:
+                            type: integer
+                          par:
+                            type: integer
+                          unit:
+                            type: integer
+                        type: object
+                      value:
+                        type: integer
+                    type: object
+                  unit:
+                    type: integer
+                  vendor:
+                    type: string
+                  weekly_monthly:
+                    type: integer
+                type: object
+              groups:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              locations:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              positions:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              types:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    setting:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              units:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              vendors:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - checklist

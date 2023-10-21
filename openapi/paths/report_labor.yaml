@@ -1,0 +1,449 @@
+get:
+  parameters:
+    - in: query
+      name: range
+      schema:
+        type: string
+    - in: query
+      name: from
+      schema:
+        type: string
+    - in: query
+      name: to
+      schema:
+        type: string
+    - in: query
+      name: detailed
+      schema:
+        type: string
+    - in: query
+      name: labor_categories[0]
+      schema:
+        type: string
+    - in: query
+      name: jobs[0]
+      schema:
+        type: string
+    - in: query
+      name: group
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              chart:
+                type: string
+              chart_type:
+                type: string
+              dates:
+                properties:
+                  from:
+                    type: string
+                  to:
+                    type: string
+                type: object
+              exports:
+                properties:
+                  links:
+                    properties:
+                      excel:
+                        properties:
+                          link:
+                            type: string
+                          params:
+                            properties:
+                              detailed:
+                                type: string
+                              from:
+                                type: string
+                              group:
+                                type: string
+                              jobs:
+                                items:
+                                  type: string
+                                type: array
+                              labor_categories:
+                                items:
+                                  type: string
+                                type: array
+                              range:
+                                type: string
+                              report_type:
+                                type: string
+                              to:
+                                type: string
+                              type:
+                                type: string
+                            type: object
+                        type: object
+                      pdf:
+                        properties:
+                          link:
+                            type: string
+                          params:
+                            properties:
+                              detailed:
+                                type: string
+                              from:
+                                type: string
+                              group:
+                                type: string
+                              jobs:
+                                items:
+                                  type: string
+                                type: array
+                              labor_categories:
+                                items:
+                                  type: string
+                                type: array
+                              range:
+                                type: string
+                              report_type:
+                                type: string
+                              to:
+                                type: string
+                              type:
+                                type: string
+                            type: object
+                        type: object
+                    type: object
+                  title:
+                    type: string
+                type: object
+              head:
+                items:
+                  type: string
+                type: array
+              labors:
+                items:
+                  properties:
+                    amount:
+                      type: number
+                    cash:
+                      type: string
+                    created_at:
+                      type: string
+                    date:
+                      type: string
+                    deleted_at:
+                      type: string
+                    detailed:
+                      type: string
+                    fees:
+                      type: number
+                    fixed_cost:
+                      type: string
+                    header:
+                      items:
+                        type: string
+                      type: array
+                    hours:
+                      type: integer
+                    id:
+                      type: integer
+                    indirect_labor:
+                      type: integer
+                    indirect_labor_source:
+                      type: string
+                    job_id:
+                      type: integer
+                    name:
+                      type: string
+                    percentage:
+                      type: integer
+                    period_cost:
+                      type: string
+                    restaurant:
+                      properties:
+                        agree_date:
+                          type: string
+                        bill_immediately:
+                          type: integer
+                        bill_internally:
+                          type: integer
+                        categories:
+                          type: string
+                        company_id:
+                          type: integer
+                        created_at:
+                          type: string
+                        crop_values:
+                          type: string
+                        deleted_at:
+                          type: string
+                        deleted_by:
+                          type: string
+                        document_tags_updated:
+                          type: integer
+                        has_qb_totals:
+                          type: integer
+                        id:
+                          type: integer
+                        labor_setting:
+                          properties:
+                            auto_post:
+                              type: integer
+                            auto_post_date:
+                              type: string
+                            created_at:
+                              type: string
+                            fed:
+                              type: string
+                            fixed_cost:
+                              type: integer
+                            fixed_other:
+                              type: string
+                            fixed_payroll_processing_fees:
+                              type: string
+                            fixed_workmans_compensation:
+                              type: string
+                            fmed:
+                              type: string
+                            frequency:
+                              type: integer
+                            fsoc:
+                              type: string
+                            futa:
+                              type: string
+                            id:
+                              type: integer
+                            indirect_labor:
+                              type: integer
+                            others:
+                              type: string
+                            payroll_processing_fee:
+                              type: string
+                            percentage:
+                              type: integer
+                            period_cost:
+                              type: string
+                            period_other:
+                              type: string
+                            period_process_fee:
+                              type: string
+                            period_workmans_compensation:
+                              type: string
+                            restaurant_id:
+                              type: integer
+                            show_hours:
+                              type: integer
+                            state:
+                              type: string
+                            state_940:
+                              type: string
+                            updated_at:
+                              type: string
+                            workmans_compensation:
+                              type: string
+                          type: object
+                        last_document_folder:
+                          type: string
+                        last_module:
+                          type: string
+                        logo:
+                          type: string
+                        logo_filename:
+                          type: string
+                        multi_migrate:
+                          type: integer
+                        name:
+                          type: string
+                        operating_expenses:
+                          type: string
+                        pos:
+                          type: string
+                        qbo_tags_updated:
+                          type: integer
+                        setting:
+                          properties:
+                            account_module:
+                              type: integer
+                            accounts_module:
+                              type: integer
+                            budget_spreadsheet_view:
+                              type: integer
+                            cash:
+                              type: integer
+                            checklist_wizard:
+                              type: integer
+                            comps:
+                              type: integer
+                            currency_id:
+                              type: integer
+                            daily_budget:
+                              type: integer
+                            date_format:
+                              type: integer
+                            department:
+                              type: integer
+                            discount_type:
+                              type: integer
+                            document_email:
+                              type: string
+                            document_email_username:
+                              type: string
+                            document_extra_chef_email:
+                              type: string
+                            document_extra_chef_email_toggle:
+                              type: integer
+                            document_margin_edge_email:
+                              type: string
+                            document_margin_edge_email_toggle:
+                              type: integer
+                            document_one_click_forwarding:
+                              type: integer
+                            document_required_vendor:
+                              type: integer
+                            document_write_to_parent:
+                              type: integer
+                            documents:
+                              type: integer
+                            doe_detailed:
+                              type: integer
+                            dont_show_pos:
+                              type: integer
+                            dont_show_profile_pic:
+                              type: integer
+                            getting_started:
+                              type: integer
+                            guest_count:
+                              type: integer
+                            hide_new_dashboard_banner:
+                              type: integer
+                            info_box:
+                              type: integer
+                            inventory:
+                              type: integer
+                            job_description:
+                              type: integer
+                            job_description_message:
+                              type: string
+                            job_description_signature:
+                              type: string
+                            job_sheet:
+                              type: integer
+                            labor:
+                              type: integer
+                            labor_calculator:
+                              type: integer
+                            nesting:
+                              type: integer
+                            nesting_date:
+                              type: string
+                            nesting_flag:
+                              type: integer
+                            new_feature:
+                              type: integer
+                            ninja_interest:
+                              type: integer
+                            ninja_not_interested:
+                              type: integer
+                            operating_expense:
+                              type: integer
+                            pdf_footer_line_1:
+                              type: string
+                            pdf_footer_line_2:
+                              type: string
+                            pdf_logo:
+                              type: integer
+                            qb_class_id:
+                              type: string
+                            quickbooks_priority:
+                              type: integer
+                            sheet_package:
+                              type: integer
+                            show_integration:
+                              type: integer
+                            splitter_width:
+                              type: integer
+                            start_week:
+                              type: integer
+                            tag_downloaded:
+                              type: integer
+                            video_report_suggestion:
+                              type: integer
+                          type: object
+                        setup_wizard:
+                          type: integer
+                        setup_wizard_notify:
+                          type: integer
+                        updated_at:
+                          type: string
+                        user_id:
+                          type: integer
+                        welcome:
+                          type: integer
+                        wizard_position:
+                          type: string
+                      type: object
+                    restaurant_id:
+                      type: integer
+                    row:
+                      items:
+                        type: string
+                      type: array
+                    updated_at:
+                      type: string
+                    utc:
+                      type: integer
+                  type: object
+                type: array
+              ranOn:
+                type: string
+              restaurant_name:
+                type: string
+              sum:
+                type: integer
+              tableColumn:
+                items:
+                  properties:
+                    align:
+                      type: string
+                    field:
+                      type: string
+                    label:
+                      type: string
+                    name:
+                      type: string
+                  type: object
+                type: array
+              tableData:
+                items:
+                  properties:
+                    Date:
+                      type: string
+                    Day:
+                      type: string
+                    Hours:
+                      type: string
+                    Payroll:
+                      type: string
+                    Total:
+                      type: string
+                    Week:
+                      type: string
+                    date:
+                      type: string
+                  type: object
+                type: array
+              total:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - report

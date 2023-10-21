@@ -1,0 +1,344 @@
+get:
+  parameters:
+    - in: query
+      name: new_category
+      schema:
+        type: string
+    - in: query
+      name: new_comps
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              categories:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          disable:
+                            type: integer
+                          label:
+                            type: string
+                          original_name:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                  type: object
+                type: array
+              categories_flat:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          disable:
+                            type: integer
+                          label:
+                            type: string
+                          original_name:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    disable:
+                      type: integer
+                    label:
+                      type: string
+                    original_name:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              cogs_category:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          disable:
+                            type: integer
+                          label:
+                            type: string
+                          level:
+                            type: integer
+                          orig_name:
+                            type: string
+                          original_name:
+                            type: string
+                          type:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                  type: object
+                type: array
+              comps:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          isBold:
+                            type: integer
+                          label:
+                            type: string
+                          original_name:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                  type: object
+                type: array
+              comps_flat:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          isBold:
+                            type: integer
+                          label:
+                            type: string
+                          original_name:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    isBold:
+                      type: integer
+                    label:
+                      type: string
+                    original_name:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              departments:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          label:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                  type: object
+                type: array
+              groups:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          label:
+                            type: string
+                          original_name:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                  type: object
+                type: array
+              groups_flat:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          label:
+                            type: string
+                          original_name:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                    original_name:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              jobs:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          label:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                  type: object
+                type: array
+              labor_categories:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          label:
+                            type: string
+                          orig_name:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                  type: object
+                type: array
+              months:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: integer
+                  type: object
+                type: array
+              periods:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              range:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              reasons:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          label:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                  type: object
+                type: array
+              start_week:
+                type: integer
+              traffics:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          label:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                  type: object
+                type: array
+              types:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              vendors:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          label:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                  type: object
+                type: array
+              weeks:
+                items:
+                  properties:
+                    label:
+                      type: integer
+                    value:
+                      type: integer
+                  type: object
+                type: array
+              years:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - report

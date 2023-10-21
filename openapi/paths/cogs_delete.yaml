@@ -1,0 +1,33 @@
+post:
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            id: {}
+            transfer_to: {}
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - cogs

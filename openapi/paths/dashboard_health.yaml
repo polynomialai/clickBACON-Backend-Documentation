@@ -1,76 +1,78 @@
 get:
-  summary: Get health dashboard data
-  description: >
-    "Retrieve health dashboard data for the authenticated user's restaurant.
-    **Middleware Restrictions**:  - User must be authenticated. - User status
-    must not be one of the following:
-      * `2 (Suspended)`
-      * `3 (Expired)`
-      * `4 (Canceled)`
-  tags:
-    - Dashboard
-  security:
-    - bearerAuth: []
   parameters:
     - in: query
       name: from
       schema:
         type: string
-        format: date
-      required: false
-      description: Start date for the date range (YYYY-MM-DD).
     - in: query
       name: to
       schema:
         type: string
-        format: date
-      required: false
-      description: End date for the date range (YYYY-MM-DD).
   responses:
     '200':
-      description: Successful operation
       content:
         application/json:
           schema:
-            type: object
             properties:
-              health:
-                type: object
-                description: Health dashboard data.
               gauge:
+                properties:
+                  gauge:
+                    properties:
+                      month:
+                        type: string
+                      month_percent:
+                        type: integer
+                      purchase:
+                        type: string
+                      purchase_amount:
+                        type: number
+                      purchase_budget:
+                        type: number
+                      purchase_percent:
+                        type: number
+                      sale:
+                        type: string
+                      sale_percent:
+                        type: number
+                      sales_amount:
+                        type: number
+                      sales_budget:
+                        type: integer
+                    type: object
+                  labor_gauge:
+                    properties:
+                      labor:
+                        type: string
+                      percent:
+                        type: number
+                      tile_labor:
+                        type: number
+                      total:
+                        type: number
+                    type: object
                 type: object
-                description: Gauge data.
+              health:
+                properties:
+                  fhe:
+                    type: number
+                  light:
+                    type: string
+                  rate:
+                    type: number
+                type: object
+            type: object
+      description: OK
     '401':
-      description: Unauthorized
       content:
         application/json:
           schema:
-            type: object
             properties:
               message:
-                type: string
                 example: Unauthenticated.
-    '403':
-      description: >
-        Forbidden. This can be due to: - User status being one of: `Suspended
-        (2)`, `Expired (3)`, or `Canceled (4)`.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
                 type: string
-                example: suspended
-    '422':
-      description: Bad Request
-      content:
-        application/json:
-          schema:
             type: object
-            properties:
-              message:
-                type: string
-                example: The given data was invalid.
-              errors:
-                type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - dashboard

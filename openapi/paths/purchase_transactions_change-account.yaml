@@ -1,7 +1,13 @@
 post:
-  tags:
-    - Purchase
-  parameters: []
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            from: {}
+            to: {}
+            transaction_id: {}
+          type: object
   responses:
     '200':
       content:
@@ -24,4 +30,5 @@ post:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: POST /purchase/transactions/change-account
+  tags:
+    - purchase

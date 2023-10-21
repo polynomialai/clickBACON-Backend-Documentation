@@ -1,0 +1,171 @@
+post:
+  parameters:
+    - description: The user parameter
+      in: path
+      name: user
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+              status:
+                properties:
+                  activation_code:
+                    type: string
+                  admin_notes:
+                    type: string
+                  agree:
+                    type: integer
+                  agree_date:
+                    type: string
+                  api_token:
+                    type: string
+                  cancel_reason:
+                    items: {}
+                    properties:
+                      list:
+                        items:
+                          type: string
+                        type: array
+                      other:
+                        type: string
+                    type: array
+                  cancelled_date:
+                    type: string
+                  company:
+                    type: string
+                  contact_id:
+                    type: string
+                  created_at:
+                    type: string
+                  crop_values:
+                    type: string
+                  deleted_at:
+                    type: string
+                  document_access:
+                    type: integer
+                  document_daily_activity:
+                    type: integer
+                  document_email_notification:
+                    type: integer
+                  document_push_notification:
+                    type: integer
+                  email:
+                    type: string
+                  email_account_updates:
+                    type: integer
+                  email_change:
+                    type: string
+                  email_marketing:
+                    type: integer
+                  email_reports:
+                    type: integer
+                  email_transactional_emails:
+                    type: integer
+                  first_name:
+                    type: string
+                  free_to_standard:
+                    type: integer
+                  from_demo:
+                    type: integer
+                  id:
+                    type: integer
+                  ip_address:
+                    type: string
+                  is_partner:
+                    type: integer
+                  last_active_date:
+                    type: string
+                  last_logged_in:
+                    type: string
+                  last_name:
+                    type: string
+                  last_restaurant:
+                    type: string
+                  license_no:
+                    type: string
+                  license_no_used:
+                    type: string
+                  lock_date:
+                    type: string
+                  login_attempts:
+                    type: string
+                  multi_unit:
+                    type: integer
+                  multi_unit_date:
+                    type: string
+                  notes:
+                    type: string
+                  op_avgSales:
+                    type: string
+                  op_experienceLevel:
+                    type: string
+                  op_foodCost:
+                    type: string
+                  op_goal:
+                    type: string
+                  op_motivationLevel:
+                    type: string
+                  op_this_time:
+                    type: string
+                  op_timeDedicate:
+                    type: string
+                  owner_id:
+                    type: string
+                  pagination_records_per_page:
+                    type: integer
+                  parent_id:
+                    type: integer
+                  partner_admin:
+                    type: integer
+                  partner_id:
+                    type: string
+                  profile_pic:
+                    type: string
+                  profile_pic_filename:
+                    type: string
+                  reset_token:
+                    type: string
+                  reset_token_date:
+                    type: string
+                  restaurant_summary_report:
+                    type: integer
+                  role:
+                    type: integer
+                  software_accounts:
+                    type: string
+                  status:
+                    type: integer
+                  steps:
+                    items:
+                      type: string
+                    type: string
+                  timezone:
+                    type: string
+                  updated_at:
+                    type: string
+                  visit_welcome_page:
+                    type: string
+                type: object
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - onboarding

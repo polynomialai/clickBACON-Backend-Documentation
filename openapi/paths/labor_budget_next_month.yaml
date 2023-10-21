@@ -1,0 +1,59 @@
+get:
+  parameters:
+    - in: query
+      name: date
+      schema:
+        type: string
+    - in: query
+      name: copy_last_month
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              categories:
+                items:
+                  properties:
+                    account_no:
+                      type: string
+                    amount:
+                      type: string
+                    created_at:
+                      type: string
+                    deleted_at:
+                      type: string
+                    id:
+                      type: integer
+                    indirect_labor:
+                      type: integer
+                    name:
+                      type: string
+                    percent:
+                      type: number
+                    restaurant_id:
+                      type: integer
+                    updated_at:
+                      type: string
+                  type: object
+                type: array
+              percent:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - labor

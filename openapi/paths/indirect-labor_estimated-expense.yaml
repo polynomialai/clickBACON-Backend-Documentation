@@ -1,0 +1,34 @@
+get:
+  parameters:
+    - in: query
+      name: from
+      schema:
+        type: string
+    - in: query
+      name: to
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              estimated_expense:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - indirect-labor

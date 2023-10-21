@@ -1,0 +1,138 @@
+post:
+  parameters:
+    - description: The notification parameter
+      in: path
+      name: notification
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            actions:
+              items:
+                properties:
+                  icon:
+                    type: string
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  option:
+                    items:
+                      type: string
+                    type: array
+                  required:
+                    type: integer
+                type: object
+              type: array
+            conditions:
+              items: {}
+              type: array
+            intervals:
+              items:
+                properties:
+                  day:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  day_no:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  interval:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  month:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  month_no:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  quarter:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  time:
+                    type: string
+                type: object
+              type: array
+            status:
+              type: integer
+            title:
+              type: string
+            triggers:
+              items:
+                properties:
+                  icon:
+                    type: string
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  option:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  options:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: integer
+                      type: object
+                    type: array
+                type: object
+              type: array
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - notifications

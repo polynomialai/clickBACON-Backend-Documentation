@@ -1,59 +1,32 @@
 get:
-  summary: Retrieve labor details for the dashboard
-  description: >
-    Fetches labor-related details for the dashboard based on the provided date
-    range.
-
-    **Middleware Restrictions**:  - User must be authenticated. - User status
-    must not be one of the following:
-      * `2 (Suspended)`
-      * `3 (Expired)`
-      * `4 (Canceled)`
-  tags:
-    - Dashboard
-  security:
-    - bearerAuth: []
   parameters:
     - in: query
       name: from
-      required: true
       schema:
         type: string
-        format: date
     - in: query
       name: to
-      required: true
       schema:
         type: string
-        format: date
   responses:
     '200':
-      description: Successfully retrieved labor details.
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: ../components/schemas/LaborDetails.yaml
+            properties: {}
+            type: object
+      description: OK
     '401':
-      description: Unauthorized - user needs to be authenticated.
       content:
         application/json:
           schema:
-            type: object
             properties:
               message:
-                type: string
                 example: Unauthenticated.
-    '403':
-      description: >
-        Forbidden. This can be due to: - User status being one of: `Suspended
-        (2)`, `Expired (3)`, or `Canceled (4)`.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
                 type: string
-                example: suspended
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - dashboard

@@ -1,0 +1,339 @@
+post:
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            date: {}
+            file: {}
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                properties:
+                  budgets:
+                    properties:
+                      <date_YYYY-MM-DD>:
+                        type: integer
+                    type: object
+                  cogs:
+                    properties:
+                      <date_YYYY-MM-DD>:
+                        items:
+                          properties:
+                            amount:
+                              type: integer
+                            has_children:
+                              type: integer
+                            id:
+                              type: integer
+                            label:
+                              type: string
+                            name:
+                              type: string
+                            percent:
+                              type: integer
+                          type: object
+                        type: array
+                    type: object
+                  comps:
+                    properties:
+                      <date_YYYY-MM-DD>:
+                        items:
+                          properties:
+                            amount:
+                              type: integer
+                            children_ids:
+                              type: string
+                            has_children:
+                              type: integer
+                            id:
+                              type: integer
+                            key:
+                              type: string
+                            label:
+                              type: string
+                            level:
+                              type: integer
+                            name:
+                              type: string
+                            percent:
+                              type: integer
+                          type: object
+                        type: array
+                    type: object
+                  date:
+                    properties:
+                      date:
+                        type: string
+                      timezone:
+                        type: string
+                      timezone_type:
+                        type: integer
+                    type: object
+                  doe:
+                    properties:
+                      <date_YYYY-MM-DD>:
+                        items:
+                          properties:
+                            amount:
+                              type: integer
+                            has_children:
+                              type: integer
+                            id:
+                              type: integer
+                            label:
+                              type: string
+                            name:
+                              type: string
+                            percent:
+                              type: integer
+                          type: object
+                        type: array
+                    type: object
+                  labor:
+                    properties:
+                      <date_YYYY-MM-DD>:
+                        items:
+                          properties:
+                            amount:
+                              type: integer
+                            has_children:
+                              type: integer
+                            id:
+                              type: integer
+                            jobs:
+                              properties:
+                                <number>:
+                                  properties:
+                                    account_no:
+                                      type: string
+                                    id:
+                                      type: integer
+                                    name:
+                                      type: string
+                                  type: object
+                              type: object
+                            label:
+                              type: string
+                            name:
+                              type: string
+                            percent:
+                              type: integer
+                          type: object
+                        type: array
+                    type: object
+                  labor_budgets:
+                    properties:
+                      <date_YYYY-MM-DD>:
+                        type: integer
+                    type: object
+                  restaurant:
+                    properties:
+                      agree_date:
+                        type: string
+                      bill_immediately:
+                        type: integer
+                      bill_internally:
+                        type: integer
+                      categories:
+                        type: string
+                      company_id:
+                        type: integer
+                      created_at:
+                        type: string
+                      crop_values:
+                        type: string
+                      deleted_at:
+                        type: string
+                      deleted_by:
+                        type: string
+                      document_tags_updated:
+                        type: integer
+                      has_qb_totals:
+                        type: integer
+                      id:
+                        type: integer
+                      last_document_folder:
+                        type: string
+                      last_module:
+                        type: string
+                      logo:
+                        type: string
+                      logo_filename:
+                        type: string
+                      multi_migrate:
+                        type: integer
+                      name:
+                        type: string
+                      operating_expenses:
+                        type: string
+                      pos:
+                        type: string
+                      qbo_tags_updated:
+                        type: integer
+                      setting:
+                        properties:
+                          account_module:
+                            type: integer
+                          accounts_module:
+                            type: integer
+                          budget_spreadsheet_view:
+                            type: integer
+                          cash:
+                            type: integer
+                          checklist_wizard:
+                            type: integer
+                          comps:
+                            type: integer
+                          currency_id:
+                            type: integer
+                          daily_budget:
+                            type: integer
+                          date_format:
+                            type: integer
+                          department:
+                            type: integer
+                          discount_type:
+                            type: integer
+                          document_email:
+                            type: string
+                          document_email_username:
+                            type: string
+                          document_extra_chef_email:
+                            type: string
+                          document_extra_chef_email_toggle:
+                            type: integer
+                          document_margin_edge_email:
+                            type: string
+                          document_margin_edge_email_toggle:
+                            type: integer
+                          document_one_click_forwarding:
+                            type: integer
+                          document_required_vendor:
+                            type: integer
+                          document_write_to_parent:
+                            type: integer
+                          documents:
+                            type: integer
+                          doe_detailed:
+                            type: integer
+                          dont_show_pos:
+                            type: integer
+                          dont_show_profile_pic:
+                            type: integer
+                          getting_started:
+                            type: integer
+                          guest_count:
+                            type: integer
+                          hide_new_dashboard_banner:
+                            type: integer
+                          info_box:
+                            type: integer
+                          inventory:
+                            type: integer
+                          job_description:
+                            type: integer
+                          job_description_message:
+                            type: string
+                          job_description_signature:
+                            type: string
+                          job_sheet:
+                            type: integer
+                          labor:
+                            type: integer
+                          labor_calculator:
+                            type: integer
+                          nesting:
+                            type: integer
+                          nesting_date:
+                            type: string
+                          nesting_flag:
+                            type: integer
+                          new_feature:
+                            type: integer
+                          ninja_interest:
+                            type: integer
+                          ninja_not_interested:
+                            type: integer
+                          operating_expense:
+                            type: integer
+                          pdf_footer_line_1:
+                            type: string
+                          pdf_footer_line_2:
+                            type: string
+                          pdf_logo:
+                            type: integer
+                          qb_class_id:
+                            type: string
+                          quickbooks_priority:
+                            type: integer
+                          sheet_package:
+                            type: integer
+                          show_integration:
+                            type: integer
+                          splitter_width:
+                            type: integer
+                          start_week:
+                            type: integer
+                          tag_downloaded:
+                            type: integer
+                          video_report_suggestion:
+                            type: integer
+                        type: object
+                      setup_wizard:
+                        type: integer
+                      setup_wizard_notify:
+                        type: integer
+                      updated_at:
+                        type: string
+                      user_id:
+                        type: integer
+                      welcome:
+                        type: integer
+                      wizard_position:
+                        type: string
+                    type: object
+                  sales:
+                    properties:
+                      <date_YYYY-MM-DD>:
+                        items:
+                          properties:
+                            amount:
+                              type: integer
+                            has_children:
+                              type: integer
+                            id:
+                              type: integer
+                            label:
+                              type: string
+                            name:
+                              type: string
+                            percent:
+                              type: integer
+                          type: object
+                        type: array
+                    type: object
+                type: object
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - budget

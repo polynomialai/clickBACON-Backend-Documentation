@@ -1,0 +1,63 @@
+get:
+  parameters:
+    - description: The job_description parameter
+      in: path
+      name: job_description
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              info:
+                properties:
+                  category:
+                    type: string
+                  category_id:
+                    type: string
+                  description:
+                    type: string
+                  id:
+                    type: string
+                  reports_to:
+                    type: string
+                  skills:
+                    items: {}
+                    type: array
+                  tasks:
+                    items: {}
+                    type: array
+                  title:
+                    type: string
+                type: object
+              options:
+                properties:
+                  categories:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: integer
+                      type: object
+                    type: array
+                type: object
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - job-description

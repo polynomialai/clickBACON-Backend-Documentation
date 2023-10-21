@@ -1,0 +1,117 @@
+get:
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                properties:
+                  description:
+                    type: string
+                  labors:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        level:
+                          type: integer
+                        name:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  types:
+                    items:
+                      properties:
+                        create:
+                          type: string
+                        description:
+                          type: string
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        optgroup:
+                          type: string
+                      type: object
+                    type: array
+                type: object
+              frequency_label:
+                type: string
+              is_block_labor_values:
+                type: integer
+              settings:
+                properties:
+                  auto_post:
+                    type: integer
+                  auto_post_date:
+                    type: string
+                  created_at:
+                    type: string
+                  fed:
+                    type: string
+                  fixed_cost:
+                    type: integer
+                  fixed_other:
+                    type: string
+                  fixed_payroll_processing_fees:
+                    type: string
+                  fixed_workmans_compensation:
+                    type: string
+                  fmed:
+                    type: string
+                  frequency:
+                    type: integer
+                  fsoc:
+                    type: string
+                  futa:
+                    type: string
+                  id:
+                    type: integer
+                  indirect_labor:
+                    type: integer
+                  others:
+                    type: string
+                  payroll_processing_fee:
+                    type: string
+                  percentage:
+                    type: integer
+                  period_cost:
+                    type: string
+                  period_other:
+                    type: string
+                  period_process_fee:
+                    type: string
+                  period_workmans_compensation:
+                    type: string
+                  restaurant_id:
+                    type: integer
+                  show_hours:
+                    type: integer
+                  state:
+                    type: string
+                  state_940:
+                    type: string
+                  updated_at:
+                    type: string
+                  workmans_compensation:
+                    type: string
+                type: object
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - job

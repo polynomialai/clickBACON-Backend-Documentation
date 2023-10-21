@@ -1,0 +1,112 @@
+get:
+  parameters:
+    - in: query
+      name: date
+      schema:
+        type: string
+    - in: query
+      name: edit
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              budget:
+                properties:
+                  actual:
+                    type: integer
+                  amount:
+                    type: integer
+                  created_at:
+                    type: string
+                  date:
+                    type: string
+                  deleted_at:
+                    type: string
+                  id:
+                    type: integer
+                  restaurant_id:
+                    type: integer
+                  updated_at:
+                    type: string
+                type: object
+              budgetHistorical:
+                type: number
+              days:
+                properties:
+                  <date_YYYY-MM-DD>:
+                    properties:
+                      amount:
+                        type: integer
+                      count:
+                        type: integer
+                      percent:
+                        type: integer
+                      str:
+                        type: string
+                    type: object
+                type: object
+              hasDailyBudget:
+                type: integer
+              lastMonthSales:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - budget
+post:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            amount:
+              items:
+                type: integer
+              type: array
+            copy_last_month:
+              type: string
+            date:
+              items:
+                type: string
+              type: array
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - budget

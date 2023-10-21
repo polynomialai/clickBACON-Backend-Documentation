@@ -1,0 +1,72 @@
+get:
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              available_users:
+                type: integer
+              has_available_users:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - users
+post:
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            access_levels: {}
+            crop_values: {}
+            email: {}
+            first_name: {}
+            last_name: {}
+            logo: {}
+            permissions-toggle: {}
+            restaurants: {}
+            restaurants_data: {}
+            role: {}
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                items:
+                  type: string
+                type: array
+              status:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - users

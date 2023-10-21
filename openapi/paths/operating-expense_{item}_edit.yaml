@@ -1,0 +1,110 @@
+get:
+  parameters:
+    - description: The item parameter
+      in: path
+      name: item
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                properties:
+                  description:
+                    type: string
+                  parents:
+                    items:
+                      properties:
+                        has_data:
+                          type: integer
+                        label:
+                          type: string
+                        level:
+                          type: integer
+                        name:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  selected_type:
+                    type: integer
+                type: object
+              operating_expense:
+                properties:
+                  _lft:
+                    type: integer
+                  _rgt:
+                    type: integer
+                  account_no:
+                    type: string
+                  created_at:
+                    type: string
+                  deleted_at:
+                    type: string
+                  hash_parent_id:
+                    type: string
+                  id:
+                    type: integer
+                  inventory:
+                    type: integer
+                  inventory_period:
+                    type: string
+                  name:
+                    type: string
+                  order:
+                    type: string
+                  parent_id:
+                    type: integer
+                  quickbooks_account_id:
+                    type: string
+                  restaurant_id:
+                    type: integer
+                  sort_after:
+                    type: string
+                  sorting:
+                    type: string
+                  tag:
+                    type: string
+                  type:
+                    type: integer
+                  updated_at:
+                    type: string
+                type: object
+              type_select:
+                type: string
+              types:
+                items:
+                  properties:
+                    create:
+                      type: string
+                    description:
+                      type: string
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    optgroup:
+                      type: string
+                  type: object
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - operating-expense

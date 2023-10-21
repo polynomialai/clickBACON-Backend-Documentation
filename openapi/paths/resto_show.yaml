@@ -1,0 +1,118 @@
+get:
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              companies:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: integer
+                  type: object
+                type: array
+              company:
+                properties:
+                  label:
+                    type: string
+                  value:
+                    type: integer
+                type: object
+              crop_values:
+                type: string
+              currencies:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: integer
+                  type: object
+                type: array
+              logo:
+                type: string
+              other:
+                type: string
+              pos:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              restaurant_currency:
+                properties:
+                  label:
+                    type: string
+                  value:
+                    type: integer
+                type: object
+              restaurant_name:
+                type: string
+              restaurant_pos:
+                properties:
+                  label:
+                    type: string
+                  value:
+                    type: string
+                type: object
+              update_additional_users:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - resto
+post:
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            company: {}
+            company_name: {}
+            crop_values: {}
+            currency: {}
+            logo: {}
+            name: {}
+            name_of_company: {}
+            pos: {}
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties: {}
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - resto

@@ -1,0 +1,38 @@
+get:
+  parameters:
+    - in: query
+      name: week
+      schema:
+        type: string
+    - in: query
+      name: year
+      schema:
+        type: string
+    - description: The checklist parameter
+      in: path
+      name: checklist
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/pdf:
+          schema:
+            properties: {}
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - checklist

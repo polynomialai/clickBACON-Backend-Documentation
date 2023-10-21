@@ -1,0 +1,81 @@
+get:
+  parameters:
+    - in: query
+      name: company_id
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              companies:
+                items: {}
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - partner-user
+post:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            bill_immediately:
+              type: integer
+            bill_internally:
+              type: integer
+            company_id:
+              type: string
+            company_name:
+              type: string
+            partner_company_id:
+              type: integer
+            restaurant_name:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+              restaurant:
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                type: object
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - partner-user

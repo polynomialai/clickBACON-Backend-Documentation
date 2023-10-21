@@ -1,7 +1,9 @@
 get:
-  tags:
-    - Schedule
-  parameters: []
+  parameters:
+    - in: query
+      name: filter
+      schema:
+        type: string
   responses:
     '200':
       content:
@@ -24,4 +26,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /schedule/total
+  tags:
+    - schedule

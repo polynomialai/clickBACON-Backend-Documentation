@@ -1,35 +1,27 @@
 get:
-  tags:
-    - Labor
   parameters:
     - in: query
       name: page
-      required: false
       schema:
         type: string
     - in: query
       name: rows
-      required: false
       schema:
         type: string
     - in: query
       name: sortBy
-      required: false
       schema:
         type: string
     - in: query
       name: descending
-      required: false
       schema:
         type: string
     - in: query
       name: from
-      required: false
       schema:
         type: string
     - in: query
       name: to
-      required: false
       schema:
         type: string
   responses:
@@ -39,6 +31,46 @@ get:
           schema:
             properties:
               data:
+                items:
+                  properties:
+                    actions:
+                      type: string
+                    cash:
+                      type: string
+                    checkbox:
+                      type: string
+                    cost:
+                      type: string
+                    date:
+                      type: string
+                    date_tooltip:
+                      type: string
+                    edit_link:
+                      type: string
+                    fixed_cost:
+                      type: string
+                    hours:
+                      type: string
+                    id_hash:
+                      type: string
+                    indirect_labor:
+                      properties:
+                        actual:
+                          type: string
+                        estimated:
+                          type: string
+                      type: object
+                    indirect_labor_amount:
+                      type: integer
+                    percentage:
+                      type: integer
+                    period_cost:
+                      type: string
+                    restaurant_id:
+                      type: integer
+                    total:
+                      type: string
+                  type: object
                 type: array
               draw:
                 type: integer
@@ -60,4 +92,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /labor/ajax
+  tags:
+    - labor

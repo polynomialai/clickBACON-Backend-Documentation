@@ -1,0 +1,126 @@
+get:
+  parameters:
+    - in: query
+      name: date
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              adjust:
+                type: integer
+              budget:
+                properties:
+                  amount:
+                    type: integer
+                type: object
+              budget_categories:
+                items:
+                  properties:
+                    children:
+                      items:
+                        type: integer
+                      type: array
+                    cost:
+                      type: string
+                    cost_amount:
+                      type: string
+                    has_children:
+                      type: integer
+                    id:
+                      type: integer
+                    level:
+                      type: integer
+                    name:
+                      type: string
+                    name_original:
+                      type: string
+                    sale:
+                      type: string
+                    sale_amount:
+                      type: string
+                  type: object
+                type: array
+              date:
+                properties:
+                  date:
+                    type: string
+                  timezone:
+                    type: string
+                  timezone_type:
+                    type: integer
+                type: object
+              edit:
+                type: integer
+              has_budget:
+                type: integer
+              mode:
+                type: string
+              new_budget:
+                type: integer
+              next_month:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - budget
+put:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            amount:
+              type: integer
+            cost:
+              properties:
+                <number>:
+                  type: integer
+              type: object
+            cost_amount:
+              properties:
+                <number>:
+                  type: integer
+              type: object
+            date:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - budget

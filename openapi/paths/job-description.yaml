@@ -1,0 +1,122 @@
+get:
+  parameters:
+    - in: query
+      name: page
+      schema:
+        type: string
+    - in: query
+      name: rows
+      schema:
+        type: string
+    - in: query
+      name: sortBy
+      schema:
+        type: string
+    - in: query
+      name: descending
+      schema:
+        type: string
+    - in: query
+      name: filter
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                items:
+                  properties:
+                    actions:
+                      type: string
+                    category:
+                      type: string
+                    checkbox:
+                      type: string
+                    description:
+                      type: string
+                    edit_link:
+                      type: string
+                    id_hash:
+                      type: string
+                    reports_to:
+                      type: string
+                    status:
+                      type: string
+                    title:
+                      type: string
+                    updated_at:
+                      type: string
+                  type: object
+                type: array
+              draw:
+                type: integer
+              recordsFiltered:
+                type: integer
+              recordsTotal:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - job-description
+post:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            category:
+              type: string
+            description:
+              type: string
+            reports_to:
+              type: string
+            skills:
+              items: {}
+              type: array
+            tasks:
+              items: {}
+              type: array
+            title:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: string
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - job-description

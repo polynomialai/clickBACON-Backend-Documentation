@@ -1,0 +1,170 @@
+get:
+  parameters:
+    - in: query
+      name: type
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              columns:
+                items:
+                  properties:
+                    align:
+                      type: string
+                    field:
+                      type: string
+                    label:
+                      type: string
+                    name:
+                      type: string
+                  type: object
+                type: array
+              date:
+                properties:
+                  date:
+                    type: string
+                  timezone:
+                    type: string
+                  timezone_type:
+                    type: integer
+                type: object
+              end:
+                properties:
+                  date:
+                    type: string
+                  timezone:
+                    type: string
+                  timezone_type:
+                    type: integer
+                type: object
+              job:
+                properties:
+                  account_no:
+                    type: string
+                  created_at:
+                    type: string
+                  deleted_at:
+                    type: string
+                  id:
+                    type: integer
+                  indirect_labor:
+                    type: integer
+                  name:
+                    type: string
+                  restaurant_id:
+                    type: integer
+                  updated_at:
+                    type: string
+                type: object
+              labors:
+                items:
+                  properties:
+                    cash:
+                      type: string
+                    cost:
+                      type: string
+                    date:
+                      type: string
+                    hours:
+                      type: string
+                    id:
+                      type: string
+                    job:
+                      type: string
+                  type: object
+                type: string
+              restaurant:
+                properties:
+                  agree_date:
+                    type: string
+                  bill_immediately:
+                    type: integer
+                  bill_internally:
+                    type: integer
+                  categories:
+                    type: string
+                  company_id:
+                    type: integer
+                  created_at:
+                    type: string
+                  crop_values:
+                    type: string
+                  deleted_at:
+                    type: string
+                  deleted_by:
+                    type: string
+                  document_tags_updated:
+                    type: integer
+                  has_qb_totals:
+                    type: integer
+                  id:
+                    type: integer
+                  last_document_folder:
+                    type: string
+                  last_module:
+                    type: string
+                  logo:
+                    type: string
+                  logo_filename:
+                    type: string
+                  multi_migrate:
+                    type: integer
+                  name:
+                    type: string
+                  operating_expenses:
+                    type: string
+                  pos:
+                    type: string
+                  qbo_tags_updated:
+                    type: integer
+                  setup_wizard:
+                    type: integer
+                  setup_wizard_notify:
+                    type: integer
+                  updated_at:
+                    type: string
+                  user_id:
+                    type: integer
+                  welcome:
+                    type: integer
+                  wizard_position:
+                    type: string
+                type: object
+              start:
+                properties:
+                  date:
+                    type: string
+                  timezone:
+                    type: string
+                  timezone_type:
+                    type: integer
+                type: object
+              totals:
+                properties:
+                  cash:
+                    type: string
+                  cost:
+                    type: string
+                  hours:
+                    type: string
+                type: object
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - labor-category-report

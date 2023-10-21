@@ -1,0 +1,108 @@
+get:
+  parameters:
+    - description: The item parameter
+      in: path
+      name: item
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              indirect_labor:
+                properties:
+                  actual_expense:
+                    type: integer
+                  daily_difference:
+                    type: number
+                  difference:
+                    type: integer
+                  estimated_expense:
+                    type: integer
+                  from:
+                    type: string
+                  id:
+                    type: integer
+                  to:
+                    type: string
+                type: object
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - indirect-labor
+put:
+  parameters:
+    - description: The item parameter
+      in: path
+      name: item
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            actual_expense:
+              type: integer
+            from:
+              type: string
+            to:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              indirect_labor:
+                properties:
+                  actual_expense:
+                    type: integer
+                  daily_difference:
+                    type: number
+                  difference:
+                    type: integer
+                  estimated_expense:
+                    type: integer
+                  from:
+                    type: string
+                  id:
+                    type: integer
+                  to:
+                    type: string
+                type: object
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - indirect-labor

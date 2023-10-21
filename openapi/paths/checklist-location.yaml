@@ -1,0 +1,49 @@
+post:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            name:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              location:
+                properties:
+                  label:
+                    type: string
+                  value:
+                    type: integer
+                type: object
+              locations:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - checklist-location

@@ -1,0 +1,60 @@
+put:
+  parameters:
+    - description: The item parameter
+      in: path
+      name: item
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            account_no:
+              type: string
+            category_id:
+              type: string
+            effective_date:
+              type: string
+            entry_type:
+              type: integer
+            fixed_amount:
+              type: string
+            frequency:
+              type: integer
+            name:
+              type: string
+            redirect:
+              type: string
+            redirect_id:
+              type: string
+            use_fixed:
+              type: integer
+            yearly_amount:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - job

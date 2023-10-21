@@ -1,0 +1,240 @@
+get:
+  parameters:
+    - in: query
+      name: range
+      schema:
+        type: string
+    - in: query
+      name: from
+      schema:
+        type: string
+    - in: query
+      name: to
+      schema:
+        type: string
+    - in: query
+      name: detailed
+      schema:
+        type: string
+    - in: query
+      name: labor_categories[0]
+      schema:
+        type: string
+    - in: query
+      name: jobs[0]
+      schema:
+        type: string
+    - in: query
+      name: group
+      schema:
+        type: string
+    - in: query
+      name: efficiency
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              chart_type:
+                type: string
+              dates:
+                properties:
+                  from:
+                    type: string
+                  to:
+                    type: string
+                type: object
+              exports:
+                properties:
+                  links:
+                    properties:
+                      excel:
+                        properties:
+                          link:
+                            type: string
+                          params:
+                            properties:
+                              detailed:
+                                type: string
+                              efficiency:
+                                type: string
+                              from:
+                                type: string
+                              group:
+                                type: string
+                              jobs:
+                                items:
+                                  type: string
+                                type: array
+                              labor_categories:
+                                items:
+                                  type: string
+                                type: array
+                              range:
+                                type: string
+                              to:
+                                type: string
+                              type:
+                                type: string
+                            type: object
+                        type: object
+                      pdf:
+                        properties:
+                          link:
+                            type: string
+                          params:
+                            properties:
+                              detailed:
+                                type: string
+                              efficiency:
+                                type: string
+                              from:
+                                type: string
+                              group:
+                                type: string
+                              jobs:
+                                items:
+                                  type: string
+                                type: array
+                              labor_categories:
+                                items:
+                                  type: string
+                                type: array
+                              range:
+                                type: string
+                              to:
+                                type: string
+                              type:
+                                type: string
+                            type: object
+                        type: object
+                    type: object
+                  title:
+                    type: string
+                type: object
+              head:
+                items:
+                  type: string
+                type: array
+              labors:
+                items:
+                  properties:
+                    amount:
+                      type: number
+                    avg_cost_hour:
+                      type: number
+                    cash:
+                      type: string
+                    cost_per_cover:
+                      type: number
+                    created_at:
+                      type: string
+                    date:
+                      type: string
+                    deleted_at:
+                      type: string
+                    detailed:
+                      type: string
+                    fixed_cost:
+                      type: string
+                    header:
+                      items:
+                        type: string
+                      type: array
+                    hours:
+                      type: integer
+                    hours_per_cover:
+                      type: number
+                    id:
+                      type: integer
+                    indirect_labor:
+                      type: integer
+                    indirect_labor_source:
+                      type: string
+                    job_id:
+                      type: integer
+                    name:
+                      type: string
+                    percentage:
+                      type: integer
+                    period_cost:
+                      type: string
+                    restaurant_id:
+                      type: integer
+                    row:
+                      items:
+                        type: string
+                      type: array
+                    sales_per_hour:
+                      type: number
+                    updated_at:
+                      type: string
+                    utc:
+                      type: integer
+                  type: object
+                type: array
+              ranOn:
+                type: string
+              restaurant_name:
+                type: string
+              sum:
+                type: number
+              tableColumn:
+                items:
+                  properties:
+                    align:
+                      type: string
+                    field:
+                      type: string
+                    label:
+                      type: string
+                    name:
+                      type: string
+                  type: object
+                type: array
+              tableData:
+                items:
+                  properties:
+                    Amount:
+                      type: string
+                    Avg Cost per Hour:
+                      type: string
+                    Cost per Cover:
+                      type: string
+                    Date:
+                      type: string
+                    Day:
+                      type: string
+                    Hours:
+                      type: string
+                    Hours per Cover:
+                      type: string
+                    Sales per Hour:
+                      type: string
+                  type: object
+                type: array
+              total:
+                type: number
+              total_all:
+                items:
+                  type: string
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - report

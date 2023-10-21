@@ -1,0 +1,174 @@
+get:
+  parameters:
+    - in: query
+      name: date
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              adjust:
+                type: integer
+              budget:
+                properties:
+                  actual:
+                    type: integer
+                  amount:
+                    type: integer
+                  created_at:
+                    type: string
+                  date:
+                    type: string
+                  deleted_at:
+                    type: string
+                  id:
+                    type: integer
+                  restaurant_id:
+                    type: integer
+                  updated_at:
+                    type: string
+                type: object
+              categories:
+                items:
+                  properties:
+                    account_no:
+                      type: string
+                    amount:
+                      type: number
+                    created_at:
+                      type: string
+                    deleted_at:
+                      type: string
+                    id:
+                      type: integer
+                    indirect_labor:
+                      type: integer
+                    name:
+                      type: string
+                    percent:
+                      type: number
+                    restaurant_id:
+                      type: integer
+                    updated_at:
+                      type: string
+                  type: object
+                type: array
+              date:
+                properties:
+                  date:
+                    type: string
+                  timezone:
+                    type: string
+                  timezone_type:
+                    type: integer
+                type: object
+              has_budget:
+                type: integer
+              labor_budget:
+                properties:
+                  budget_category:
+                    items:
+                      properties:
+                        amount:
+                          type: number
+                        category_id:
+                          type: integer
+                        created_at:
+                          type: string
+                        id:
+                          type: integer
+                        labor_budget_id:
+                          type: integer
+                        percent:
+                          type: number
+                        restaurant_id:
+                          type: integer
+                        updated_at:
+                          type: string
+                      type: object
+                    type: array
+                  created_at:
+                    type: string
+                  date:
+                    type: string
+                  deleted_at:
+                    type: string
+                  id:
+                    type: integer
+                  percent:
+                    type: integer
+                  restaurant_id:
+                    type: integer
+                  updated_at:
+                    type: string
+                type: object
+              mode:
+                type: string
+              new_budget:
+                type: integer
+              next_month:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - budget
+put:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            category_percent:
+              properties:
+                <number>:
+                  type: number
+              type: object
+            cost_amount:
+              properties:
+                <number>:
+                  type: number
+              type: object
+            date:
+              type: string
+            percent:
+              type: integer
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - budget

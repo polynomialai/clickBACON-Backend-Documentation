@@ -1,0 +1,63 @@
+get:
+  parameters:
+    - in: query
+      name: page
+      schema:
+        type: string
+    - in: query
+      name: rows
+      schema:
+        type: string
+    - in: query
+      name: filter
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                items:
+                  properties:
+                    actions:
+                      type: string
+                    default_pay:
+                      type: string
+                    edit_link:
+                      type: string
+                    id_hash:
+                      type: string
+                    job:
+                      type: string
+                    name:
+                      type: string
+                    rate:
+                      type: string
+                    type:
+                      type: string
+                  type: object
+                type: array
+              draw:
+                type: integer
+              recordsFiltered:
+                type: integer
+              recordsTotal:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - employee

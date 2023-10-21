@@ -1,0 +1,55 @@
+get:
+  parameters:
+    - in: query
+      name: page
+      schema:
+        type: string
+    - in: query
+      name: rows
+      schema:
+        type: string
+    - in: query
+      name: sortBy
+      schema:
+        type: string
+    - in: query
+      name: descending
+      schema:
+        type: string
+    - in: query
+      name: filter
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                  type: object
+                type: array
+              total:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - partner-company

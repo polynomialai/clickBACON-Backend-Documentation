@@ -1,66 +1,69 @@
 get:
-  summary: Retrieve header information
-  description: This endpoint retrieves header information for the authenticated user.
-  tags:
-    - Initial (Refresh Call)
-  security:
-    - bearerAuth: []
   responses:
     '200':
-      description: Successful operation
       content:
         application/json:
           schema:
-            type: object
             properties:
-              restaurant:
-                type: string
-              restaurants:
-                type: array
+              api_companies:
                 items:
-                  type: object
                   properties:
-                    id:
+                    company:
                       type: string
                     name:
                       type: string
-                    link:
-                      type: string
-              tags:
+                  type: object
                 type: array
+              avatar:
+                type: string
+              connections:
                 items:
                   type: string
-              role:
-                type: integer
+                type: array
               isParent:
-                type: boolean
+                type: integer
+              last_import:
+                type: string
+              last_restaurant:
+                type: integer
               owner_id:
-                type: boolean
-              avatar:
+                type: integer
+              restaurant:
                 type: string
               restaurant_logo:
                 type: string
-              connections:
-                type: array
+              restaurants:
                 items:
-                  type: string
-              last_restaurant:
+                  properties:
+                    company_id:
+                      type: integer
+                    id:
+                      type: string
+                    link:
+                      type: string
+                    name:
+                      type: string
+                  type: object
+                type: array
+              role:
                 type: integer
-              api_companies:
-                type: array
+              tags:
                 items:
                   type: string
-              last_import:
-                type: string
-                format: datetime
-                description: The last time data was imported from Quickbooks.
+                type: array
+            type: object
+      description: OK
     '401':
-      description: Unauthorized
       content:
         application/json:
           schema:
-            type: object
             properties:
               message:
-                type: string
                 example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - header

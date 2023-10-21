@@ -1,0 +1,157 @@
+get:
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              actions:
+                items:
+                  properties:
+                    icon:
+                      type: string
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    option:
+                      type: string
+                    required:
+                      type: integer
+                  type: object
+                type: array
+              conditions:
+                items:
+                  properties:
+                    amount:
+                      type: string
+                    compare:
+                      type: string
+                    compares:
+                      items:
+                        properties:
+                          label:
+                            type: string
+                          value:
+                            type: integer
+                        type: object
+                      type: array
+                    icon:
+                      type: string
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    option:
+                      type: string
+                    options:
+                      items:
+                        properties:
+                          label:
+                            type: string
+                          value:
+                            type: integer
+                        type: object
+                      type: array
+                  type: object
+                type: array
+              schedules:
+                properties:
+                  days:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: integer
+                      type: object
+                    type: array
+                  days_no:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: integer
+                      type: object
+                    type: array
+                  intervals:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: integer
+                      type: object
+                    type: array
+                  months:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: integer
+                      type: object
+                    type: array
+                  months_no:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: integer
+                      type: object
+                    type: array
+                  quarterly:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: integer
+                      type: object
+                    type: array
+                type: object
+              triggers:
+                items:
+                  properties:
+                    icon:
+                      type: string
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    option:
+                      type: string
+                    options:
+                      items: {}
+                      type: array
+                  type: object
+                type: array
+              users:
+                items:
+                  properties:
+                    email:
+                      type: string
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - notifications

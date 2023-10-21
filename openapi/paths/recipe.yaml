@@ -1,0 +1,71 @@
+get:
+  parameters:
+    - in: query
+      name: page
+      schema:
+        type: string
+    - in: query
+      name: rows
+      schema:
+        type: string
+    - in: query
+      name: sortBy
+      schema:
+        type: string
+    - in: query
+      name: descending
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                items:
+                  properties:
+                    actions:
+                      type: string
+                    category_name:
+                      type: string
+                    checkbox:
+                      type: string
+                    edit_link:
+                      type: string
+                    id_hash:
+                      type: string
+                    name:
+                      type: string
+                    recipe_category_id_hash:
+                      type: string
+                    status:
+                      type: string
+                    unit_name:
+                      type: string
+                    yield:
+                      type: string
+                  type: object
+                type: array
+              draw:
+                type: integer
+              recordsFiltered:
+                type: integer
+              recordsTotal:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - recipe

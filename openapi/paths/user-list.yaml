@@ -1,0 +1,90 @@
+get:
+  parameters:
+    - in: query
+      name: page
+      schema:
+        type: string
+    - in: query
+      name: rows
+      schema:
+        type: string
+    - in: query
+      name: status[]
+      schema:
+        type: string
+    - in: query
+      name: filter
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                items:
+                  properties:
+                    company_name:
+                      type: string
+                    contact_id:
+                      type: string
+                    document_access:
+                      type: integer
+                    email:
+                      type: string
+                    first_name:
+                      type: string
+                    id:
+                      type: string
+                    last_active_date:
+                      type: string
+                    last_name:
+                      type: string
+                    multi_unit:
+                      type: integer
+                    owner_id:
+                      type: string
+                    partner_companies_id:
+                      type: string
+                    partner_company_name:
+                      type: string
+                    quasar_page_access:
+                      properties:
+                        labor_page_access:
+                          type: integer
+                        purchase_page_access:
+                          type: integer
+                        sales_page_access:
+                          type: integer
+                      type: object
+                    restaurant_id:
+                      type: string
+                    restaurant_name:
+                      type: string
+                    role:
+                      type: string
+                    status:
+                      type: integer
+                    test:
+                      type: string
+                  type: object
+                type: array
+              total:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - user-list

@@ -1,0 +1,301 @@
+get:
+  parameters:
+    - in: query
+      name: from
+      schema:
+        type: string
+    - in: query
+      name: to
+      schema:
+        type: string
+    - in: query
+      name: type
+      schema:
+        type: string
+    - in: query
+      name: ids[]
+      schema:
+        type: string
+    - in: query
+      name: refresh
+      schema:
+        type: string
+    - in: query
+      name: run
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              company:
+                type: string
+              range:
+                properties:
+                  from:
+                    type: string
+                  to:
+                    type: string
+                type: object
+              restaurant:
+                type: string
+              rows:
+                properties:
+                  data:
+                    properties:
+                      header:
+                        items:
+                          properties:
+                            attr:
+                              properties:
+                                align:
+                                  type: string
+                                bold:
+                                  type: integer
+                              type: object
+                            name:
+                              type: string
+                          type: object
+                        type: array
+                      rows:
+                        items:
+                          properties:
+                            attr:
+                              properties:
+                                bold:
+                                  type: integer
+                                borderTop:
+                                  type: integer
+                              type: object
+                            cols:
+                              items:
+                                properties:
+                                  align:
+                                    type: string
+                                  attr:
+                                    properties:
+                                      bold:
+                                        type: integer
+                                      border_top:
+                                        type: integer
+                                    type: object
+                                  format:
+                                    type: string
+                                  label:
+                                    type: string
+                                  offset:
+                                    type: integer
+                                  value:
+                                    type: string
+                                type: object
+                              type: array
+                            data:
+                              properties:
+                                expanded:
+                                  type: integer
+                                id:
+                                  type: integer
+                                level:
+                                  type: integer
+                                name:
+                                  type: string
+                                parent_id:
+                                  type: integer
+                                totals:
+                                  type: integer
+                              type: object
+                            rows:
+                              items:
+                                properties:
+                                  attr:
+                                    properties:
+                                      bold:
+                                        type: integer
+                                      borderTop:
+                                        type: integer
+                                    type: object
+                                  cols:
+                                    items:
+                                      properties:
+                                        align:
+                                          type: string
+                                        attr:
+                                          properties:
+                                            border_top:
+                                              type: integer
+                                          type: object
+                                        format:
+                                          type: string
+                                        label:
+                                          type: string
+                                        name:
+                                          type: string
+                                        offset:
+                                          type: integer
+                                        route:
+                                          properties:
+                                            name:
+                                              type: string
+                                            query:
+                                              properties:
+                                                date:
+                                                  type: string
+                                                id:
+                                                  type: string
+                                                type:
+                                                  type: string
+                                              type: object
+                                          type: object
+                                        value:
+                                          type: string
+                                      type: object
+                                    type: array
+                                  data:
+                                    properties:
+                                      amount:
+                                        type: number
+                                      expanded:
+                                        type: integer
+                                      id:
+                                        type: integer
+                                      level:
+                                        type: integer
+                                      name:
+                                        type: string
+                                      parent_id:
+                                        type: integer
+                                    type: object
+                                  rows:
+                                    items:
+                                      properties:
+                                        attr:
+                                          properties:
+                                            bold:
+                                              type: integer
+                                            borderTop:
+                                              type: integer
+                                          type: object
+                                        cols:
+                                          items:
+                                            properties:
+                                              align:
+                                                type: string
+                                              attr:
+                                                properties:
+                                                  border_top:
+                                                    type: integer
+                                                type: object
+                                              format:
+                                                type: string
+                                              label:
+                                                type: string
+                                              name:
+                                                type: string
+                                              offset:
+                                                type: integer
+                                              route:
+                                                properties:
+                                                  name:
+                                                    type: string
+                                                  query:
+                                                    properties:
+                                                      date:
+                                                        type: string
+                                                      id:
+                                                        type: string
+                                                      type:
+                                                        type: string
+                                                    type: object
+                                                type: object
+                                              value:
+                                                type: string
+                                            type: object
+                                          type: array
+                                        data:
+                                          properties:
+                                            amount:
+                                              type: number
+                                            expanded:
+                                              type: integer
+                                            id:
+                                              type: integer
+                                            level:
+                                              type: integer
+                                            name:
+                                              type: string
+                                            parent_id:
+                                              type: integer
+                                          type: object
+                                        rows:
+                                          items:
+                                            properties:
+                                              attr:
+                                                properties:
+                                                  borderTop:
+                                                    type: integer
+                                                type: object
+                                              cols:
+                                                items:
+                                                  properties:
+                                                    align:
+                                                      type: string
+                                                    format:
+                                                      type: string
+                                                    label:
+                                                      type: string
+                                                    name:
+                                                      type: string
+                                                    route:
+                                                      properties:
+                                                        name:
+                                                          type: string
+                                                        query:
+                                                          properties:
+                                                            id:
+                                                              type: string
+                                                            type:
+                                                              type: string
+                                                          type: object
+                                                      type: object
+                                                    value:
+                                                      type: string
+                                                  type: object
+                                                type: array
+                                              data:
+                                                properties:
+                                                  amount:
+                                                    type: number
+                                                type: object
+                                            type: object
+                                          type: array
+                                      type: object
+                                    type: array
+                                type: object
+                              type: array
+                          type: object
+                        type: array
+                      totals:
+                        items: {}
+                        type: array
+                    type: object
+                type: object
+              sales:
+                type: number
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - restaurant-summary-report

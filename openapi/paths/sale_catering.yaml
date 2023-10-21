@@ -1,7 +1,4 @@
 post:
-  tags:
-    - Sale
-  parameters: []
   requestBody:
     content:
       application/json:
@@ -32,4 +29,5 @@ post:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: POST /sale/catering
+  tags:
+    - sale

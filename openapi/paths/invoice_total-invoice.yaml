@@ -1,15 +1,15 @@
 get:
-  tags:
-    - Invoice
   parameters:
     - in: query
       name: from
-      required: false
       schema:
         type: string
     - in: query
       name: to
-      required: false
+      schema:
+        type: string
+    - in: query
+      name: filter
       schema:
         type: string
   responses:
@@ -34,4 +34,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /invoice/total-invoice
+  tags:
+    - invoice

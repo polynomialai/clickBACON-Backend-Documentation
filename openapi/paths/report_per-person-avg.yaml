@@ -1,0 +1,165 @@
+get:
+  parameters:
+    - in: query
+      name: range
+      schema:
+        type: string
+    - in: query
+      name: from
+      schema:
+        type: string
+    - in: query
+      name: to
+      schema:
+        type: string
+    - in: query
+      name: detailed
+      schema:
+        type: string
+    - in: query
+      name: group
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              chart:
+                type: string
+              chart_type:
+                type: string
+              exports:
+                properties:
+                  links:
+                    properties:
+                      excel:
+                        properties:
+                          link:
+                            type: string
+                          params:
+                            properties:
+                              detailed:
+                                type: string
+                              from:
+                                type: string
+                              group:
+                                type: string
+                              range:
+                                type: string
+                              to:
+                                type: string
+                              type:
+                                type: string
+                            type: object
+                        type: object
+                      pdf:
+                        properties:
+                          link:
+                            type: string
+                          params:
+                            properties:
+                              detailed:
+                                type: string
+                              from:
+                                type: string
+                              group:
+                                type: string
+                              range:
+                                type: string
+                              to:
+                                type: string
+                              type:
+                                type: string
+                            type: object
+                        type: object
+                    type: object
+                  title:
+                    type: string
+                type: object
+              items:
+                items:
+                  properties:
+                    amount:
+                      type: number
+                    comps:
+                      type: string
+                    count:
+                      type: integer
+                    created_at:
+                      type: string
+                    date:
+                      type: string
+                    deleted_at:
+                      type: string
+                    detailed:
+                      type: string
+                    header:
+                      items:
+                        type: string
+                      type: array
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    restaurant_id:
+                      type: integer
+                    row:
+                      items:
+                        type: string
+                      type: array
+                    sum:
+                      type: number
+                    updated_at:
+                      type: string
+                    utc:
+                      type: integer
+                  type: object
+                type: array
+              tableColumn:
+                items:
+                  properties:
+                    align:
+                      type: string
+                    field:
+                      type: string
+                    label:
+                      type: string
+                    name:
+                      type: string
+                  type: object
+                type: array
+              tableData:
+                items:
+                  properties:
+                    Average Sale:
+                      type: string
+                    Date:
+                      type: string
+                    Day:
+                      type: string
+                    Month:
+                      type: string
+                    Week:
+                      type: string
+                  type: object
+                type: array
+              total:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - report

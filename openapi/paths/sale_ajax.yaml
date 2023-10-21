@@ -1,35 +1,35 @@
 get:
-  tags:
-    - Sale
   parameters:
     - in: query
       name: page
-      required: false
       schema:
         type: string
     - in: query
       name: rows
-      required: false
       schema:
         type: string
     - in: query
       name: sortBy
-      required: false
       schema:
         type: string
     - in: query
       name: descending
-      required: false
+      schema:
+        type: string
+    - in: query
+      name: filter
       schema:
         type: string
     - in: query
       name: from
-      required: false
       schema:
         type: string
     - in: query
       name: to
-      required: false
+      schema:
+        type: string
+    - in: query
+      name: tour
       schema:
         type: string
   responses:
@@ -39,6 +39,25 @@ get:
           schema:
             properties:
               data:
+                items:
+                  properties:
+                    actions:
+                      type: string
+                    amount:
+                      type: string
+                    date:
+                      type: string
+                    date_tooltip:
+                      type: string
+                    edit_link:
+                      type: string
+                    reason:
+                      type: string
+                    traffic:
+                      type: string
+                    traffic_type:
+                      type: string
+                  type: object
                 type: array
               draw:
                 type: integer
@@ -60,4 +79,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /sale/ajax
+  tags:
+    - sale

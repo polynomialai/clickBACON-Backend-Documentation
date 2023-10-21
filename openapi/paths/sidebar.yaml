@@ -1,66 +1,28 @@
 get:
-  summary: Get sidebar data
-  tags:
-    - Initial (Refresh Call)
-  security:
-    - bearerAuth: []
+  parameters:
+    - in: query
+      name: admin
+      schema:
+        type: string
   responses:
     '200':
-      description: Successful operation
       content:
         application/json:
           schema:
-            type: array
-            items:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: The display name of the sidebar item.
-                icon:
-                  type: string
-                  description: The icon class for the sidebar item.
-                link:
-                  type: string
-                  description: The link URL for the sidebar item.
-                children:
-                  type: array
-                  description: Nested items in the sidebar item.
-                  items:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                        description: The display name of the nested sidebar item.
-                      icon:
-                        type: string
-                        description: The icon class for the nested sidebar item.
-                      link:
-                        type: string
-                        description: The link URL for the nested sidebar item.
-                show:
-                  type: boolean
-                  description: A flag indicating whether to show the item, if applicable.
-                  nullable: true
-                mouse_interaction:
-                  type: boolean
-                  description: >-
-                    A flag indicating whether mouse interaction is enabled, if
-                    applicable.
-                  nullable: true
-                external:
-                  type: boolean
-                  description: >-
-                    A flag indicating whether the link is external, if
-                    applicable.
-                  nullable: true
-    '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
+            properties: {}
             type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
             properties:
               message:
-                type: string
                 example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - sidebar

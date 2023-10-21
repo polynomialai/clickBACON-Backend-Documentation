@@ -1,7 +1,4 @@
 get:
-  tags:
-    - Purchase
-  parameters: []
   responses:
     '200':
       content:
@@ -9,8 +6,72 @@ get:
           schema:
             properties:
               accounts:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          disable:
+                            type: integer
+                          label:
+                            type: string
+                          level:
+                            type: integer
+                          original_name:
+                            type: string
+                          prefix_type:
+                            type: string
+                          type:
+                            type: integer
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    disable:
+                      type: integer
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
                 type: array
               accounts_flat:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          disable:
+                            type: integer
+                          label:
+                            type: string
+                          level:
+                            type: integer
+                          original_name:
+                            type: string
+                          prefix_type:
+                            type: string
+                          type:
+                            type: integer
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    disable:
+                      type: integer
+                    label:
+                      type: string
+                    level:
+                      type: integer
+                    original_name:
+                      type: string
+                    prefix_type:
+                      type: string
+                    type:
+                      type: integer
+                    value:
+                      type: string
+                  type: object
                 type: array
             type: object
       description: OK
@@ -26,4 +87,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /purchase/get-category-options
+  tags:
+    - purchase

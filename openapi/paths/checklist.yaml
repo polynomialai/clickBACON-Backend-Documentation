@@ -1,0 +1,191 @@
+get:
+  parameters:
+    - in: query
+      name: page
+      schema:
+        type: string
+    - in: query
+      name: rows
+      schema:
+        type: string
+    - in: query
+      name: sortBy
+      schema:
+        type: string
+    - in: query
+      name: descending
+      schema:
+        type: string
+    - in: query
+      name: filter
+      schema:
+        type: string
+    - in: query
+      name: types[]
+      schema:
+        type: string
+    - in: query
+      name: groups[]
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                items:
+                  properties:
+                    date:
+                      type: integer
+                    group:
+                      type: string
+                    id:
+                      type: integer
+                    id_hash:
+                      type: string
+                    name:
+                      type: string
+                    position_name:
+                      type: string
+                    status:
+                      type: string
+                    type:
+                      type: string
+                    weekly_monthly:
+                      type: integer
+                  type: object
+                type: array
+              total:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - checklist
+post:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            date:
+              type: integer
+            group:
+              properties:
+                label:
+                  type: string
+                value:
+                  type: integer
+              type: object
+            items:
+              items:
+                properties:
+                  list:
+                    items:
+                      properties:
+                        days:
+                          items: {}
+                          type: array
+                        description:
+                          type: string
+                        high:
+                          type: string
+                        low:
+                          type: string
+                        unit:
+                          properties:
+                            label:
+                              type: string
+                            value:
+                              type: integer
+                          type: object
+                      type: object
+                    type: array
+                  location:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                type: object
+              type: array
+            low_high:
+              type: integer
+            name:
+              type: string
+            par:
+              type: integer
+            position:
+              properties:
+                label:
+                  type: string
+                value:
+                  type: integer
+              type: string
+            split:
+              type: integer
+            type:
+              properties:
+                label:
+                  type: string
+                setting:
+                  properties:
+                    date:
+                      type: integer
+                    low_high:
+                      type: integer
+                    par:
+                      type: integer
+                    unit:
+                      type: integer
+                  type: object
+                value:
+                  type: integer
+              type: object
+            unit:
+              type: integer
+            vendor:
+              type: string
+            weekly_monthly:
+              type: integer
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: string
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - checklist

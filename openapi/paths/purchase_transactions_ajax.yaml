@@ -1,35 +1,31 @@
 get:
-  tags:
-    - Purchase
   parameters:
     - in: query
       name: page
-      required: false
       schema:
         type: string
     - in: query
       name: rows
-      required: false
       schema:
         type: string
     - in: query
       name: sortBy
-      required: false
       schema:
         type: string
     - in: query
       name: descending
-      required: false
       schema:
         type: string
     - in: query
       name: from
-      required: false
       schema:
         type: string
     - in: query
       name: to
-      required: false
+      schema:
+        type: string
+    - in: query
+      name: filter
       schema:
         type: string
   responses:
@@ -39,6 +35,51 @@ get:
           schema:
             properties:
               data:
+                items:
+                  properties:
+                    actions:
+                      properties:
+                        id:
+                          type: string
+                        redirect:
+                          type: string
+                      type: object
+                    amount:
+                      type: string
+                    category_id:
+                      type: string
+                    category_id_orig:
+                      type: string
+                    category_name:
+                      type: string
+                    checkbox:
+                      type: string
+                    comps:
+                      type: integer
+                    date:
+                      type: string
+                    edit_link:
+                      properties:
+                        id:
+                          type: string
+                        redirect:
+                          type: string
+                      type: object
+                    id:
+                      type: string
+                    invoice_id:
+                      type: integer
+                    invoice_no:
+                      type: string
+                    name:
+                      type: string
+                    order:
+                      type: integer
+                    type:
+                      type: integer
+                    vendor_name:
+                      type: string
+                  type: object
                 type: array
               draw:
                 type: integer
@@ -60,4 +101,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /purchase/transactions/ajax
+  tags:
+    - purchase

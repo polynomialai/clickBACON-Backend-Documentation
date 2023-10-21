@@ -1,0 +1,100 @@
+get:
+  parameters:
+    - in: query
+      name: page
+      schema:
+        type: string
+    - in: query
+      name: rows
+      schema:
+        type: string
+    - in: query
+      name: filter
+      schema:
+        type: string
+    - in: query
+      name: sortBy
+      schema:
+        type: string
+    - in: query
+      name: descending
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                items:
+                  properties:
+                    actions:
+                      type: string
+                    checkbox:
+                      type: string
+                    created_at:
+                      type: string
+                    deleted_at:
+                      type: string
+                    edit_link:
+                      type: string
+                    email:
+                      type: string
+                    filename:
+                      type: string
+                    hash:
+                      type: string
+                    id_hash:
+                      type: string
+                    last_sent:
+                      type: string
+                    message:
+                      type: string
+                    notes:
+                      type: string
+                    pos:
+                      type: string
+                    restaurant_id:
+                      type: integer
+                    sent_count:
+                      type: integer
+                    status:
+                      properties:
+                        color:
+                          type: string
+                        label:
+                          type: string
+                        status:
+                          type: integer
+                      type: object
+                    type:
+                      type: string
+                    updated_at:
+                      type: string
+                  type: object
+                type: array
+              draw:
+                type: integer
+              message:
+                type: string
+              recordsFiltered:
+                type: integer
+              recordsTotal:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - report-suggestion

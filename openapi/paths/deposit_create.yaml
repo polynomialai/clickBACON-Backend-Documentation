@@ -1,7 +1,4 @@
 get:
-  tags:
-    - Deposit
-  parameters: []
   responses:
     '200':
       content:
@@ -9,8 +6,26 @@ get:
           schema:
             properties:
               categories:
+                items:
+                  properties:
+                    amount:
+                      type: string
+                    id:
+                      type: integer
+                    id_hash:
+                      type: string
+                    name:
+                      type: string
+                  type: object
                 type: array
               date:
+                properties:
+                  date:
+                    type: string
+                  timezone:
+                    type: string
+                  timezone_type:
+                    type: integer
                 type: object
             type: object
       description: OK
@@ -26,4 +41,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /deposit/create
+  tags:
+    - deposit

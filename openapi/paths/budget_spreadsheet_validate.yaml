@@ -1,0 +1,44 @@
+post:
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            date: {}
+            file: {}
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              date:
+                properties:
+                  from:
+                    type: string
+                  to:
+                    type: string
+                type: object
+              errors:
+                type: string
+              restaurant:
+                type: string
+              year:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - budget

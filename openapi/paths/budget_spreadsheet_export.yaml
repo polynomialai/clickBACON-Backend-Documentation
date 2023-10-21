@@ -1,0 +1,173 @@
+post:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            budgets:
+              properties:
+                <date_YYYY-MM-DD>:
+                  type: string
+              type: object
+            cogs:
+              properties:
+                <date_YYYY-MM-DD>:
+                  items:
+                    properties:
+                      amount:
+                        type: integer
+                      children_ids:
+                        type: string
+                      has_children:
+                        type: integer
+                      id:
+                        type: integer
+                      key:
+                        type: string
+                      label:
+                        type: string
+                      level:
+                        type: integer
+                      name:
+                        type: string
+                      percent:
+                        type: integer
+                    type: object
+                  type: array
+              type: object
+            comps:
+              properties:
+                <date_YYYY-MM-DD>:
+                  items:
+                    properties:
+                      amount:
+                        type: integer
+                      children_ids:
+                        type: string
+                      has_children:
+                        type: integer
+                      id:
+                        type: integer
+                      key:
+                        type: string
+                      label:
+                        type: string
+                      level:
+                        type: integer
+                      name:
+                        type: string
+                      percent:
+                        type: integer
+                    type: object
+                  type: array
+              type: object
+            date:
+              type: string
+            doe:
+              properties:
+                <date_YYYY-MM-DD>:
+                  items:
+                    properties:
+                      amount:
+                        type: integer
+                      children_ids:
+                        items:
+                          type: integer
+                        type: array
+                      has_children:
+                        type: integer
+                      id:
+                        type: integer
+                      key:
+                        type: string
+                      label:
+                        type: string
+                      level:
+                        type: integer
+                      name:
+                        type: string
+                      percent:
+                        type: integer
+                    type: object
+                  type: array
+              type: object
+            labor:
+              properties:
+                <date_YYYY-MM-DD>:
+                  items:
+                    properties:
+                      amount:
+                        type: integer
+                      children_ids:
+                        type: string
+                      has_children:
+                        type: integer
+                      id:
+                        type: integer
+                      key:
+                        type: string
+                      label:
+                        type: string
+                      level:
+                        type: integer
+                      name:
+                        type: string
+                      percent:
+                        type: integer
+                    type: object
+                  type: array
+              type: object
+            labor_budgets:
+              properties:
+                <date_YYYY-MM-DD>:
+                  type: integer
+              type: object
+            sales:
+              properties:
+                <date_YYYY-MM-DD>:
+                  items:
+                    properties:
+                      amount:
+                        type: integer
+                      children_ids:
+                        type: string
+                      has_children:
+                        type: integer
+                      id:
+                        type: integer
+                      key:
+                        type: string
+                      label:
+                        type: string
+                      level:
+                        type: integer
+                      name:
+                        type: string
+                      percent:
+                        type: integer
+                    type: object
+                  type: array
+              type: object
+          type: object
+  responses:
+    '200':
+      content:
+        application/vnd.ms-excel:
+          schema:
+            properties: {}
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - budget

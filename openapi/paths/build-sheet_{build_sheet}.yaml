@@ -1,0 +1,109 @@
+post:
+  parameters:
+    - description: The build_sheet parameter
+      in: path
+      name: build_sheet
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            allergies:
+              items:
+                type: string
+              type: array
+            created_at:
+              type: string
+            crop_values:
+              nullable: true
+              type: string
+            deleted_at:
+              nullable: true
+              type: string
+            description:
+              type: string
+            directions:
+              items:
+                type: string
+              type: array
+            extension:
+              nullable: true
+              type: string
+            id:
+              type: integer
+            ingredients:
+              items:
+                type: string
+              type: array
+            name:
+              nullable: true
+              type: string
+            period:
+              nullable: true
+              type: string
+            photo:
+              nullable: true
+              type: string
+            photo_filename:
+              nullable: true
+              type: string
+            photo_url:
+              nullable: true
+              type: string
+            picture:
+              format: binary
+              type: string
+            plate:
+              type: string
+            restaurant_id:
+              type: integer
+            selected_diet_types:
+              items:
+                type: string
+              type: array
+            selected_meal_periods:
+              items:
+                type: string
+              type: array
+            selected_plates:
+              items:
+                type: string
+              type: array
+            server_description:
+              type: string
+            standards:
+              items:
+                type: string
+              type: array
+            updated_at:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: integer
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - build-sheet

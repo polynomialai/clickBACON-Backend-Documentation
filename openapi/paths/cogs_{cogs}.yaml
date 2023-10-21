@@ -1,0 +1,50 @@
+post:
+  parameters:
+    - description: The cogs parameter
+      in: path
+      name: cogs
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            account_no:
+              type: string
+            inventory:
+              type: integer
+            inventory_period:
+              type: integer
+            name:
+              type: string
+            parent_id:
+              type: string
+            sort:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - cogs

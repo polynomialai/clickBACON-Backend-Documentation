@@ -2,22 +2,18 @@ get:
   parameters:
     - in: query
       name: page
-      required: false
       schema:
         type: string
     - in: query
       name: rows
-      required: false
       schema:
         type: string
     - in: query
       name: sortBy
-      required: false
       schema:
         type: string
     - in: query
       name: descending
-      required: false
       schema:
         type: string
   responses:
@@ -27,6 +23,7 @@ get:
           schema:
             properties:
               data:
+                items: {}
                 type: array
               draw:
                 type: integer
@@ -48,6 +45,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /catering/ajax
   tags:
-    - Catering
+    - catering

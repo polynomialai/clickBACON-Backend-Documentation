@@ -1,0 +1,212 @@
+get:
+  parameters:
+    - in: query
+      name: page
+      schema:
+        type: string
+    - in: query
+      name: rows
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              notifications:
+                items:
+                  properties:
+                    action:
+                      items:
+                        properties:
+                          created_at:
+                            type: string
+                          deleted_at:
+                            type: string
+                          id:
+                            type: integer
+                          item_id:
+                            type: integer
+                          notes:
+                            type: string
+                          notification_id:
+                            type: integer
+                          restaurant_id:
+                            type: integer
+                          updated_at:
+                            type: string
+                        type: object
+                      type: array
+                    action_list:
+                      items:
+                        properties:
+                          icon:
+                            type: string
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                        type: object
+                      type: array
+                    id:
+                      type: integer
+                    last_run:
+                      type: string
+                    last_run_format:
+                      type: string
+                    status:
+                      type: integer
+                    title:
+                      type: string
+                    user_id:
+                      type: integer
+                  type: object
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - notifications
+post:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            actions:
+              items:
+                properties:
+                  icon:
+                    type: string
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  option:
+                    items:
+                      type: string
+                    type: string
+                  required:
+                    type: integer
+                type: object
+              type: array
+            conditions:
+              items: {}
+              type: array
+            intervals:
+              items:
+                properties:
+                  day:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  day_no:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  interval:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  month:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  month_no:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  quarter:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  time:
+                    type: string
+                type: object
+              type: array
+            status:
+              type: integer
+            title:
+              type: string
+            triggers:
+              items:
+                properties:
+                  icon:
+                    type: string
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  option:
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: integer
+                    type: object
+                  options:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: integer
+                      type: object
+                    type: array
+                type: object
+              type: array
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - notifications

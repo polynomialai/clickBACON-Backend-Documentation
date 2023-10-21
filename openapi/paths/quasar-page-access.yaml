@@ -1,0 +1,42 @@
+post:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            id:
+              type: string
+            status:
+              properties:
+                labor_page_access:
+                  type: integer
+                purchase_page_access:
+                  type: integer
+                sales_page_access:
+                  type: integer
+              type: object
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - quasar-page-access

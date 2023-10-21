@@ -1,0 +1,66 @@
+post:
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                items:
+                  properties:
+                    access:
+                      items: {}
+                      type: array
+                    action:
+                      type: string
+                    edit_link:
+                      type: string
+                    email:
+                      type: string
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    owner:
+                      type: integer
+                    restaurants:
+                      items:
+                        properties:
+                          access_name:
+                            type: string
+                          icon:
+                            type: string
+                          name:
+                            type: string
+                        type: object
+                      type: array
+                    role:
+                      type: integer
+                    spatie_role:
+                      type: string
+                    status:
+                      type: integer
+                  type: object
+                type: array
+              draw:
+                type: integer
+              recordsFiltered:
+                type: integer
+              recordsTotal:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - users

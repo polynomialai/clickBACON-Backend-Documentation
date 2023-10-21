@@ -1,0 +1,278 @@
+get:
+  parameters:
+    - in: query
+      name: range
+      schema:
+        type: string
+    - in: query
+      name: from
+      schema:
+        type: string
+    - in: query
+      name: to
+      schema:
+        type: string
+    - in: query
+      name: detailed
+      schema:
+        type: string
+    - in: query
+      name: categories[0]
+      schema:
+        type: string
+    - in: query
+      name: categories[1]
+      schema:
+        type: string
+    - in: query
+      name: categories[2]
+      schema:
+        type: string
+    - in: query
+      name: categories[3]
+      schema:
+        type: string
+    - in: query
+      name: categories[4]
+      schema:
+        type: string
+    - in: query
+      name: categories[5]
+      schema:
+        type: string
+    - in: query
+      name: categories[6]
+      schema:
+        type: string
+    - in: query
+      name: categories[7]
+      schema:
+        type: string
+    - in: query
+      name: categories[8]
+      schema:
+        type: string
+    - in: query
+      name: categories[9]
+      schema:
+        type: string
+    - in: query
+      name: categories[10]
+      schema:
+        type: string
+    - in: query
+      name: categories[11]
+      schema:
+        type: string
+    - in: query
+      name: categories[12]
+      schema:
+        type: string
+    - in: query
+      name: categories[13]
+      schema:
+        type: string
+    - in: query
+      name: categories[14]
+      schema:
+        type: string
+    - in: query
+      name: categories[15]
+      schema:
+        type: string
+    - in: query
+      name: vendors[0]
+      schema:
+        type: string
+    - in: query
+      name: vendors[1]
+      schema:
+        type: string
+    - in: query
+      name: vendors[2]
+      schema:
+        type: string
+    - in: query
+      name: vendors[3]
+      schema:
+        type: string
+    - in: query
+      name: group
+      schema:
+        type: string
+    - in: query
+      name: vendor
+      schema:
+        type: string
+    - in: query
+      name: report_version
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              chart:
+                type: string
+              chart_type:
+                type: string
+              dates:
+                properties:
+                  from:
+                    type: string
+                  to:
+                    type: string
+                type: object
+              exports:
+                properties:
+                  links:
+                    properties:
+                      excel:
+                        properties:
+                          link:
+                            type: string
+                          params:
+                            properties:
+                              categories:
+                                items:
+                                  type: string
+                                type: array
+                              detailed:
+                                type: string
+                              from:
+                                type: string
+                              group:
+                                type: string
+                              range:
+                                type: string
+                              report_version:
+                                type: string
+                              to:
+                                type: string
+                              type:
+                                type: string
+                              vendor:
+                                type: string
+                              vendors:
+                                items:
+                                  type: string
+                                type: array
+                            type: object
+                        type: object
+                      pdf:
+                        properties:
+                          link:
+                            type: string
+                          params:
+                            properties:
+                              categories:
+                                items:
+                                  type: string
+                                type: array
+                              detailed:
+                                type: string
+                              from:
+                                type: string
+                              group:
+                                type: string
+                              range:
+                                type: string
+                              report_version:
+                                type: string
+                              to:
+                                type: string
+                              type:
+                                type: string
+                              vendor:
+                                type: string
+                              vendors:
+                                items:
+                                  type: string
+                                type: array
+                            type: object
+                        type: object
+                    type: object
+                  title:
+                    type: string
+                type: object
+              head:
+                items:
+                  type: string
+                type: array
+              purchases:
+                items:
+                  properties:
+                    amount:
+                      type: number
+                    category_id:
+                      type: integer
+                    comps:
+                      type: integer
+                    created_at:
+                      type: string
+                    credit:
+                      type: string
+                    date:
+                      type: string
+                    deleted_at:
+                      type: string
+                    description:
+                      type: string
+                    header:
+                      items:
+                        type: string
+                      type: array
+                    id:
+                      type: integer
+                    invoice_id:
+                      type: integer
+                    name:
+                      type: string
+                    order:
+                      type: string
+                    qbo_name:
+                      type: string
+                    qbo_num:
+                      type: string
+                    qbo_type:
+                      type: string
+                    restaurant_id:
+                      type: integer
+                    row:
+                      items:
+                        type: string
+                      type: array
+                    updated_at:
+                      type: string
+                    vendor_id:
+                      type: integer
+                  type: object
+                type: array
+              ranOn:
+                type: string
+              restaurant_name:
+                type: string
+              total:
+                type: number
+              total_row:
+                items:
+                  type: string
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - report

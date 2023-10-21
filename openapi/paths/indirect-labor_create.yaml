@@ -1,7 +1,4 @@
 get:
-  tags:
-    - Indirect-labor
-  parameters: []
   responses:
     '200':
       content:
@@ -11,7 +8,7 @@ get:
               actual_expense:
                 type: integer
               estimated_expense:
-                type: number
+                type: integer
               from:
                 type: string
               to:
@@ -30,4 +27,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /indirect-labor/create
+  tags:
+    - indirect-labor

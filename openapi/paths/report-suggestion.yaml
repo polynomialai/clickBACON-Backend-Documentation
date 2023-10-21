@@ -1,0 +1,66 @@
+get:
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              show_integration:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - report-suggestion
+post:
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            email:
+              type: string
+            file:
+              type: string
+            notes:
+              type: integer
+            pos:
+              type: string
+            type:
+              type: integer
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              success_msg:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - report-suggestion

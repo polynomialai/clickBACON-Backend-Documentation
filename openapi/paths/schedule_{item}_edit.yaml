@@ -1,0 +1,395 @@
+get:
+  parameters:
+    - description: The item parameter
+      in: path
+      name: item
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                properties:
+                  add:
+                    items:
+                      properties:
+                        children:
+                          items:
+                            properties:
+                              label:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                        label:
+                          type: string
+                      type: object
+                    type: array
+                  cogs:
+                    items:
+                      properties:
+                        children:
+                          items:
+                            properties:
+                              disable:
+                                type: integer
+                              label:
+                                type: string
+                              level:
+                                type: integer
+                              original_name:
+                                type: string
+                              type:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                        label:
+                          type: string
+                      type: object
+                    type: array
+                  days:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: integer
+                      type: object
+                    type: array
+                  doe:
+                    items:
+                      properties:
+                        children:
+                          items:
+                            properties:
+                              disable:
+                                type: integer
+                              label:
+                                type: string
+                              level:
+                                type: integer
+                              original_name:
+                                type: string
+                              type:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                        label:
+                          type: string
+                      type: object
+                    type: array
+                  expenses:
+                    items:
+                      properties:
+                        children:
+                          items:
+                            properties:
+                              disable:
+                                type: integer
+                              label:
+                                type: string
+                              level:
+                                type: integer
+                              original_name:
+                                type: string
+                              type:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                        label:
+                          type: string
+                      type: object
+                    type: array
+                  labor_expense:
+                    items:
+                      properties:
+                        children:
+                          items:
+                            properties:
+                              disable:
+                                type: integer
+                              label:
+                                type: string
+                              level:
+                                type: integer
+                              original_name:
+                                type: string
+                              type:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                        label:
+                          type: string
+                      type: object
+                    type: array
+                  months:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: integer
+                      type: object
+                    type: array
+                  vendors:
+                    items:
+                      properties:
+                        children:
+                          items:
+                            properties:
+                              label:
+                                type: string
+                              original_name:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                        label:
+                          type: string
+                      type: object
+                    type: array
+                  vendors_flat:
+                    items:
+                      properties:
+                        children:
+                          items:
+                            properties:
+                              label:
+                                type: string
+                              original_name:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                        label:
+                          type: string
+                        original_name:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                type: object
+              emails:
+                properties:
+                  018oy16x23:
+                    type: string
+                type: object
+              items:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          disable:
+                            type: integer
+                          label:
+                            type: string
+                          level:
+                            type: integer
+                          original_name:
+                            type: string
+                          type:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    label:
+                      type: string
+                  type: object
+                type: array
+              items_flat:
+                items:
+                  properties:
+                    children:
+                      items:
+                        properties:
+                          disable:
+                            type: integer
+                          label:
+                            type: string
+                          level:
+                            type: integer
+                          original_name:
+                            type: string
+                          type:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      type: array
+                    disable:
+                      type: integer
+                    label:
+                      type: string
+                    level:
+                      type: integer
+                    original_name:
+                      type: string
+                    type:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              month_date:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: integer
+                  type: object
+                type: array
+              monthly:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: integer
+                  type: object
+                type: array
+              schedule:
+                properties:
+                  created_at:
+                    type: string
+                  data:
+                    type: string
+                  date:
+                    type: string
+                  day:
+                    type: integer
+                  deleted_at:
+                    type: string
+                  end_date:
+                    type: string
+                  end_interval:
+                    type: string
+                  end_type:
+                    type: integer
+                  expense_schedule:
+                    items: {}
+                    type: array
+                  id:
+                    type: integer
+                  interval:
+                    type: integer
+                  last_run:
+                    type: string
+                  method:
+                    type: string
+                  month:
+                    type: string
+                  month_date:
+                    type: string
+                  name:
+                    type: string
+                  notes:
+                    type: string
+                  purchase_schedule:
+                    items:
+                      properties:
+                        amount:
+                          type: integer
+                        category_id:
+                          type: integer
+                        created_at:
+                          type: string
+                        description:
+                          type: string
+                        id:
+                          type: integer
+                        order:
+                          type: integer
+                        restaurant_id:
+                          type: integer
+                        schedule_id:
+                          type: integer
+                        updated_at:
+                          type: string
+                      type: object
+                    type: array
+                  quarter:
+                    type: string
+                  restaurant_id:
+                    type: integer
+                  run_count:
+                    type: integer
+                  start_date:
+                    type: string
+                  token:
+                    type: string
+                  type:
+                    type: integer
+                  updated_at:
+                    type: string
+                  users:
+                    type: string
+                  vendor_id:
+                    type: integer
+                type: object
+              scheduledItems:
+                items:
+                  properties:
+                    amount:
+                      type: integer
+                    description:
+                      type: string
+                    item:
+                      properties:
+                        disable:
+                          type: integer
+                        label:
+                          type: string
+                        level:
+                          type: integer
+                        original_name:
+                          type: string
+                        type:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                  type: object
+                type: array
+              vendor:
+                items: {}
+                properties:
+                  label:
+                    type: string
+                  value:
+                    type: string
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - schedule

@@ -1,0 +1,75 @@
+get:
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                properties:
+                  description:
+                    type: string
+                  parents:
+                    items:
+                      properties:
+                        has_data:
+                          type: integer
+                        label:
+                          type: string
+                        level:
+                          type: integer
+                        name:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  selected_type:
+                    type: integer
+                  sort:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        level:
+                          type: integer
+                        parent_id:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                type: object
+              types:
+                items:
+                  properties:
+                    create:
+                      type: string
+                    description:
+                      type: string
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    optgroup:
+                      type: string
+                  type: object
+                type: array
+              weekly_toggle:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - cogs

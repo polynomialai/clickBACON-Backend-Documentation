@@ -1,0 +1,302 @@
+get:
+  parameters:
+    - description: The comps parameter
+      in: path
+      name: comps
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              comps:
+                properties:
+                  account_hash_id:
+                    type: string
+                  account_no:
+                    type: string
+                  account_type:
+                    type: integer
+                  created_at:
+                    type: string
+                  deleted_at:
+                    type: string
+                  id:
+                    type: integer
+                  is_sub:
+                    type: integer
+                  name:
+                    type: string
+                  parent_hash_id:
+                    type: string
+                  restaurant:
+                    properties:
+                      agree_date:
+                        type: string
+                      bill_immediately:
+                        type: integer
+                      bill_internally:
+                        type: integer
+                      categories:
+                        type: string
+                      company_id:
+                        type: integer
+                      created_at:
+                        type: string
+                      crop_values:
+                        type: string
+                      deleted_at:
+                        type: string
+                      deleted_by:
+                        type: string
+                      document_tags_updated:
+                        type: integer
+                      has_qb_totals:
+                        type: integer
+                      id:
+                        type: integer
+                      last_document_folder:
+                        type: string
+                      last_module:
+                        type: string
+                      logo:
+                        type: string
+                      logo_filename:
+                        type: string
+                      multi_migrate:
+                        type: integer
+                      name:
+                        type: string
+                      operating_expenses:
+                        type: string
+                      pos:
+                        type: string
+                      qbo_tags_updated:
+                        type: integer
+                      setup_wizard:
+                        type: integer
+                      setup_wizard_notify:
+                        type: integer
+                      updated_at:
+                        type: string
+                      user:
+                        properties:
+                          activation_code:
+                            type: string
+                          admin_notes:
+                            type: string
+                          agree:
+                            type: integer
+                          agree_date:
+                            type: string
+                          api_token:
+                            type: string
+                          cancel_reason:
+                            items: {}
+                            type: array
+                          cancelled_date:
+                            type: string
+                          company:
+                            type: string
+                          contact_id:
+                            type: string
+                          created_at:
+                            type: string
+                          crop_values:
+                            type: string
+                          deleted_at:
+                            type: string
+                          document_access:
+                            type: integer
+                          document_daily_activity:
+                            type: integer
+                          document_email_notification:
+                            type: integer
+                          document_push_notification:
+                            type: integer
+                          email:
+                            type: string
+                          email_account_updates:
+                            type: integer
+                          email_change:
+                            type: string
+                          email_marketing:
+                            type: integer
+                          email_reports:
+                            type: integer
+                          email_transactional_emails:
+                            type: integer
+                          first_name:
+                            type: string
+                          free_to_standard:
+                            type: integer
+                          from_demo:
+                            type: integer
+                          id:
+                            type: integer
+                          ip_address:
+                            type: string
+                          is_partner:
+                            type: integer
+                          last_active_date:
+                            type: string
+                          last_logged_in:
+                            type: string
+                          last_name:
+                            type: string
+                          last_restaurant:
+                            type: integer
+                          license_no:
+                            type: string
+                          license_no_used:
+                            type: string
+                          lock_date:
+                            type: string
+                          login_attempts:
+                            type: string
+                          multi_unit:
+                            type: integer
+                          multi_unit_date:
+                            type: string
+                          notes:
+                            type: string
+                          op_avgSales:
+                            type: integer
+                          op_experienceLevel:
+                            type: integer
+                          op_foodCost:
+                            type: integer
+                          op_goal:
+                            type: string
+                          op_motivationLevel:
+                            type: integer
+                          op_this_time:
+                            type: string
+                          op_timeDedicate:
+                            type: integer
+                          owner_id:
+                            type: string
+                          pagination_records_per_page:
+                            type: integer
+                          parent_id:
+                            type: integer
+                          partner_admin:
+                            type: integer
+                          partner_id:
+                            type: string
+                          profile_pic:
+                            type: string
+                          profile_pic_filename:
+                            type: string
+                          reset_token:
+                            type: string
+                          reset_token_date:
+                            type: string
+                          restaurant_summary_report:
+                            type: integer
+                          role:
+                            type: integer
+                          software_accounts:
+                            type: string
+                          status:
+                            type: integer
+                          steps:
+                            items:
+                              type: string
+                            type: array
+                          timezone:
+                            type: string
+                          updated_at:
+                            type: string
+                          visit_welcome_page:
+                            type: string
+                        type: object
+                      user_id:
+                        type: integer
+                      welcome:
+                        type: integer
+                      wizard_position:
+                        type: string
+                    type: object
+                  restaurant_id:
+                    type: integer
+                  show:
+                    type: integer
+                  updated_at:
+                    type: string
+                type: object
+              data:
+                properties:
+                  description:
+                    type: string
+                  expenses:
+                    items:
+                      properties:
+                        disable:
+                          type: integer
+                        label:
+                          type: string
+                        level:
+                          type: integer
+                        name:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  parents:
+                    items:
+                      properties:
+                        disable:
+                          type: integer
+                        has_data:
+                          type: integer
+                        label:
+                          type: string
+                        level:
+                          type: integer
+                        name:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  selected_type:
+                    type: integer
+                type: object
+              parent_toggle:
+                type: string
+              types:
+                items:
+                  properties:
+                    create:
+                      type: string
+                    description:
+                      type: string
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    optgroup:
+                      type: string
+                  type: object
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - comps

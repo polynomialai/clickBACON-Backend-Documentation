@@ -1,7 +1,4 @@
 get:
-  tags:
-    - Comps
-  parameters: []
   responses:
     '200':
       content:
@@ -9,10 +6,60 @@ get:
           schema:
             properties:
               data:
+                properties:
+                  description:
+                    type: string
+                  expenses:
+                    items:
+                      properties:
+                        disable:
+                          type: integer
+                        label:
+                          type: string
+                        level:
+                          type: integer
+                        name:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  parents:
+                    items:
+                      properties:
+                        disable:
+                          type: integer
+                        has_data:
+                          type: integer
+                        label:
+                          type: string
+                        level:
+                          type: integer
+                        name:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  selected_type:
+                    type: integer
                 type: object
               parent_toggle:
                 type: string
               types:
+                items:
+                  properties:
+                    create:
+                      type: string
+                    description:
+                      type: string
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    optgroup:
+                      type: string
+                  type: object
                 type: array
             type: object
       description: OK
@@ -28,4 +75,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /comps/create
+  tags:
+    - comps

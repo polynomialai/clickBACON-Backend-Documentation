@@ -11,116 +11,552 @@ servers:
   - url: http://localhost:8000/api
     description: Development server
 paths:
-  /setup:
-    $ref: paths/setup.yaml
-  /header:
-    $ref: paths/header.yaml
-  /sidebar:
-    $ref: paths/sidebar.yaml
-  /new-feature/status:
-    $ref: paths/new-feature_status.yaml
-  /date-filter:
-    $ref: paths/date-filter.yaml
-  /push/count:
-    $ref: paths/push_count.yaml
-  /dashboard/settings:
-    $ref: paths/dashboard_settings.yaml
-  /user/hide-previous-banner:
-    $ref: paths/user_hide-previous-banner.yaml
-  /dashboard/health:
-    $ref: paths/dashboard_health.yaml
-  /settings/transactions:
-    $ref: paths/settings_transactions.yaml
-  /dashboard/cogs:
-    $ref: paths/dashboard_cogs.yaml
+  /account:
+    $ref: paths/account.yaml
+  /account-log/ajax:
+    $ref: paths/account-log_ajax.yaml
+  /account-log/total-logs:
+    $ref: paths/account-log_total-logs.yaml
+  /admin/document-access:
+    $ref: paths/admin_document-access.yaml
+  /admin/email/update:
+    $ref: paths/admin_email_update.yaml
+  /admin/email/welcome/{user}:
+    $ref: paths/admin_email_welcome_{user}.yaml
+  /admin/user/activate/{user}:
+    $ref: paths/admin_user_activate_{user}.yaml
+  /admin/user/cancel/{user}:
+    $ref: paths/admin_user_cancel_{user}.yaml
+  /admin/user/delete:
+    $ref: paths/admin_user_delete.yaml
+  /admin/user/sizzle/{user}:
+    $ref: paths/admin_user_sizzle_{user}.yaml
+  /budget:
+    $ref: paths/budget.yaml
+  /budget/days:
+    $ref: paths/budget_days.yaml
+  /budget/discount:
+    $ref: paths/budget_discount.yaml
+  /budget/doe:
+    $ref: paths/budget_doe.yaml
+  /budget/labor:
+    $ref: paths/budget_labor.yaml
+  /budget/next_month:
+    $ref: paths/budget_next_month.yaml
+  /budget/spreadsheet/export:
+    $ref: paths/budget_spreadsheet_export.yaml
+  /budget/spreadsheet/upload:
+    $ref: paths/budget_spreadsheet_upload.yaml
+  /budget/spreadsheet/validate:
+    $ref: paths/budget_spreadsheet_validate.yaml
+  /budget/spreadsheet/view:
+    $ref: paths/budget_spreadsheet_view.yaml
+  /budget/spreadsheet/year:
+    $ref: paths/budget_spreadsheet_year.yaml
+  /budget/spreadsheet/year/copy:
+    $ref: paths/budget_spreadsheet_year_copy.yaml
+  /build-sheet:
+    $ref: paths/build-sheet.yaml
+  /build-sheet/batch-delete:
+    $ref: paths/build-sheet_batch-delete.yaml
+  /build-sheet/batch-export:
+    $ref: paths/build-sheet_batch-export.yaml
+  /build-sheet/options:
+    $ref: paths/build-sheet_options.yaml
+  /build-sheet/shared/{build_sheet}:
+    $ref: paths/build-sheet_shared_{build_sheet}.yaml
+  /build-sheet/total:
+    $ref: paths/build-sheet_total.yaml
+  /build-sheet/{build_sheet}:
+    $ref: paths/build-sheet_{build_sheet}.yaml
+  /build-sheet/{build_sheet}/delete:
+    $ref: paths/build-sheet_{build_sheet}_delete.yaml
+  /build-sheet/{build_sheet}/edit:
+    $ref: paths/build-sheet_{build_sheet}_edit.yaml
+  /build-sheet/{build_sheet}/export:
+    $ref: paths/build-sheet_{build_sheet}_export.yaml
+  /build-sheet/{build_sheet}/preview:
+    $ref: paths/build-sheet_{build_sheet}_preview.yaml
+  /card:
+    $ref: paths/card.yaml
+  /category-report:
+    $ref: paths/category-report.yaml
+  /category-report-sales:
+    $ref: paths/category-report-sales.yaml
+  /catering/ajax:
+    $ref: paths/catering_ajax.yaml
+  /catering/batch-delete:
+    $ref: paths/catering_batch-delete.yaml
+  /catering/total:
+    $ref: paths/catering_total.yaml
+  /checklist:
+    $ref: paths/checklist.yaml
+  /checklist-group:
+    $ref: paths/checklist-group.yaml
+  /checklist-location:
+    $ref: paths/checklist-location.yaml
+  /checklist-type:
+    $ref: paths/checklist-type.yaml
+  /checklist/batch-delete:
+    $ref: paths/checklist_batch-delete.yaml
+  /checklist/batch-export:
+    $ref: paths/checklist_batch-export.yaml
+  /checklist/options:
+    $ref: paths/checklist_options.yaml
+  /checklist/shared/{checklist}:
+    $ref: paths/checklist_shared_{checklist}.yaml
+  /checklist/{checklist}:
+    $ref: paths/checklist_{checklist}.yaml
+  /checklist/{checklist}/copy:
+    $ref: paths/checklist_{checklist}_copy.yaml
+  /checklist/{checklist}/delete:
+    $ref: paths/checklist_{checklist}_delete.yaml
+  /checklist/{checklist}/edit:
+    $ref: paths/checklist_{checklist}_edit.yaml
+  /checklist/{checklist}/export:
+    $ref: paths/checklist_{checklist}_export.yaml
+  /checklist/{checklist}/preview:
+    $ref: paths/checklist_{checklist}_preview.yaml
+  /cogs:
+    $ref: paths/cogs.yaml
+  /cogs/create:
+    $ref: paths/cogs_create.yaml
+  /cogs/delete:
+    $ref: paths/cogs_delete.yaml
+  /cogs/get-account:
+    $ref: paths/cogs_get-account.yaml
+  /cogs/transfer-cogs:
+    $ref: paths/cogs_transfer-cogs.yaml
+  /cogs/{cogs}:
+    $ref: paths/cogs_{cogs}.yaml
+  /cogs/{cogs}/edit:
+    $ref: paths/cogs_{cogs}_edit.yaml
+  /comps/budget/next_month:
+    $ref: paths/comps_budget_next_month.yaml
+  /comps/create:
+    $ref: paths/comps_create.yaml
+  /comps/get-account:
+    $ref: paths/comps_get-account.yaml
+  /comps/transfer:
+    $ref: paths/comps_transfer.yaml
+  /comps/{comps}:
+    $ref: paths/comps_{comps}.yaml
+  /comps/{comps}/delete:
+    $ref: paths/comps_{comps}_delete.yaml
+  /comps/{comps}/edit:
+    $ref: paths/comps_{comps}_edit.yaml
   /dashboard/accounts:
     $ref: paths/dashboard_accounts.yaml
-  /dashboard/primecost:
-    $ref: paths/dashboard_primecost.yaml
+  /dashboard/cogs:
+    $ref: paths/dashboard_cogs.yaml
   /dashboard/comps:
     $ref: paths/dashboard_comps.yaml
   /dashboard/doe:
     $ref: paths/dashboard_doe.yaml
+  /dashboard/health:
+    $ref: paths/dashboard_health.yaml
   /dashboard/labor:
     $ref: paths/dashboard_labor.yaml
-  /catering/ajax:
-    $ref: paths/catering_ajax.yaml
-  /catering/total:
-    $ref: paths/catering_total.yaml
-  /comps/create:
-    $ref: paths/comps_create.yaml
+  /dashboard/primecost:
+    $ref: paths/dashboard_primecost.yaml
+  /dashboard/settings:
+    $ref: paths/dashboard_settings.yaml
+  /date-filter:
+    $ref: paths/date-filter.yaml
   /deposit:
     $ref: paths/deposit.yaml
   /deposit/create:
     $ref: paths/deposit_create.yaml
-  /deposit/{param}:
-    $ref: paths/deposit_{param}.yaml
-  /deposit/{param}/edit:
-    $ref: paths/deposit_{param}_edit.yaml
+  /deposit/{catering}:
+    $ref: paths/deposit_{catering}.yaml
+  /deposit/{catering}/edit:
+    $ref: paths/deposit_{catering}_edit.yaml
+  /diet-type:
+    $ref: paths/diet-type.yaml
+  /document/{item}:
+    $ref: paths/document_{item}.yaml
+  /doe/budget/next_month:
+    $ref: paths/doe_budget_next_month.yaml
+  /employee:
+    $ref: paths/employee.yaml
+  /employee/ajax:
+    $ref: paths/employee_ajax.yaml
+  /employee/create:
+    $ref: paths/employee_create.yaml
+  /employee/total:
+    $ref: paths/employee_total.yaml
+  /employee/{item}:
+    $ref: paths/employee_{item}.yaml
+  /employee/{item}/edit:
+    $ref: paths/employee_{item}_edit.yaml
+  /header:
+    $ref: paths/header.yaml
+  /import-report:
+    $ref: paths/import-report.yaml
+  /import-report/ajax:
+    $ref: paths/import-report_ajax.yaml
+  /import-report/guess:
+    $ref: paths/import-report_guess.yaml
+  /import-report/total-logs:
+    $ref: paths/import-report_total-logs.yaml
   /indirect-labor:
     $ref: paths/indirect-labor.yaml
+  /indirect-labor/12:
+    $ref: paths/indirect-labor_12.yaml
+  /indirect-labor/batch-delete:
+    $ref: paths/indirect-labor_batch-delete.yaml
   /indirect-labor/create:
     $ref: paths/indirect-labor_create.yaml
-  /indirect-labor/{param}:
-    $ref: paths/indirect-labor_{param}.yaml
+  /indirect-labor/estimated-expense:
+    $ref: paths/indirect-labor_estimated-expense.yaml
+  /indirect-labor/{item}:
+    $ref: paths/indirect-labor_{item}.yaml
+  /inventory-report/export/excel:
+    $ref: paths/inventory-report_export_excel.yaml
+  /inventory-report/export/pdf:
+    $ref: paths/inventory-report_export_pdf.yaml
   /invoice/ajax:
     $ref: paths/invoice_ajax.yaml
+  /invoice/batch-delete:
+    $ref: paths/invoice_batch-delete.yaml
   /invoice/total-invoice:
     $ref: paths/invoice_total-invoice.yaml
+  /job-description:
+    $ref: paths/job-description.yaml
+  /job-description/batch-delete:
+    $ref: paths/job-description_batch-delete.yaml
+  /job-description/total:
+    $ref: paths/job-description_total.yaml
+  /job-description/{job_description}:
+    $ref: paths/job-description_{job_description}.yaml
+  /job-description/{job_description}/delete:
+    $ref: paths/job-description_{job_description}_delete.yaml
+  /job-description/{job_description}/edit:
+    $ref: paths/job-description_{job_description}_edit.yaml
+  /job-description/{job_description}/export:
+    $ref: paths/job-description_{job_description}_export.yaml
+  /job-description/{job_description}/preview:
+    $ref: paths/job-description_{job_description}_preview.yaml
+  /job/:
+    $ref: paths/job_.yaml
+  /job/create:
+    $ref: paths/job_create.yaml
+  /job/delete:
+    $ref: paths/job_delete.yaml
+  /job/{item}:
+    $ref: paths/job_{item}.yaml
+  /job/{item}/edit:
+    $ref: paths/job_{item}_edit.yaml
   /labor:
     $ref: paths/labor.yaml
+  /labor-category-report:
+    $ref: paths/labor-category-report.yaml
+  /labor-category/create:
+    $ref: paths/labor-category_create.yaml
+  /labor-category/{labor_category}:
+    $ref: paths/labor-category_{labor_category}.yaml
+  /labor-category/{labor_category}/delete:
+    $ref: paths/labor-category_{labor_category}_delete.yaml
+  /labor-category/{labor_category}/edit:
+    $ref: paths/labor-category_{labor_category}_edit.yaml
   /labor/ajax:
     $ref: paths/labor_ajax.yaml
+  /labor/batch-delete:
+    $ref: paths/labor_batch-delete.yaml
+  /labor/budget/next_month:
+    $ref: paths/labor_budget_next_month.yaml
   /labor/create:
     $ref: paths/labor_create.yaml
+  /labor/get-account:
+    $ref: paths/labor_get-account.yaml
   /labor/total:
     $ref: paths/labor_total.yaml
-  /labor/{param}:
-    $ref: paths/labor_{param}.yaml
-  /labor/{param}/edit:
-    $ref: paths/labor_{param}_edit.yaml
+  /labor/transfer-job:
+    $ref: paths/labor_transfer-job.yaml
+  /labor/{item}:
+    $ref: paths/labor_{item}.yaml
+  /labor/{item}/edit:
+    $ref: paths/labor_{item}_edit.yaml
+  /meal-period:
+    $ref: paths/meal-period.yaml
+  /merge-account/{item}:
+    $ref: paths/merge-account_{item}.yaml
+  /merge-account/{item}/edit:
+    $ref: paths/merge-account_{item}_edit.yaml
+  /message/list:
+    $ref: paths/message_list.yaml
+  /new-feature/status:
+    $ref: paths/new-feature_status.yaml
+  /non-expense-category/create:
+    $ref: paths/non-expense-category_create.yaml
+  /non-expense-category/{category}:
+    $ref: paths/non-expense-category_{category}.yaml
+  /non-expense-category/{category}/edit:
+    $ref: paths/non-expense-category_{category}_edit.yaml
+  /notifications:
+    $ref: paths/notifications.yaml
+  /notifications/create:
+    $ref: paths/notifications_create.yaml
+  /notifications/total:
+    $ref: paths/notifications_total.yaml
+  /notifications/{notification}:
+    $ref: paths/notifications_{notification}.yaml
+  /notifications/{notification}/delete:
+    $ref: paths/notifications_{notification}_delete.yaml
+  /notifications/{notification}/edit:
+    $ref: paths/notifications_{notification}_edit.yaml
+  /onboarding/generate-code/{user}:
+    $ref: paths/onboarding_generate-code_{user}.yaml
+  /op-audit:
+    $ref: paths/op-audit.yaml
+  /operating-expense/create:
+    $ref: paths/operating-expense_create.yaml
+  /operating-expense/delete:
+    $ref: paths/operating-expense_delete.yaml
+  /operating-expense/get-account:
+    $ref: paths/operating-expense_get-account.yaml
+  /operating-expense/transfer-doe:
+    $ref: paths/operating-expense_transfer-doe.yaml
+  /operating-expense/{item}:
+    $ref: paths/operating-expense_{item}.yaml
+  /operating-expense/{item}/edit:
+    $ref: paths/operating-expense_{item}_edit.yaml
+  /partner-company:
+    $ref: paths/partner-company.yaml
+  /partner-company/:
+    $ref: paths/partner-company_.yaml
+  /partner-company/135:
+    $ref: paths/partner-company_135.yaml
+  /partner-company/136:
+    $ref: paths/partner-company_136.yaml
+  /partner-company/154:
+    $ref: paths/partner-company_154.yaml
+  /partner-company/188:
+    $ref: paths/partner-company_188.yaml
+  /partner-company/190:
+    $ref: paths/partner-company_190.yaml
+  /partner-company/validate-email:
+    $ref: paths/partner-company_validate-email.yaml
+  /partner-company/{company}:
+    $ref: paths/partner-company_{company}.yaml
+  /partner-user/restaurant:
+    $ref: paths/partner-user_restaurant.yaml
+  /partner-user/restaurants/partner-company/{partner_company}:
+    $ref: paths/partner-user_restaurants_partner-company_{partner_company}.yaml
+  /plate:
+    $ref: paths/plate.yaml
   /purchase:
     $ref: paths/purchase.yaml
-  /purchase/attachments:
-    $ref: paths/purchase_attachments.yaml
   /purchase/create:
     $ref: paths/purchase_create.yaml
   /purchase/get-category-options:
     $ref: paths/purchase_get-category-options.yaml
   /purchase/total:
     $ref: paths/purchase_total.yaml
+  /purchase/transactions:
+    $ref: paths/purchase_transactions.yaml
   /purchase/transactions/ajax:
     $ref: paths/purchase_transactions_ajax.yaml
+  /purchase/transactions/batch-delete:
+    $ref: paths/purchase_transactions_batch-delete.yaml
   /purchase/transactions/change-account:
     $ref: paths/purchase_transactions_change-account.yaml
-  /purchase/{param}:
-    $ref: paths/purchase_{param}.yaml
-  /purchase/{param}/edit:
-    $ref: paths/purchase_{param}_edit.yaml
+  /purchase/{item}:
+    $ref: paths/purchase_{item}.yaml
+  /purchase/{item}/edit:
+    $ref: paths/purchase_{item}_edit.yaml
+  /push/count:
+    $ref: paths/push_count.yaml
+  /quasar-page-access:
+    $ref: paths/quasar-page-access.yaml
+  /quickbooks/fetch-data:
+    $ref: paths/quickbooks_fetch-data.yaml
+  /quickbooks/import:
+    $ref: paths/quickbooks_import.yaml
+  /quickbooks/validate-match:
+    $ref: paths/quickbooks_validate-match.yaml
+  /recipe:
+    $ref: paths/recipe.yaml
+  /recipe/batch-delete:
+    $ref: paths/recipe_batch-delete.yaml
+  /recipe/batch-export:
+    $ref: paths/recipe_batch-export.yaml
+  /recipe/options:
+    $ref: paths/recipe_options.yaml
+  /recipe/shared/{recipe}:
+    $ref: paths/recipe_shared_{recipe}.yaml
+  /recipe/total:
+    $ref: paths/recipe_total.yaml
+  /recipe/{recipe}:
+    $ref: paths/recipe_{recipe}.yaml
+  /recipe/{recipe}/export:
+    $ref: paths/recipe_{recipe}_export.yaml
+  /recipe/{recipe}/preview:
+    $ref: paths/recipe_{recipe}_preview.yaml
+  /report-suggestion:
+    $ref: paths/report-suggestion.yaml
+  /report-suggestion/ajax:
+    $ref: paths/report-suggestion_ajax.yaml
+  /report-suggestion/create:
+    $ref: paths/report-suggestion_create.yaml
+  /report-suggestion/download/{report_suggestion}:
+    $ref: paths/report-suggestion_download_{report_suggestion}.yaml
+  /report-suggestion/more-info-form:
+    $ref: paths/report-suggestion_more-info-form.yaml
+  /report-suggestion/total:
+    $ref: paths/report-suggestion_total.yaml
+  /report-suggestion/video-modal:
+    $ref: paths/report-suggestion_video-modal.yaml
+  /report-suggestion/{item}:
+    $ref: paths/report-suggestion_{item}.yaml
+  /report-suggestion/{report_suggestion}/close:
+    $ref: paths/report-suggestion_{report_suggestion}_close.yaml
+  /report-suggestion/{report_suggestion}/complete:
+    $ref: paths/report-suggestion_{report_suggestion}_complete.yaml
+  /report-suggestion/{report_suggestion}/in-development:
+    $ref: paths/report-suggestion_{report_suggestion}_in-development.yaml
+  /report/cogs-report:
+    $ref: paths/report_cogs-report.yaml
+  /report/cogs-report/detailed/run:
+    $ref: paths/report_cogs-report_detailed_run.yaml
+  /report/compare-report:
+    $ref: paths/report_compare-report.yaml
+  /report/detailed/cogs-report:
+    $ref: paths/report_detailed_cogs-report.yaml
+  /report/detailed/prime-cost-report:
+    $ref: paths/report_detailed_prime-cost-report.yaml
+  /report/detailed/purchase-report:
+    $ref: paths/report_detailed_purchase-report.yaml
+  /report/guest-count:
+    $ref: paths/report_guest-count.yaml
+  /report/inventory:
+    $ref: paths/report_inventory.yaml
+  /report/labor:
+    $ref: paths/report_labor.yaml
+  /report/labor/detailed/category:
+    $ref: paths/report_labor_detailed_category.yaml
+  /report/labor/efficiency:
+    $ref: paths/report_labor_efficiency.yaml
+  /report/labor/efficiency/export:
+    $ref: paths/report_labor_efficiency_export.yaml
+  /report/labor/export:
+    $ref: paths/report_labor_export.yaml
+  /report/monthly-overview:
+    $ref: paths/report_monthly-overview.yaml
+  /report/operational-profit:
+    $ref: paths/report_operational-profit.yaml
+  /report/options:
+    $ref: paths/report_options.yaml
+  /report/overview-report/export:
+    $ref: paths/report_overview-report_export.yaml
+  /report/per-person-avg:
+    $ref: paths/report_per-person-avg.yaml
+  /report/prime-cost-report:
+    $ref: paths/report_prime-cost-report.yaml
+  /report/prime-cost-report/export:
+    $ref: paths/report_prime-cost-report_export.yaml
+  /report/prime-cost-report/export/detailed:
+    $ref: paths/report_prime-cost-report_export_detailed.yaml
+  /report/profit-loss:
+    $ref: paths/report_profit-loss.yaml
+  /report/profit-loss/export:
+    $ref: paths/report_profit-loss_export.yaml
+  /report/purchase-report:
+    $ref: paths/report_purchase-report.yaml
+  /report/purchase/export:
+    $ref: paths/report_purchase_export.yaml
+  /report/purchase/vendor:
+    $ref: paths/report_purchase_vendor.yaml
+  /report/purchase/vendor/export:
+    $ref: paths/report_purchase_vendor_export.yaml
+  /report/sales-daily:
+    $ref: paths/report_sales-daily.yaml
+  /report/sales-daily/export:
+    $ref: paths/report_sales-daily_export.yaml
+  /report/sales/guest_count/export:
+    $ref: paths/report_sales_guest_count_export.yaml
+  /report/sales/per_person/export:
+    $ref: paths/report_sales_per_person_export.yaml
+  /restaurant-summary-report:
+    $ref: paths/restaurant-summary-report.yaml
+  /restaurant-summary-report/detailed:
+    $ref: paths/restaurant-summary-report_detailed.yaml
+  /restaurant-summary-report/export:
+    $ref: paths/restaurant-summary-report_export.yaml
+  /restaurant-summary-report/export-pdf:
+    $ref: paths/restaurant-summary-report_export-pdf.yaml
+  /restaurant-summary-report/status:
+    $ref: paths/restaurant-summary-report_status.yaml
+  /restaurant/lists:
+    $ref: paths/restaurant_lists.yaml
+  /restaurant/multi-unit/lists:
+    $ref: paths/restaurant_multi-unit_lists.yaml
+  /resto/multi-unit:
+    $ref: paths/resto_multi-unit.yaml
+  /resto/show:
+    $ref: paths/resto_show.yaml
   /sale:
     $ref: paths/sale.yaml
   /sale/ajax:
     $ref: paths/sale_ajax.yaml
+  /sale/batch-delete:
+    $ref: paths/sale_batch-delete.yaml
   /sale/catering:
     $ref: paths/sale_catering.yaml
   /sale/create:
     $ref: paths/sale_create.yaml
+  /sale/order:
+    $ref: paths/sale_order.yaml
   /sale/total-sale:
     $ref: paths/sale_total-sale.yaml
-  /sale/{param}:
-    $ref: paths/sale_{param}.yaml
-  /sale/{param}/edit:
-    $ref: paths/sale_{param}_edit.yaml
+  /sale/{item}:
+    $ref: paths/sale_{item}.yaml
+  /sale/{item}/edit:
+    $ref: paths/sale_{item}_edit.yaml
   /schedule:
     $ref: paths/schedule.yaml
+  /schedule/batch_delete:
+    $ref: paths/schedule_batch_delete.yaml
   /schedule/create:
     $ref: paths/schedule_create.yaml
   /schedule/total:
     $ref: paths/schedule_total.yaml
-  /schedule/{param}:
-    $ref: paths/schedule_{param}.yaml
-  /schedule/{param}/edit:
-    $ref: paths/schedule_{param}_edit.yaml
+  /schedule/{item}:
+    $ref: paths/schedule_{item}.yaml
+  /schedule/{item}/edit:
+    $ref: paths/schedule_{item}_edit.yaml
+  /settings/transactions:
+    $ref: paths/settings_transactions.yaml
+  /setup:
+    $ref: paths/setup.yaml
+  /sheets/build-sheet/{build_sheet}/copy:
+    $ref: paths/sheets_build-sheet_{build_sheet}_copy.yaml
+  /sidebar:
+    $ref: paths/sidebar.yaml
+  /tutorials:
+    $ref: paths/tutorials.yaml
+  /tutorials/complete:
+    $ref: paths/tutorials_complete.yaml
+  /unit:
+    $ref: paths/unit.yaml
+  /user-list:
+    $ref: paths/user-list.yaml
+  /user/cancellation:
+    $ref: paths/user_cancellation.yaml
+  /user/hide-previous-banner:
+    $ref: paths/user_hide-previous-banner.yaml
+  /user/pagination-record:
+    $ref: paths/user_pagination-record.yaml
+  /users:
+    $ref: paths/users.yaml
+  /users/ajax:
+    $ref: paths/users_ajax.yaml
+  /users/create:
+    $ref: paths/users_create.yaml
+  /users/multi-restaurant-access/check:
+    $ref: paths/users_multi-restaurant-access_check.yaml
+  /users/{sub_user}/edit:
+    $ref: paths/users_{sub_user}_edit.yaml
 components:
   securitySchemes:
     bearerAuth:

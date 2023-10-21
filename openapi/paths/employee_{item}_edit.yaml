@@ -1,0 +1,64 @@
+get:
+  parameters:
+    - description: The item parameter
+      in: path
+      name: item
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              employee:
+                properties:
+                  created_at:
+                    type: string
+                  default_pay:
+                    type: integer
+                  first_name:
+                    type: string
+                  id:
+                    type: integer
+                  job:
+                    type: string
+                  job_id:
+                    type: integer
+                  last_name:
+                    type: string
+                  rate:
+                    type: integer
+                  restaurant_id:
+                    type: integer
+                  type:
+                    type: integer
+                  updated_at:
+                    type: string
+                type: object
+              jobs:
+                items:
+                  properties:
+                    label:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - employee

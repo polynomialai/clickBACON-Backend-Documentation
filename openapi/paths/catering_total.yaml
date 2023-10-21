@@ -1,5 +1,4 @@
 get:
-  parameters: []
   responses:
     '200':
       content:
@@ -22,6 +21,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /catering/total
   tags:
-    - Catering
+    - catering

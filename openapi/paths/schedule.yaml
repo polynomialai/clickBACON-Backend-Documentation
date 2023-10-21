@@ -1,25 +1,23 @@
 get:
-  tags:
-    - Schedule
   parameters:
     - in: query
       name: page
-      required: false
       schema:
         type: string
     - in: query
       name: rows
-      required: false
       schema:
         type: string
     - in: query
       name: sortBy
-      required: false
       schema:
         type: string
     - in: query
       name: descending
-      required: false
+      schema:
+        type: string
+    - in: query
+      name: filter
       schema:
         type: string
   responses:
@@ -29,8 +27,34 @@ get:
           schema:
             properties:
               date:
+                properties:
+                  date:
+                    type: string
+                  timezone:
+                    type: string
+                  timezone_type:
+                    type: integer
                 type: object
               schedules:
+                items:
+                  properties:
+                    amount:
+                      type: string
+                    id:
+                      type: string
+                    interval:
+                      type: string
+                    intervalHtml:
+                      type: string
+                    lastRun:
+                      type: string
+                    name:
+                      type: string
+                    runTimes:
+                      type: integer
+                    type:
+                      type: integer
+                  type: object
                 type: array
               table:
                 type: string
@@ -48,4 +72,51 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /schedule
+  tags:
+    - schedule
+post:
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            amount: {}
+            date: {}
+            day: {}
+            description: {}
+            end: {}
+            end_interval: {}
+            end_type: {}
+            interval: {}
+            item: {}
+            month: {}
+            month_date: {}
+            name: {}
+            notes: {}
+            start: {}
+            vendor_id: {}
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - schedule

@@ -1,0 +1,164 @@
+get:
+  parameters:
+    - description: The build_sheet parameter
+      in: path
+      name: build_sheet
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              info:
+                properties:
+                  allergies:
+                    items:
+                      type: string
+                    type: array
+                  created_at:
+                    type: string
+                  crop_values:
+                    type: string
+                  deleted_at:
+                    type: string
+                  description:
+                    type: string
+                  directions:
+                    items:
+                      type: string
+                    type: array
+                  extension:
+                    type: string
+                  id:
+                    type: integer
+                  ingredients:
+                    items:
+                      type: string
+                    type: array
+                  name:
+                    type: string
+                  period:
+                    type: string
+                  photo:
+                    type: string
+                  photo_filename:
+                    type: string
+                  photo_url:
+                    type: string
+                  plate:
+                    items:
+                      properties:
+                        created_at:
+                          type: string
+                        deleted_at:
+                          type: string
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        order:
+                          type: integer
+                        pivot:
+                          properties:
+                            build_sheet_id:
+                              type: integer
+                            created_at:
+                              type: string
+                            plate_id:
+                              type: integer
+                            updated_at:
+                              type: string
+                          type: object
+                        restaurant_id:
+                          type: string
+                        updated_at:
+                          type: string
+                      type: object
+                    type: array
+                  restaurant_id:
+                    type: integer
+                  selected_diet_types:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  selected_meal_periods:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  selected_plates:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  server_description:
+                    type: string
+                  standards:
+                    items:
+                      type: string
+                    type: array
+                  updated_at:
+                    type: string
+                type: object
+              options:
+                properties:
+                  diet_types:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  meal_periods:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                  plates:
+                    items:
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: string
+                      type: object
+                    type: array
+                type: object
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - build-sheet

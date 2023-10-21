@@ -1,0 +1,59 @@
+get:
+  parameters:
+    - in: query
+      name: date
+      schema:
+        type: string
+    - in: query
+      name: copy_last_month
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              budget_categories:
+                items:
+                  properties:
+                    children:
+                      items:
+                        type: integer
+                      type: array
+                    cost:
+                      type: integer
+                    cost_amount:
+                      type: integer
+                    has_children:
+                      type: integer
+                    id:
+                      type: integer
+                    level:
+                      type: integer
+                    name:
+                      type: string
+                    name_original:
+                      type: string
+                    sale:
+                      type: string
+                    sale_amount:
+                      type: string
+                  type: object
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - comps

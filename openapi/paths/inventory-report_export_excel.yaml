@@ -1,0 +1,47 @@
+post:
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            from:
+              type: string
+            inventory:
+              type: string
+            month:
+              type: string
+            month_orig:
+              type: string
+            range:
+              type: string
+            to:
+              type: string
+            type:
+              type: string
+            week:
+              type: string
+            year:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/vnd.ms-excel:
+          schema:
+            properties: {}
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - inventory-report

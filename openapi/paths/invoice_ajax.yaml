@@ -1,35 +1,31 @@
 get:
-  tags:
-    - Invoice
   parameters:
     - in: query
       name: page
-      required: false
       schema:
         type: string
     - in: query
       name: rows
-      required: false
       schema:
         type: string
     - in: query
       name: sortBy
-      required: false
       schema:
         type: string
     - in: query
       name: descending
-      required: false
       schema:
         type: string
     - in: query
       name: from
-      required: false
       schema:
         type: string
     - in: query
       name: to
-      required: false
+      schema:
+        type: string
+    - in: query
+      name: filter
       schema:
         type: string
   responses:
@@ -39,6 +35,38 @@ get:
           schema:
             properties:
               data:
+                items:
+                  properties:
+                    actions:
+                      type: string
+                    checkbox:
+                      type: string
+                    comps:
+                      type: string
+                    credit:
+                      type: string
+                    date:
+                      type: string
+                    date_tooltip:
+                      type: string
+                    edit_link:
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          type: string
+                      type: object
+                    invoice_no:
+                      type: string
+                    is_credit:
+                      type: string
+                    total:
+                      type: string
+                    type:
+                      type: string
+                    vendor:
+                      type: string
+                  type: object
                 type: array
               draw:
                 type: integer
@@ -60,4 +88,5 @@ get:
       description: Unauthorized
   security:
     - bearerAuth: []
-  summary: GET /invoice/ajax
+  tags:
+    - invoice

@@ -1,0 +1,35 @@
+post:
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            Filedata[0]:
+              type: string
+          type: object
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              redirect:
+                type: string
+              status:
+                type: integer
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - import-report

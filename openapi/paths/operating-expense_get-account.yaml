@@ -1,0 +1,43 @@
+get:
+  parameters:
+    - in: query
+      name: id
+      schema:
+        type: string
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            properties:
+              parents:
+                items:
+                  properties:
+                    disable:
+                      type: integer
+                    label:
+                      type: string
+                    level:
+                      type: integer
+                    name:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+            type: object
+      description: OK
+    '401':
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                example: Unauthenticated.
+                type: string
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - operating-expense

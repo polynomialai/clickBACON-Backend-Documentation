@@ -1,94 +1,284 @@
 get:
-  tags:
-    - Dashboard
-  summary: Get dashboard settings
-  description: >
-    **Middleware Restrictions**:  - User must be authenticated. - User status
-    must not be one of the following:
-      * `2 (Suspended)`
-      * `3 (Expired)`
-      * `4 (Canceled)`
-  security:
-    - bearerAuth: []
   responses:
     '200':
-      description: Successful operation
       content:
         application/json:
           schema:
+            properties:
+              last_restaurant:
+                type: integer
+              notifyBudget:
+                properties:
+                  dismiss:
+                    type: string
+                type: object
+              wAccounts:
+                properties:
+                  dateRange:
+                    properties:
+                      from:
+                        type: string
+                      to:
+                        type: string
+                    type: object
+                  order:
+                    items:
+                      type: string
+                    type: array
+                  settings:
+                    items:
+                      type: string
+                    type: array
+                type: object
+              wCogs:
+                properties:
+                  dateRange:
+                    properties:
+                      from:
+                        type: string
+                      name:
+                        type: string
+                      to:
+                        type: string
+                    type: object
+                  order:
+                    items:
+                      type: string
+                    type: array
+                  settings:
+                    items:
+                      type: string
+                    type: array
+                type: object
+              wComps:
+                properties:
+                  dateRange:
+                    properties:
+                      from:
+                        type: string
+                      name:
+                        type: string
+                      to:
+                        type: string
+                    type: object
+                  order:
+                    items:
+                      type: string
+                    type: array
+                  settings:
+                    items:
+                      type: string
+                    type: array
+                type: object
+              wDoe:
+                properties:
+                  dateRange:
+                    properties:
+                      from:
+                        type: string
+                      name:
+                        type: string
+                      to:
+                        type: string
+                    type: object
+                  order:
+                    items: {}
+                    type: array
+                  settings:
+                    items:
+                      type: string
+                    type: array
+                type: object
+              wGauge:
+                type: string
+              wHealth:
+                type: string
+              wLabor:
+                properties:
+                  dateRange:
+                    properties:
+                      from:
+                        type: string
+                      name:
+                        type: string
+                      to:
+                        type: string
+                    type: object
+                  order:
+                    items: {}
+                    type: array
+                  settings:
+                    items:
+                      type: string
+                    type: array
+                type: object
+              wPrimeCost:
+                properties:
+                  type:
+                    type: string
+                type: object
+              widgets:
+                items:
+                  type: string
+                type: array
             type: object
-            description: Dashboard settings
+      description: OK
     '401':
-      description: Unauthorized
       content:
         application/json:
           schema:
-            type: object
             properties:
               message:
-                type: string
                 example: Unauthenticated.
-    '403':
-      description: >
-        Forbidden. This can be due to: - User status being one of: `Suspended
-        (2)`, `Expired (3)`, or `Canceled (4)`.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
                 type: string
-                example: suspended.
-post:
-  tags:
-    - Dashboard
-  summary: Save dashboard settings
-  description: >
-    **Middleware Restrictions**:  - User must be authenticated. - User status
-    must not be one of the following:
-      * `2 (Suspended)`
-      * `3 (Expired)`
-      * `4 (Canceled)`
+            type: object
+      description: Unauthorized
   security:
     - bearerAuth: []
+  tags:
+    - dashboard
+post:
   requestBody:
-    required: true
     content:
       application/json:
         schema:
+          properties:
+            notifyBudget:
+              properties:
+                dismiss:
+                  type: string
+              type: object
+            wAccounts:
+              properties:
+                dateRange:
+                  properties:
+                    from:
+                      type: string
+                    to:
+                      type: string
+                  type: object
+                order:
+                  items:
+                    type: string
+                  type: array
+                settings:
+                  items:
+                    type: string
+                  type: array
+              type: object
+            wCogs:
+              properties:
+                dateRange:
+                  properties:
+                    from:
+                      type: string
+                    name:
+                      type: string
+                    to:
+                      type: string
+                  type: object
+                order:
+                  items:
+                    type: string
+                  type: array
+                settings:
+                  items:
+                    type: string
+                  type: array
+              type: object
+            wComps:
+              properties:
+                dateRange:
+                  properties:
+                    from:
+                      type: string
+                    name:
+                      type: string
+                    to:
+                      type: string
+                  type: object
+                order:
+                  items:
+                    type: string
+                  type: array
+                settings:
+                  items:
+                    type: string
+                  type: array
+              type: object
+            wDoe:
+              properties:
+                dateRange:
+                  properties:
+                    from:
+                      type: string
+                    name:
+                      type: string
+                    to:
+                      type: string
+                  type: object
+                order:
+                  items: {}
+                  type: array
+                settings:
+                  items:
+                    type: string
+                  type: array
+              type: object
+            wGauge:
+              type: string
+            wHealth:
+              type: string
+            wLabor:
+              properties:
+                dateRange:
+                  properties:
+                    from:
+                      type: string
+                    name:
+                      type: string
+                    to:
+                      type: string
+                  type: object
+                order:
+                  items: {}
+                  type: array
+                settings:
+                  items:
+                    type: string
+                  type: array
+              type: object
+            wPrimeCost:
+              properties:
+                type:
+                  type: string
+              type: object
+            widgets:
+              items:
+                type: string
+              type: array
           type: object
-          description: Dashboard settings to be saved
   responses:
     '200':
-      description: Settings saved successfully
       content:
         application/json:
           schema:
-            type: object
             properties:
               status:
-                type: boolean
-                description: Indicates whether the settings were saved successfully.
+                type: integer
+            type: object
+      description: OK
     '401':
-      description: Unauthorized
       content:
         application/json:
           schema:
-            type: object
             properties:
               message:
-                type: string
                 example: Unauthenticated.
-    '403':
-      description: >
-        Forbidden. This can be due to: - User status being one of: `Suspended
-        (2)`, `Expired (3)`, or `Canceled (4)`.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
                 type: string
-                example: suspended.
+            type: object
+      description: Unauthorized
+  security:
+    - bearerAuth: []
+  tags:
+    - dashboard
