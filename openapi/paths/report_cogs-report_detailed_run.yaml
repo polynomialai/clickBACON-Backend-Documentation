@@ -1,4 +1,36 @@
 post:
+  description: |
+    flow                                                     
+
+    <div class="mermaid">
+    graph TD;
+      A[Start: COGS Report Generation]
+      B[Initialization: Instantiate PrimeCostReportController]
+      C[Adjust Categories: Check and unset 'categories' if 'all']
+      D[Adjust Comps Accounts: Check and unset 'comps_accounts' if 'all']
+      E[Fetch Prime Cost Data]
+      F[Check Authentication: Is user authenticated?]
+      G[Yes: Construct API Response]
+      H[No: Render Web View]
+      I[Process Date Ranges: Weekly, Monthly, Yearly, etc.]
+      J[Generate COGS Data: Based on date range]
+      K[Generate Prime Cost Data: Based on date range]
+      L[Fetch Chart Data: Prime Cost & Profit]
+      M[End]
+      A --> B
+      B --> C
+      C --> D
+      D --> E
+      E --> I
+      I --> J
+      J --> F
+      I --> K
+      K --> F
+      F --> G
+      F --> H
+      E --> L
+      L --> M
+    </div>
   requestBody:
     content:
       application/json:

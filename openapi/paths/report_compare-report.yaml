@@ -1,4 +1,36 @@
 post:
+  description: |
+    flow                                                     
+    <div class="mermaid">
+      graph TD
+      A[Start: Compare Reports Generation]
+      B[Validation: Ensure 'params' exist in request]
+      C[Initialization: Decode request parameters]
+      D[Loop: For each 'items' in params]
+      E[Create new Request instance]
+      F[Assign parameters to the new request]
+      G[Fetch daily sales for the given parameters]
+      H[Prepare data for the comparison]
+      I[End of loop]
+      J[Check: API Authentication]
+      K[Yes: Format & Return API Response]
+      L[No: Return totals]
+      M[End]
+
+      A --> B
+      B --> C
+      C --> D
+      D --> E
+      E --> F
+      F --> G
+      G --> H
+      H --> I
+      I --> J
+      J --> K
+      J --> L
+      K --> M
+      L --> M
+    </div>
   requestBody:
     content:
       application/json:

@@ -21,7 +21,6 @@
   "paths": {
     "/account": {
       "get": {
-        "description": "This is a summary of what the endpoint does. Below is a flow of the process:\n\n\n  <div class=\"mermaid\">\n    graph TD;\n      A[Start] --> B[Process];\n      B --> C[End];\n  </div>\n",
         "responses": {
           "200": {
             "content": {
@@ -29656,6 +29655,7 @@
     },
     "/report/cogs-report": {
       "get": {
+        "description": "flow                                                     \n\n<div class=\"mermaid\">\ngraph TD;\nA[Start: COGS Report Generation]\nB[Initialization: Instantiate PrimeCostReportController]\nC[Adjust Categories: Check and unset 'categories' if 'all']\nD[Adjust Comps Accounts: Check and unset 'comps_accounts' if 'all']\nE[Fetch Prime Cost Data]\nF[Check Authentication: Is user authenticated?]\nG[Yes: Construct API Response]\nH[No: Render Web View]\nI[Process Date Ranges: Weekly, Monthly, Yearly, etc.]\nJ[Generate COGS Data: Based on date range]\nK[Generate Prime Cost Data: Based on date range]\nL[Fetch Chart Data: Prime Cost & Profit]\nM[End]\n\nA --> B\nB --> C\nC --> D\nD --> E\nE --> I\nI --> J\nJ --> F\nI --> K\nK --> F\nF --> G\nF --> H\nE --> L\nL --> M\n</div>\n",
         "parameters": [
           {
             "in": "query",
@@ -30219,6 +30219,7 @@
     },
     "/report/cogs-report/detailed/run": {
       "post": {
+        "description": "flow                                                     \n\n<div class=\"mermaid\">\ngraph TD;\n  A[Start: COGS Report Generation]\n  B[Initialization: Instantiate PrimeCostReportController]\n  C[Adjust Categories: Check and unset 'categories' if 'all']\n  D[Adjust Comps Accounts: Check and unset 'comps_accounts' if 'all']\n  E[Fetch Prime Cost Data]\n  F[Check Authentication: Is user authenticated?]\n  G[Yes: Construct API Response]\n  H[No: Render Web View]\n  I[Process Date Ranges: Weekly, Monthly, Yearly, etc.]\n  J[Generate COGS Data: Based on date range]\n  K[Generate Prime Cost Data: Based on date range]\n  L[Fetch Chart Data: Prime Cost & Profit]\n  M[End]\n  A --> B\n  B --> C\n  C --> D\n  D --> E\n  E --> I\n  I --> J\n  J --> F\n  I --> K\n  K --> F\n  F --> G\n  F --> H\n  E --> L\n  L --> M\n</div>\n",
         "requestBody": {
           "content": {
             "application/json": {
@@ -30315,6 +30316,7 @@
     },
     "/report/compare-report": {
       "post": {
+        "description": "flow                                                     \n<div class=\"mermaid\">\n  graph TD\n  A[Start: Compare Reports Generation]\n  B[Validation: Ensure 'params' exist in request]\n  C[Initialization: Decode request parameters]\n  D[Loop: For each 'items' in params]\n  E[Create new Request instance]\n  F[Assign parameters to the new request]\n  G[Fetch daily sales for the given parameters]\n  H[Prepare data for the comparison]\n  I[End of loop]\n  J[Check: API Authentication]\n  K[Yes: Format & Return API Response]\n  L[No: Return totals]\n  M[End]\n\n  A --> B\n  B --> C\n  C --> D\n  D --> E\n  E --> F\n  F --> G\n  G --> H\n  H --> I\n  I --> J\n  J --> K\n  J --> L\n  K --> M\n  L --> M\n</div>\n",
         "requestBody": {
           "content": {
             "application/json": {
